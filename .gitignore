@@ -71,11 +71,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-Library
-Logs
 Packages
 ProjectSettings
-UserSettings
-Temp
+
 .vsconfig
 *.sln
+*.zip
