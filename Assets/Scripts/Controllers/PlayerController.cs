@@ -16,8 +16,13 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
-        Vector3 moveVec = new Vector3(moveX, 0, moveY).normalized;
+        Vector3 dir = new Vector3(moveX, 0, moveY).normalized;
 
-        transform.Translate(moveVec * Time.deltaTime * _speed);
+        if (dir.magnitude > 0.01f)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+
+            transform.rotation = Quaternion.Euler(0, Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg, 0);
+        }
     }
 }
