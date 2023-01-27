@@ -43927,9 +43927,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.0333333
-    functionName: 
+    functionName: Gameover
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: e8ce4534a350ff947bcffe9ed911c157, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
