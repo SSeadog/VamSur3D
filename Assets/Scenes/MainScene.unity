@@ -1301,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxInteractionUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6740620828609752813, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
 --- !u!1001 &6982492614481459469
