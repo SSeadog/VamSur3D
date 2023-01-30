@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
         // 얻은 무기 로드
         // 지금은 테스트
         List<string> paths = new List<string>();
-        //paths.Add("Prefabs/Weapons/TestBow/TestBow");
+        paths.Add("Prefabs/Weapons/TestBow/TestBow");
         paths.Add("Prefabs/Weapons/TestWeapon/TestWeapon");
         for (int i = 0; i < paths.Count; i++)
         {
