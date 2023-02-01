@@ -13,6 +13,7 @@ public class MainSceneTestController : MonoBehaviour
         _boxInteractionUI = GameObject.Find("BoxInteractionUI").GetComponent<BoxInteractionUI>();
         _damageUI = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
         _gameOverUI = GameObject.Find("UIRoot").transform.Find("GameOverUI").GetComponent<GameOverUI>();
+        _gameOverUI.Init();
     }
 
     void Update()

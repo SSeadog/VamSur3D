@@ -34,6 +34,7 @@ public class GameOverUI : MonoBehaviour
     public void ShowUI()
     {
         gameObject.SetActive(true);
+        StartCoroutine(FadeUI());
     }
 
     IEnumerator FadeUI()
@@ -42,9 +43,11 @@ public class GameOverUI : MonoBehaviour
         {
             _fadeTImer += Time.deltaTime;
 
-            foreach(Image img in _images)
+            for (int i = 0; i < _images.Length; i++)
             {
                 // 기본 알파값에 _fadeTImer이용해서 적절한 값 곱해주기
+                Color c = _images[i].color;
+                _images[i].color = new Color(c.r, c.g, c.b, _imgAlphas[i] * (_fadeTImer / _fadeDuration));
             }
 
             yield return new WaitForEndOfFrame();
