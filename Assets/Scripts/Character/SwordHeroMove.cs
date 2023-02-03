@@ -25,33 +25,9 @@ public class SwordHeroMove : MonoBehaviour
     [SerializeField] GameObject _hero;
     float _timer  = 0f;
     bool _hit = false;
-    bool _isGameOver = false;
-    public void Hitted()
-    {
-        if (Input.GetKeyDown(KeyCode.M))//공격받았을때
-        {
-            _hp -= 20;
-            _hit = true;
-        }
-        if (_hp <= 0)
-        {
-            Die();
-        }
-    }
-   public void HittedColer()
-    {
-        if (_hit == true)
-        {
-            _timer += Time.deltaTime;
-            _render.material.color = Color.red;
-            if (_timer > 0.5f)
-            {
-                _render.material.color = heroColor;
-                _timer = 0f;
-                _hit = false;
-            }
-        }
-    }
+    bool _move = true;
+
+
     void Start()
     {
         heroColor = _render.material.color;
@@ -59,11 +35,12 @@ public class SwordHeroMove : MonoBehaviour
 
     void Update()
     {
-        if (_isGameOver) return;
-        move();
+        if (_move == true)
+        {
+            move();
+        } 
         Hitted();
         HittedColer();
-
     }
     public void move()
     {
@@ -105,17 +82,37 @@ public class SwordHeroMove : MonoBehaviour
             _ani.SetInteger("SwordHero", (int)ESwordHeroMove.Idle);
         }
     }
-   
-    
-    
-    
-    
-    
+    public void Hitted()
+    {
+        if (Input.GetKeyDown(KeyCode.M))//공격받았을때
+        {
+            _hp -= 20;
+            _hit = true;
+        }
+        if (_hp <= 0)
+        {
+            Die();
+        }
+    }
+    public void HittedColer()
+    {
+        if (_hit == true)
+        {
+            _timer += Time.deltaTime;
+            _render.material.color = Color.red;
+            if (_timer > 0.5f)
+            {
+                _render.material.color = heroColor;
+                _timer = 0f;
+                _hit = false;
+            }
+        }
+    }
     public void Die()
     {
         _ani.SetInteger("SwordHero", (int)ESwordHeroMove.die);
-        _isGameOver = true;
         Debug.Log("Die");
+        _move = false;
     }
 }
 
