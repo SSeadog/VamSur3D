@@ -1,16 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
+    string _itemImagePath;
+
+    Image _itemImage;
+    
+    public void Init()
+    {
+        _itemImage = transform.Find("Item").GetComponent<Image>();
+    }
+
+    public void SetItem(string imagePath)
+    {
+        _itemImagePath = imagePath;
+
+        Sprite sprite = Resources.Load<Sprite>(_itemImagePath);
+        _itemImage.sprite = sprite;
+    }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

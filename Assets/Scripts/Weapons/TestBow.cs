@@ -6,9 +6,11 @@ public class TestBow : WeaponBase
 {
     GameObject _arrow;
     float _attackSpeed;
+    float _arrowSpeed;
     protected override void InitSkill()
     {
-        _attackSpeed = 2f;
+        _attackSpeed = 10f;
+        _arrowSpeed = 300f;
         _arrow = Resources.Load<GameObject>("Prefabs/Weapons/TestBow/TestArrow");
     }
 
@@ -28,8 +30,12 @@ public class TestBow : WeaponBase
 
     void Fire()
     {
-        GameObject instance = Instantiate(_arrow, transform.position + transform.TransformDirection(Vector3.forward) * 2f, transform.rotation);
-        instance.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward) * 300f);
+        float rad = GetMouseDirAngle();
+        // 해당 각도로 발사
+        Vector3 moveVec = new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
+
+        GameObject instance = Instantiate(_arrow, transform.position + moveVec, Quaternion.AngleAxis(rad * Mathf.Rad2Deg, Vector3.up));
+        instance.GetComponent<Rigidbody>().AddForce(moveVec * _arrowSpeed);
         Destroy(instance, 5f);
     }
 }

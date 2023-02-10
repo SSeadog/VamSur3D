@@ -13,4 +13,18 @@ public abstract class WeaponBase : MonoBehaviour
     protected abstract void InitSkill();
 
     protected abstract void StartSkill();
+
+    protected float GetMouseDirAngle()
+    {
+        Vector3 mousePos = Vector3.zero;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo))
+            mousePos = hitInfo.point;
+
+        Vector3 dir = (mousePos - transform.position).normalized;
+        float rad = Mathf.Atan2(dir.x, dir.z);
+
+        return rad;
+    }
 }

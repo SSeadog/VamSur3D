@@ -7,10 +7,14 @@ public class TestWeapon : WeaponBase
 {
     GameObject _attackJudge;
     float _attackSpeed;
+    float _rebound;
+    float _detectTime;
 
     protected override void InitSkill()
     {
         _attackSpeed = 2f;
+        _rebound = 1f;
+        _detectTime = 0.1f;
         _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/TestWeapon/AttackJudge");
     }
 
@@ -34,13 +38,13 @@ public class TestWeapon : WeaponBase
         GameObject skillJudgeInstance = Instantiate(_attackJudge);
 
         // transform.rotaion으로 벡터 구해보기
-        float y = transform.eulerAngles.y * Mathf.Deg2Rad;
-        Vector3 vec = new Vector3(Mathf.Sin(y), 0, Mathf.Cos(y));
+        float rad = GetMouseDirAngle();
+        float tempRad = Random.Range(rad - _rebound, rad + _rebound);
+        Vector3 vec = new Vector3(Mathf.Sin(tempRad), 0f, Mathf.Cos(tempRad));
 
-        //skillJudgeInstance.transform.position = transform.position + transform.TransformDirection(Vector3.forward) * 3f;
-        skillJudgeInstance.transform.position = transform.position + vec * 3f;
-        skillJudgeInstance.transform.rotation = transform.rotation;
+        skillJudgeInstance.transform.position = transform.position + vec * 1.5f;
+        skillJudgeInstance.transform.rotation = Quaternion.AngleAxis(tempRad * Mathf.Rad2Deg, Vector3.up);
 
-        Destroy(skillJudgeInstance, 0.1f);
+        Destroy(skillJudgeInstance, _detectTime);
     }
 }

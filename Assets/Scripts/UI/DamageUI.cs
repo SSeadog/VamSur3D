@@ -7,7 +7,6 @@ public class DamageUI : MonoBehaviour
 {
     // Todo
     // 크리티컬 데미지 색 구분 필요
-    // 글자 애니메이션을 커졌다가 작아지는 걸로 변경 필요
     float _lifeTime = 0.5f;
     float _timer = 0;
 
