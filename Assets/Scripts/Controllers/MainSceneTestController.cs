@@ -7,13 +7,19 @@ public class MainSceneTestController : MonoBehaviour
     BoxInteractionUI _boxInteractionUI;
     GameObject _damageUI;
     GameOverUI _gameOverUI;
+    ESCMenuUI _escMenuUI;
 
     void Start()
     {
         _boxInteractionUI = GameObject.Find("BoxInteractionUI").GetComponent<BoxInteractionUI>();
+        
         _damageUI = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
+        
         _gameOverUI = GameObject.Find("UIRoot").transform.Find("GameOverUI").GetComponent<GameOverUI>();
         _gameOverUI.Init();
+
+        _escMenuUI = GameObject.Find("UIRoot").transform.Find("ESCMenuUI").GetComponent<ESCMenuUI>();
+        _escMenuUI.Init();
     }
 
     void Update()
@@ -34,6 +40,13 @@ public class MainSceneTestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             _gameOverUI.ShowUI();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_escMenuUI.gameObject.activeSelf == false)
+                _escMenuUI.ShowUI();
+            else
+                _escMenuUI.CloseUI();
         }
     }
 }
