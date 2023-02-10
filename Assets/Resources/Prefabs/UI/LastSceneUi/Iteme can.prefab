@@ -171,6 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fa6cbb869578b46be9147060735ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Image: {fileID: 555003221379571902}
+  _name: {fileID: 5256888909843152726}
+  _lv: {fileID: 5058556394199814564}
+  _dmg: {fileID: 8729544303893588125}
+  _dps: {fileID: 5170649987624928969}
+  _kills: {fileID: 1020125050780354121}
 --- !u!1 &4859837501806892472
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +189,7 @@ GameObject:
   - component: {fileID: 6924164195577754761}
   - component: {fileID: 5058556394199814564}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: WeaponLv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +269,7 @@ GameObject:
   - component: {fileID: 4850338295202046107}
   - component: {fileID: 5256888909843152726}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: WeaponName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +349,7 @@ GameObject:
   - component: {fileID: 7426772645824816386}
   - component: {fileID: 8729544303893588125}
   m_Layer: 5
-  m_Name: Text (Legacy) (2)
+  m_Name: WeaponDMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +429,7 @@ GameObject:
   - component: {fileID: 3743233195306701653}
   - component: {fileID: 1020125050780354121}
   m_Layer: 5
-  m_Name: Text (Legacy) (4)
+  m_Name: WeaponKills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +509,7 @@ GameObject:
   - component: {fileID: 97249578810932267}
   - component: {fileID: 5170649987624928969}
   m_Layer: 5
-  m_Name: Text (Legacy) (3)
+  m_Name: WeaponDPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

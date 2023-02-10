@@ -7,14 +7,16 @@ public class Scene : MonoBehaviour
    
     [SerializeField] GameObject _item;
     [SerializeField] Transform _content;
-    [SerializeField] Item _controllor;
+    [SerializeField] ItemCsvCon _itemcon;
+    List<GameObject> lstItems = new List<GameObject>();
     public void ShowSkillPanel()
     {
         gameObject.SetActive(true);
-        foreach (ItemDate data in _controllor.lstItemDate)
+        foreach (ItemData data in _itemcon.lstItemDate)
         {
             GameObject temp = Instantiate(_item, _content);
-            temp.GetComponent<ItemDate>().init(data);
+         //   temp.GetComponent<ItemData>().init(data);
+            lstItems.Add(temp);
         }
     }
     void Start()

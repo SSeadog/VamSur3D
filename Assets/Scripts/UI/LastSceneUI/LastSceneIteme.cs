@@ -11,7 +11,7 @@ public class LastSceneIteme : MonoBehaviour
     [SerializeField] Text _dmg;
     [SerializeField] Text _dps;
     [SerializeField] Text _kills;
-    public void init(ItemDate data)
+    public void init(ItemData data)
     {
         _name.text = "무기이름" + data.NAME;
         _lv.text = " LV." + data.LV;  

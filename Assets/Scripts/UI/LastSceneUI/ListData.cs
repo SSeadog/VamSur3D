@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Die : MonoBehaviour
+public class ListData: MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
     void Start()
     {
         

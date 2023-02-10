@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!137 &529079963 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2090068862843869812, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
-  m_PrefabInstance: {fileID: 9124728755834460850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1220910396
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,39 +217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1873298293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4267047524473429398, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
-  m_PrefabInstance: {fileID: 9124728755834460850}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1873298294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873298293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2799cf3a445964ea383f8af9f240b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _render: {fileID: 529079963}
-  _ani: {fileID: 1915477272}
-  speed: 10
-  _rotate: {fileID: 1915477270}
-  _hp: 50
-  _hero: {fileID: 1915477270}
---- !u!1 &1915477270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2081538175505956734, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
-  m_PrefabInstance: {fileID: 9124728755834460850}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1915477272 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2140462853314086082, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
-  m_PrefabInstance: {fileID: 9124728755834460850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2128517258
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,9 +423,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4267047524473429398, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: SwordHero
       objectReference: {fileID: 0}
     - target: {fileID: 4533881698958001825, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_RootOrder
