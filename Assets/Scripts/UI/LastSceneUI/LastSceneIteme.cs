@@ -11,13 +11,19 @@ public class LastSceneIteme : MonoBehaviour
     [SerializeField] Text _dmg;
     [SerializeField] Text _dps;
     [SerializeField] Text _kills;
-    public void init(ItemData data)
+    WeaponData _weaponData;
+    ItemData _data;
+    float time;
+    public void init(ItemData data, WeaponData weaponData)
     {
-        _name.text = "무기이름" + data.NAME;
+        _data = data;
+        _weaponData = weaponData;
+        _name.text = data.NAME;
         _lv.text = " LV." + data.LV;  
-        _dmg.text = "데미지 : " + data.DMG ;
+        _dmg.text = "총데미지 : " + data.DMG ;
         _dps.text = " DPS: " + data.DPS  ;
         _kills.text = " 킬수: " + data.KILLS;
+        Debug.Log("init");
     }
-  
+
 }

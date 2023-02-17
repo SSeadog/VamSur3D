@@ -5,16 +5,16 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class ItemCsvCon: MonoBehaviour
+public class ItemCsvCon : MonoBehaviour
 {
-    public List<ItemData> lstItemDate = new List<ItemData>();
-    public void itemdatacsv()
+    public List<ItemData> lstItemDates = new List<ItemData>();
+    void ReadItemData()
     {
-        string itmepath = Application.dataPath + "/Resources/Datas/ItemDate.csv";
-            if (File.Exists(itmepath))
+        string path = Application.dataPath + "/Resources/Datas/ItemData.csv";//에디터 ,어셋"/ㅁ/ㅁ/ㅁ
+        if (File.Exists(path))
         {
             string source;
-            using (StreamReader sr = new StreamReader(itmepath))
+            using (StreamReader sr = new StreamReader(path))
             {
                 string[] lines;
                 source = sr.ReadToEnd();
@@ -33,22 +33,18 @@ public class ItemCsvCon: MonoBehaviour
                     temp.DMG = int.Parse(values[3]);
                     temp.DPS = float.Parse(values[4]);
                     temp.KILLS = int.Parse(values[5]);
-                    temp.ETYPE = (EItem)Enum.Parse(typeof(EItem), values[6]);
-                    lstItemDate.Add(temp);
+                    lstItemDates.Add(temp);
+                    Debug.Log("ReadItemData");
                 }
             }
         }
     }
-    public void Start()
+    private void Start()
     {
-        itemdatacsv();
-        Debug.Log("확인");
-    }
-    void Update()
-    {
-        
+        ReadItemData();
     }
 }
+
 public struct ItemData
 {
     public int INDEX;
@@ -57,7 +53,6 @@ public struct ItemData
     public int DMG;
     public float DPS;
     public int KILLS;
-    public EItem ETYPE;
 }
 public enum EItem
 {

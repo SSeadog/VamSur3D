@@ -13,7 +13,6 @@ enum ESwordHeroMove
     s,//back
     d,//right
     die,
-    nextScene,//7
 
 }
 public class SwordHeroMove : MonoBehaviour
@@ -21,12 +20,13 @@ public class SwordHeroMove : MonoBehaviour
     Color heroColor;
     [SerializeField] SkinnedMeshRenderer _render;
     [SerializeField] Animator _ani;
-    [SerializeField] float _speed;
     [SerializeField] GameObject _rotate;
-    [SerializeField] int _hp;
     [SerializeField] GameObject _hero;
-    float _timer  = 0f;
+    [SerializeField] float _speed;//캐릭터 스택은 외부 파일에서 불러옴
+    [SerializeField] int _hp;
+    float _timer = 0f;
     float _dietimer = 0f;
+    float _lifetimer = 0f;
     bool _hit = false;
     bool _move = true;
     public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
@@ -34,6 +34,7 @@ public class SwordHeroMove : MonoBehaviour
     void Start()
     {
         heroColor = _render.material.color;
+        Debug.Log("????");
     }
 
     void Update()
@@ -41,9 +42,11 @@ public class SwordHeroMove : MonoBehaviour
         if (_move == true)
         {
             move();
-        } 
-        Hitted();
+            _lifetimer += Time.deltaTime;
+        }
+        if (_hit == false) Hitted();
         HittedColer();
+
     }
     public void move()
     {
@@ -117,12 +120,13 @@ public class SwordHeroMove : MonoBehaviour
         Debug.Log("Die");
         _move = false;
         NextScene();
+        Debug.Log(_lifetimer);
     }
     public void NextScene()
     {
         _dietimer += Time.deltaTime;
         if (_dietimer >= 1f)
-        SceneManager.LoadScene("LastScene");
+            SceneManager.LoadScene("LastScene");
     }
 }
 
