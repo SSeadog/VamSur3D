@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class TestWeapon : WeaponBase
+public class Sword : WeaponBase
 {
     GameObject _attackJudge;
-    float _attackSpeed;
+    float _coolTime;
     float _rebound;
     float _detectTime;
 
-    protected override void InitSkill()
+    protected override void InitSkill(Define.Weapon data)
     {
-        _attackSpeed = 2f;
+        _coolTime = data.coolTime;
         _rebound = 1f;
         _detectTime = 0.1f;
         _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/TestWeapon/AttackJudge");
@@ -29,7 +29,7 @@ public class TestWeapon : WeaponBase
         {
             Skill();
 
-            yield return new WaitForSeconds(1f / _attackSpeed);
+            yield return new WaitForSeconds(_coolTime);
         }
     }
 

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public virtual void Init()
+    public virtual void Init(Define.Weapon data)
     {
-        InitSkill();
+        InitSkill(data);
         StartSkill();
     }
 
-    protected abstract void InitSkill();
+    protected abstract void InitSkill(Define.Weapon data);
 
     protected abstract void StartSkill();
 

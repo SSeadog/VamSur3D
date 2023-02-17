@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBow : WeaponBase
+public class Staff : WeaponBase
 {
     GameObject _arrow;
-    float _attackSpeed;
+    float _coolTime;
     float _arrowSpeed;
-    protected override void InitSkill()
+    protected override void InitSkill(Define.Weapon data)
     {
-        _attackSpeed = 10f;
-        _arrowSpeed = 300f;
+        _coolTime = data.coolTime;
+        _arrowSpeed = data.projectileSpeed;
         _arrow = Resources.Load<GameObject>("Prefabs/Weapons/TestBow/TestArrow");
     }
 
@@ -24,7 +24,7 @@ public class TestBow : WeaponBase
         while (true)
         {
             Fire();
-            yield return new WaitForSeconds(1f / _attackSpeed);
+            yield return new WaitForSeconds(1f / _coolTime);
         }
     }
 
