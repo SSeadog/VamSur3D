@@ -14,7 +14,12 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] GameObject CharacterInfoMenuPanel;
     [SerializeField] GameObject CharacterBox;
     [SerializeField] GameObject CharacterInfoBox;
-    [SerializeField] Transform _content;
+    [SerializeField] Transform _characterContent;
+    [SerializeField] GameObject WeaponUpgradeMenuPanel;
+    [SerializeField] Transform _weaponContent;
+
+
+
 
     // Start is called before the first frame update
     public void OnSelectCharacterMenu()
@@ -28,20 +33,34 @@ public class MenuUIController : MonoBehaviour
         CharacterInfoMenuPanel.SetActive(true);
     }
 
+    public void OpenWeaponUpgradePanel()
+    {
+        WeaponUpgradeMenuPanel.SetActive(true);
+    }
+
     public void initSelectBox()
     {
-        for (int i = 0; i < 17; i++)
+        if (CharacterInfoMenuPanel.activeSelf == true)
+        {
+            for (int i = 0; i < 17; i++)
+            {
+                GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
+                infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
+                infoBoxTmp.name = "CharacterBox";
+            }
+        }
+        else if(WeaponUpgradeMenuPanel.activeSelf == true) 
         {
 
-            GameObject infoBoxTmp = Instantiate(CharacterBox, _content);
-            infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
-            infoBoxTmp.name = "CharacterBox";
         }
     }
+
+  
 
     public void initSelectedCharacter()
     {
         GameObject selectCharacterBoxTmp = Instantiate(CharacterInfoBox);
     }
+
 }
    
