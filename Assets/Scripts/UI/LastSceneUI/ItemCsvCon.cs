@@ -10,7 +10,7 @@ public class ItemCsvCon : MonoBehaviour
     public List<ItemData> lstItemDates = new List<ItemData>();
     void ReadItemData()
     {
-        string path = Application.dataPath + "/Resources/Datas/ItemData.csv";//에디터 ,어셋"/ㅁ/ㅁ/ㅁ
+        string path = Application.dataPath + "/Resources/Datas/ItemData.csv";//무기정보 받아서 출력값 변경
         if (File.Exists(path))
         {
             string source;
@@ -44,7 +44,6 @@ public class ItemCsvCon : MonoBehaviour
         ReadItemData();
     }
 }
-
 public struct ItemData
 {
     public int INDEX;

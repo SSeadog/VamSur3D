@@ -14,13 +14,13 @@ public class LastSceneIteme : MonoBehaviour
     WeaponData _weaponData;
     ItemData _data;
     float time;
-    public void init(ItemData data, WeaponData weaponData)
+    public void init(ItemData data, WeaponData weaponData)//무기정보 받아서 출력값 변경
     {
-        _data = data;
+       // _data = data;
         _weaponData = weaponData;
         _name.text = data.NAME;
         _lv.text = " LV." + data.LV;  
-        _dmg.text = "총데미지 : " + data.DMG ;
+        _dmg.text = "무기데미지 : " + data.DMG ;
         _dps.text = " DPS: " + data.DPS  ;
         _kills.text = " 킬수: " + data.KILLS;
         Debug.Log("init");

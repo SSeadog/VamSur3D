@@ -26,10 +26,10 @@ public class SwordHeroMove : MonoBehaviour
     [SerializeField] int _hp;
     float _timer = 0f;
     float _dietimer = 0f;
-    float _lifetimer = 0f;
+    public float _lifetimer = 0f;
     bool _hit = false;
     bool _move = true;
-    public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
+    //public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
 
     void Start()
     {
@@ -121,12 +121,12 @@ public class SwordHeroMove : MonoBehaviour
         _move = false;
         NextScene();
         Debug.Log(_lifetimer);
+        PlayerPrefs.SetFloat("_lifetime", _lifetimer);//씬 전환시 == 1복사파일에 저장후 원본이 파기됨
     }
     public void NextScene()
     {
         _dietimer += Time.deltaTime;
-        if (_dietimer >= 1f)
-            SceneManager.LoadScene("LastScene");
+        if (_dietimer >= 1f)SceneManager.LoadScene("LastScene");
     }
 }
 
