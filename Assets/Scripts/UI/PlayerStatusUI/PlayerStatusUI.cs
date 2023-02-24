@@ -15,15 +15,15 @@ public class PlayerStatusUI : MonoBehaviour
 
     void Start()
     {
-        _playerInfo = GetComponent<PlayerInfo>();
-        _itemSlots = GetComponent<ItemSlots>();
+        _playerInfo = GetComponentInChildren<PlayerInfo>();
+        _itemSlots = GetComponentInChildren<ItemSlots>();
 
-        _playerInfo.Init();
-        _itemSlots.Init();
+        _playerInfo.SetLv(99);
+        _playerInfo.SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
     }
 
-    void Update()
+    public void AddItem(Define.Weapon weaponData)
     {
-        
+        _itemSlots.AddItem(weaponData.imageUrl);
     }
 }

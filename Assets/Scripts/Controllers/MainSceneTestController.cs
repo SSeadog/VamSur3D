@@ -41,12 +41,5 @@ public class MainSceneTestController : MonoBehaviour
         {
             _gameOverUI.ShowUI();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_escMenuUI.gameObject.activeSelf == false)
-                _escMenuUI.ShowUI();
-            else
-                _escMenuUI.CloseUI();
-        }
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    string _itemImagePath;
+    public bool isFilled = false;
 
+    string _itemImagePath;
     Image _itemImage;
     
     public void Init()
@@ -16,6 +17,7 @@ public class ItemSlot : MonoBehaviour
 
     public void SetItem(string imagePath)
     {
+        isFilled = true;
         _itemImagePath = imagePath;
 
         Sprite sprite = Resources.Load<Sprite>(_itemImagePath);
@@ -24,7 +26,7 @@ public class ItemSlot : MonoBehaviour
 
     void Start()
     {
-        
+        Init();
     }
 
     void Update()

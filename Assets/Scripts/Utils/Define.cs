@@ -4,19 +4,14 @@ using UnityEngine;
 
 public static class Define
 {
-    public class Item // Test
-    {
-        public int id;
-        public string name;
-    }
-
     public class Hero
     {
-        public string name;
+        public int id;
         public int hp;
         public int moveSpeed;
         public float power;
         public string imageUrl;
+        public string prefabPath;
     }
     
     public class Weapon

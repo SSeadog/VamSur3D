@@ -7,20 +7,26 @@ public class WeaponController : MonoBehaviour
 {
     GameObject _weaponRoot;
 
-    public Dictionary<Define.WeaponType, int> curPlayerWeapons;
+    public Dictionary<Define.WeaponType, int> curPlayerWeaponLevels;
+
+    UIManager uIManager;
 
     void Start()
     {
         FindWeaponRoot();
 
-        curPlayerWeapons = new Dictionary<Define.WeaponType, int>();
-        curPlayerWeapons[Define.WeaponType.Sword] = 3;
-        curPlayerWeapons[Define.WeaponType.Staff] = 3;
+        curPlayerWeaponLevels = new Dictionary<Define.WeaponType, int>();
+        curPlayerWeaponLevels[Define.WeaponType.Sword] = 3;
+        curPlayerWeaponLevels[Define.WeaponType.Staff] = 3;
 
-        ;
+        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(curPlayerWeaponLevels.Keys);
 
-        LoadWeapon(MainGameManager.Instance.weaponDict["Sword"][curPlayerWeapons[Define.WeaponType.Sword]]);
-        LoadWeapon(MainGameManager.Instance.weaponDict["Staff"][curPlayerWeapons[Define.WeaponType.Staff]]);
+        uIManager = GameObject.Find("UIRoot").GetComponent<UIManager>();
+
+        for (int i = 0; i < weaponTypes.Count; i++)
+        {
+            LoadWeapon(DataManager.Instance.GetWeaponInfo(weaponTypes[i], curPlayerWeaponLevels[weaponTypes[i]]));
+        }
     }
 
     void FindWeaponRoot()
@@ -45,9 +51,11 @@ public class WeaponController : MonoBehaviour
         {
             case Define.WeaponType.Sword:
                 gameObject.AddComponent<Sword>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
                 break;
             case Define.WeaponType.Staff:
                 gameObject.AddComponent<Staff>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
                 break;
             case Define.WeaponType.Bible:
                 break;

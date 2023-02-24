@@ -16,27 +16,30 @@ public class ItemSlots : MonoBehaviour
     public void Init()
     {
         GenerateSlots();
-        // 임시로 6개 다 넣어두기
     }
 
     void GenerateSlots()
     {
-        string imagePath = "Prefabs/Textures/UI/icon/DrakBrown/sword";
-
         GameObject slotOriginal = Resources.Load<GameObject>("Prefabs/UI/PlayerStatusUI/ItemSlot");
         for (int i = 0; i < _items.Length; i++)
         {
             GameObject slotInstance = Instantiate<GameObject>(slotOriginal, transform);
             ItemSlot itemSlot = slotInstance.GetComponent<ItemSlot>();
             itemSlot.Init();
-            itemSlot.SetItem(imagePath);
 
             _items[i] = itemSlot;
         }
     }
 
-    public void AddItem()
+    public void AddItem(string imagePath)
     {
-
+        for (int i = 0; i < _items.Length; i++)
+        {
+            if (_items[i].isFilled == false)
+            {
+                _items[i].SetItem(imagePath);
+                break;
+            }
+        }
     }
 }
