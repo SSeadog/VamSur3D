@@ -24,9 +24,9 @@ public class SwordHeroMove : MonoBehaviour
     [SerializeField] GameObject _hero;
     [SerializeField] float _speed;//캐릭터 스택은 외부 파일에서 불러옴
     [SerializeField] int _hp;
-    float _timer = 0f;
-    float _dietimer = 0f;
-    public float _lifetimer = 0f;
+    float _hittimer, _attacktimer, _dietimer, _lifetimer = 0f;// _attacktimer틱마다
+    int _totalDMG, _LV, _killcount, _exp = 0;
+    int _power = 10;
     bool _hit = false;
     bool _move = true;
     //public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
@@ -34,7 +34,7 @@ public class SwordHeroMove : MonoBehaviour
     void Start()
     {
         heroColor = _render.material.color;
-        Debug.Log("????");
+        EXPKill(100, true);
     }
 
     void Update()
@@ -43,10 +43,29 @@ public class SwordHeroMove : MonoBehaviour
         {
             move();
             _lifetimer += Time.deltaTime;
+            _attacktimer += Time.deltaTime;
         }
         if (_hit == false) Hitted();
         HittedColer();
+        Attack(_power);
+    }
 
+    public void Attack(int power)
+    {
+        if (_attacktimer >= 1f)
+        {
+            _totalDMG += power;
+            Debug.Log(_totalDMG);
+            _attacktimer = 0f;
+        }
+    }
+    public void EXPKill(int exp, bool kill)
+    {
+        _exp = exp;
+        if (_exp >= 100) _LV++;
+
+
+        if (kill == true) _killcount++;
     }
     public void move()
     {
@@ -104,12 +123,12 @@ public class SwordHeroMove : MonoBehaviour
     {
         if (_hit == true)
         {
-            _timer += Time.deltaTime;
+            _hittimer += Time.deltaTime;
             _render.material.color = Color.red;
-            if (_timer > 0.5f)
+            if (_hittimer > 0.5f)
             {
                 _render.material.color = heroColor;
-                _timer = 0f;
+                _hittimer = 0f;
                 _hit = false;
             }
         }
@@ -121,12 +140,15 @@ public class SwordHeroMove : MonoBehaviour
         _move = false;
         NextScene();
         Debug.Log(_lifetimer);
-        PlayerPrefs.SetFloat("_lifetime", _lifetimer);//씬 전환시 == 1복사파일에 저장후 원본이 파기됨
     }
     public void NextScene()
     {
+        PlayerPrefs.SetFloat("_lifetime", _lifetimer);//씬 전환시 == 1복사파일에 저장후 원본이 파기됨
+        PlayerPrefs.SetInt("_totalDMG", _totalDMG);
+        PlayerPrefs.SetInt("_LV", _LV);
+        PlayerPrefs.SetInt("_killcount", _killcount);
         _dietimer += Time.deltaTime;
-        if (_dietimer >= 1f)SceneManager.LoadScene("LastScene");
+        if (_dietimer >= 1f) SceneManager.LoadScene("LastScene");
     }
 }
 

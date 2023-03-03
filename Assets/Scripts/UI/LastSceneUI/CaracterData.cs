@@ -6,30 +6,32 @@ public class CaracterData : MonoBehaviour
 {
 
     [SerializeField] Text _caracLV;
-    [SerializeField] Text _livetime;
-    [SerializeField] Text _gold;
-    [SerializeField] Text _kills;
-    [SerializeField] Text _damages;
+    [SerializeField] Text _livetimetx;
+    [SerializeField] Text _goldtx;
+    [SerializeField] Text _killstx;
+    [SerializeField] Text _damagestx;
     [SerializeField] Text _null;
-    SwordHeroMove hero;
-    int LV = 0;
-    float livetime = 0f;
-    int gold = 0;
-    int kills = 0;
-    int damages = 0;
+    int _LV = 0;
+    float _livetime = 0f;
+    int _gold = 0;
+    int _kills = 0;
+    int _damages = 0;
     private void Start()
 
     {
-       livetime = PlayerPrefs.GetFloat("_lifetime");//PlayerPrefs.setint("이름"값),PlayerPrefs.getint("받을이름")
-        Debug.Log(livetime);
-        text();
+       _livetime = PlayerPrefs.GetFloat("_lifetime");//PlayerPrefs.setint("이름"값),PlayerPrefs.getint("받을이름")
+       _damages = PlayerPrefs.GetInt("_totalDMG");
+        _LV = PlayerPrefs.GetInt("_LV");
+        _kills = PlayerPrefs.GetInt("_killcount");
+        Debug.Log(_livetime);
+        Text();
     }
-    public void text()
+    public void Text()
     {
-        _caracLV.text = "레벨" + LV;
-        _livetime.text =   $"{livetime.ToString("F1")}"+"초 생존" ;
-        _gold.text = "획득골드" + gold;
-        _kills.text = "총킬" + kills;
-        _damages.text = "총데미지" + damages;
+        _caracLV.text = "레벨" + _LV;
+        _livetimetx.text =   $"{_livetime.ToString("F1")}"+"초 생존" ;//$문은 형변환에사용
+        _goldtx.text = "획득골드" + _gold;
+        _killstx.text = "총킬" + _kills;
+        _damagestx.text = "총데미지" + _damages;
     }
 }
