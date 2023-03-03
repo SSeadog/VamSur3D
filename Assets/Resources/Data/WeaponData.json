@@ -3,7 +3,6 @@
     "1": {
       "id": 1,
       "lv": 1,
-      "enhanceLv": 1,
       "power": 10,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -13,7 +12,6 @@
     "2": {
       "id": 1,
       "lv": 2,
-      "enhanceLv": 1,
       "power": 15,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -23,7 +21,6 @@
     "3": {
       "id": 1,
       "lv": 3,
-      "enhanceLv": 1,
       "power": 20,
       "projectileCount": 3,
       "projectileSpeed": 1,
@@ -35,7 +32,6 @@
     "1": {
       "id": 2,
       "lv": 1,
-      "enhanceLv": 1,
       "power": 10,
       "projectileCount": 1,
       "projectileSpeed": 300,
@@ -45,7 +41,6 @@
     "2": {
       "id": 2,
       "lv": 2,
-      "enhanceLv": 1,
       "power": 15,
       "projectileCount": 1,
       "projectileSpeed": 400,
@@ -55,7 +50,6 @@
     "3": {
       "id": 2,
       "lv": 3,
-      "enhanceLv": 1,
       "power": 20,
       "projectileCount": 3,
       "projectileSpeed": 500,
@@ -67,7 +61,6 @@
     "1": {
       "id": 1,
       "lv": 1,
-      "enhanceLv": 1,
       "power": 10,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -77,7 +70,6 @@
     "2": {
       "id": 1,
       "lv": 2,
-      "enhanceLv": 1,
       "power": 15,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -87,7 +79,6 @@
     "3": {
       "id": 1,
       "lv": 3,
-      "enhanceLv": 1,
       "power": 20,
       "projectileCount": 3,
       "projectileSpeed": 1,
@@ -99,7 +90,6 @@
     "1": {
       "id": 1,
       "lv": 1,
-      "enhanceLv": 1,
       "power": 10,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -109,7 +99,6 @@
     "2": {
       "id": 1,
       "lv": 2,
-      "enhanceLv": 1,
       "power": 15,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -119,7 +108,6 @@
     "3": {
       "id": 1,
       "lv": 3,
-      "enhanceLv": 1,
       "power": 20,
       "projectileCount": 3,
       "projectileSpeed": 1,
@@ -131,7 +119,6 @@
     "1": {
       "id": 1,
       "lv": 1,
-      "enhanceLv": 1,
       "power": 10,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -141,7 +128,6 @@
     "2": {
       "id": 1,
       "lv": 2,
-      "enhanceLv": 1,
       "power": 15,
       "projectileCount": 1,
       "projectileSpeed": 1,
@@ -151,7 +137,6 @@
     "3": {
       "id": 1,
       "lv": 3,
-      "enhanceLv": 1,
       "power": 20,
       "projectileCount": 3,
       "projectileSpeed": 1,

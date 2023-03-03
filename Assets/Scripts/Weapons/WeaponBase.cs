@@ -4,13 +4,28 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
+    protected float _power;
+    protected float _coolTime;
+    protected int _projectileCount;
+    protected float _projectileSpeed;
+    protected int _enhenceLevel;
+
     public virtual void Init(Define.Weapon data)
     {
         InitSkill(data);
         StartSkill();
     }
 
-    protected abstract void InitSkill(Define.Weapon data);
+    protected virtual void InitSkill(Define.Weapon data)
+    {
+        Define.WeaponType type = (Define.WeaponType)data.id;
+        _power = data.power;
+        _coolTime = data.coolTime;
+        _projectileCount = data.projectileCount;
+        _projectileSpeed = data.projectileSpeed;
+        _enhenceLevel = DataManager.Instance.GetWeaponEnhenceLevel(type);
+
+    }
 
     protected abstract void StartSkill();
 
@@ -26,5 +41,14 @@ public abstract class WeaponBase : MonoBehaviour
         float rad = Mathf.Atan2(dir.x, dir.z);
 
         return rad;
+    }
+
+    private void ApplyEnhenceLevel(Define.Weapon data)
+    {
+    }
+
+    public float GetPower()
+    {
+        return _power * (1f + 0.05f * _enhenceLevel);
     }
 }

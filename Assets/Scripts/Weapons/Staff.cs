@@ -5,10 +5,11 @@ using UnityEngine;
 public class Staff : WeaponBase
 {
     GameObject _arrow;
-    float _coolTime;
     float _arrowSpeed;
     protected override void InitSkill(Define.Weapon data)
     {
+        base.InitSkill(data);
+
         _coolTime = data.coolTime;
         _arrowSpeed = data.projectileSpeed;
         _arrow = Resources.Load<GameObject>("Prefabs/Weapons/TestBow/TestArrow");
@@ -23,8 +24,12 @@ public class Staff : WeaponBase
     {
         while (true)
         {
-            Fire();
-            yield return new WaitForSeconds(1f / _coolTime);
+            for (int i = 0; i < _projectileCount; i++)
+            {
+                Fire();
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(_coolTime);
         }
     }
 
