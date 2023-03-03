@@ -11,7 +11,7 @@ public class DataManager : MonoBehaviour
     //public GameManager Game { get { return _instance._game; } }
 
     private Dictionary<Define.WeaponType, Dictionary<int, Define.Weapon>> weaponDict;
-    private Dictionary<string, int> weaponInhenceDict;
+    private Dictionary<Define.WeaponType, int> currentWeaponInhenceDict;
 
     public static void Init()
     {
@@ -34,19 +34,25 @@ public class DataManager : MonoBehaviour
 
             _instance = mg;
 
+            // 무기 정보 로드
             _instance.weaponDict = Util.LoadJsonDict<Define.WeaponType, Dictionary<int, Define.Weapon>>("Data/WeaponData");
-            _instance.weaponInhenceDict = Util.LoadJsonDict<string, int>("Data/WeaponInhenceData");
+            _instance.currentWeaponInhenceDict = Util.LoadJsonDict<Define.WeaponType, int>("Data/CurrentWeaponInhenceData");
         }
     }
 
     void Start()
     {
         Init();
-        Util.WriteJson("", _instance.weaponInhenceDict);
+        Util.WriteJson("", _instance.currentWeaponInhenceDict);
     }
 
     public Define.Weapon GetWeaponInfo(Define.WeaponType weaponType, int level)
     {
         return _instance.weaponDict[weaponType][level];
+    }
+
+    public int GetWeaponEnhenceLevel(Define.WeaponType weaponType)
+    {
+        return _instance.currentWeaponInhenceDict[weaponType];
     }
 }

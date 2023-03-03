@@ -6,13 +6,13 @@ using UnityEngine;
 public class Sword : WeaponBase
 {
     GameObject _attackJudge;
-    float _coolTime;
     float _rebound;
     float _detectTime;
 
     protected override void InitSkill(Define.Weapon data)
     {
-        _coolTime = data.coolTime;
+        base.InitSkill(data);
+
         _rebound = 1f;
         _detectTime = 0.1f;
         _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/TestWeapon/AttackJudge");
@@ -27,7 +27,11 @@ public class Sword : WeaponBase
     {
         while (true)
         {
-            Skill();
+            for (int i = 0; i < _projectileCount; i++)
+            {
+                Skill();
+                yield return new WaitForSeconds(_detectTime + 0.1f);
+            }
 
             yield return new WaitForSeconds(_coolTime);
         }

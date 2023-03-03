@@ -18,7 +18,6 @@ public static class Define
     {
         public int id;
         public int lv;
-        public int enhanceLv;
         public float power;
         public int projectileCount;
         public float projectileSpeed;
