@@ -13,10 +13,12 @@ public class PlayerStatusUI : MonoBehaviour
     PlayerInfo _playerInfo;
     ItemSlots _itemSlots;
 
-    void Start()
+    void Awake()
     {
         _playerInfo = GetComponentInChildren<PlayerInfo>();
+        _playerInfo.Init();
         _itemSlots = GetComponentInChildren<ItemSlots>();
+        _itemSlots.Init();
 
         _playerInfo.SetLv(99);
         _playerInfo.SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
