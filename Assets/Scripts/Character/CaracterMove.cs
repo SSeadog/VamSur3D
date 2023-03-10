@@ -15,7 +15,7 @@ enum ECaracMove
     die,
 
 }
-public class CaracterMove: MonoBehaviour
+public class CaracterMove : MonoBehaviour
 {
     Color heroColor;
     [SerializeField] SkinnedMeshRenderer _render;
@@ -39,9 +39,10 @@ public class CaracterMove: MonoBehaviour
 
     void Update()
     {
-       // if (_move == true)
+        if (_move == true)
         {
-            move();
+            // move();
+            move2();
             _lifetimer += Time.deltaTime;
             _attacktimer += Time.deltaTime;
         }
@@ -105,6 +106,24 @@ public class CaracterMove: MonoBehaviour
         else
         {
             _ani.SetInteger("CaracMove", (int)ECaracMove.Idle);
+        }
+    }
+    void move2()
+    {
+        float vX = Input.GetAxisRaw("Horizontal");//0=>1
+        float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
+        float _a = vX;
+        float _b = vZ;
+        _ani.SetFloat("AxisX", vX * _speed);
+        _ani.SetFloat("AxisZ", vZ * _speed);
+        float vY = GetComponent<Rigidbody>().velocity.y;
+        Vector3 v3 = new Vector3(_a, 0, _b);
+        Vector3 vYz = v3 * 4.5f;
+        vYz.y += vY;
+        GetComponent<Rigidbody>().velocity = vYz;
+        if (Input.anyKey)
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
     }
     public void Hitted()
