@@ -40,32 +40,4 @@ public static class Define
         FireField,
         Boomerang
     }
-
-    public class Hero
-    {
-        public string name;
-        public int hp;
-        public int moveSpeed;
-        public float power;
-        public string imageUrl;
-    }
-
-    public class Weapon
-    {
-        public int id;
-        public float power;
-        public int enforce;
-        public string imageUrl;
-    }
-
-    enum WeaponType
-    {
-        Sword,
-        Staff,
-        Bible,
-        FireField,
-        Boomerang
-    }
-
-
 }
