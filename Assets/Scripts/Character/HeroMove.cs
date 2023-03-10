@@ -15,100 +15,49 @@ enum ECaracMove
     die,
 
 }
-public class CaracterMove : MonoBehaviour
+public class HeroMove : MonoBehaviour
 {
     Color heroColor;
     [SerializeField] SkinnedMeshRenderer _render;
     [SerializeField] Animator _ani;
     [SerializeField] GameObject _rotate;
-    [SerializeField] GameObject _character;
+    [SerializeField] GameObject _Hero;
     [SerializeField] float _speed;//캐릭터 스택은 외부 파일에서 불러옴
     [SerializeField] int _hp;
-    float _hittimer, _attacktimer, _dietimer, _lifetimer = 0f;// _attacktimer틱마다
+    float _hittimer, _dietimer, _lifetimer = 0f;// _attacktimer틱마다
     int _totalDMG, _LV, _killcount, _exp = 0;
     int _power = 10;
     bool _hit = false;
     bool _move = true;
-    //public Dictionary<EItem, int> EItems = new Dictionary<EItem, int>();
 
     void Start()
     {
+        Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
+        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
+
         heroColor = _render.material.color;
-        EXPKill(100, true);
+        ExpKill(100, true);
     }
 
     void Update()
     {
         if (_move == true)
         {
-            // move();
-            move2();
+            Move();
             _lifetimer += Time.deltaTime;
-            _attacktimer += Time.deltaTime;
         }
         if (_hit == false) Hitted();
         HittedColer();
-        Attack(_power);
     }
 
-    public void Attack(int power)
-    {
-        if (_attacktimer >= 1f)
-        {
-            _totalDMG += power;
-            Debug.Log(_totalDMG);
-            _attacktimer = 0f;
-        }
-    }
-    public void EXPKill(int exp, bool kill)
+    public void ExpKill(int exp, bool kill)
     {
         _exp = exp;
         if (_exp >= 100) _LV++;
 
-
         if (kill == true) _killcount++;
     }
-    public void move()
-    {
-        Vector3 v3 = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            v3 += (Vector3.forward).normalized * Time.deltaTime * _speed;
-            _ani.SetInteger("CaracMove", (int)ECaracMove.w);
-            _rotate.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            Debug.Log("forward");
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            v3 += (Vector3.left).normalized * Time.deltaTime * _speed;
-            _ani.SetInteger("CaracMove", (int)ECaracMove.w);
-            _rotate.transform.localRotation = Quaternion.Euler(new Vector3(0, 270, 0));
-            Debug.Log("left");
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            v3 += (Vector3.back).normalized * Time.deltaTime * _speed;
-            _ani.SetInteger("CaracMove", (int)ECaracMove.w);
-            _rotate.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            Debug.Log("back");
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            v3 += (Vector3.right).normalized * Time.deltaTime * _speed;
-            _ani.SetInteger("CaracMove", (int)ECaracMove.w);
-            _rotate.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
-            Debug.Log("right");
-        }
-        if (v3 != Vector3.zero)
-        {
-            transform.Translate(v3);
-        }
-        else
-        {
-            _ani.SetInteger("CaracMove", (int)ECaracMove.Idle);
-        }
-    }
-    void move2()
+    void Move()
     {
         float vX = Input.GetAxisRaw("Horizontal");//0=>1
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
@@ -126,6 +75,8 @@ public class CaracterMove : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
     }
+    
+    // 실제로 쓸 수 있게 수정
     public void Hitted()
     {
         if (Input.GetKeyDown(KeyCode.M))//공격받았을때
@@ -138,6 +89,7 @@ public class CaracterMove : MonoBehaviour
             Die();
         }
     }
+
     public void HittedColer()
     {
         if (_hit == true)
@@ -155,15 +107,15 @@ public class CaracterMove : MonoBehaviour
     public void Die()
     {
         _ani.SetInteger("CaracMove", (int)ECaracMove.die);
-        Debug.Log("Die");
         _move = false;
         NextScene();
-        Debug.Log(_lifetimer);
     }
     public void NextScene()
     {
         PlayerPrefs.SetFloat("_lifetime", _lifetimer);//씬 전환시 == 1복사파일에 저장후 원본이 파기됨
         PlayerPrefs.SetInt("_totalDMG", _totalDMG);
+
+        // 매니저로 관리할 예정
         PlayerPrefs.SetInt("_LV", _LV);
         PlayerPrefs.SetInt("_killcount", _killcount);
         _dietimer += Time.deltaTime;
