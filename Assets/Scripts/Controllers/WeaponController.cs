@@ -25,7 +25,7 @@ public class WeaponController : MonoBehaviour
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
-            LoadWeapon(DataManager.Instance.GetWeaponInfo(weaponTypes[i], curPlayerWeaponLevels[weaponTypes[i]]));
+            LoadWeapon(Managers.Data.GetWeaponInfo(weaponTypes[i], curPlayerWeaponLevels[weaponTypes[i]]));
         }
     }
 

@@ -13,24 +13,19 @@ public class ItemSlot : MonoBehaviour
     public void Init()
     {
         _itemImage = transform.Find("Item").GetComponent<Image>();
+
+        Sprite sprite = Resources.Load<Sprite>(_itemImagePath);
+        _itemImage.sprite = sprite;
     }
 
     public void SetItem(string imagePath)
     {
         isFilled = true;
         _itemImagePath = imagePath;
-
-        Sprite sprite = Resources.Load<Sprite>(_itemImagePath);
-        _itemImage.sprite = sprite;
     }
 
     void Start()
     {
         Init();
-    }
-
-    void Update()
-    {
-        
     }
 }

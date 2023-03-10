@@ -14,9 +14,6 @@ public class UIManager : MonoBehaviour
     public ESCMenuUI eSCMenuUI;
     public SettingsUI settingsUI;
 
-    void Start()
-    {
-    }
 
     void Update()
     {

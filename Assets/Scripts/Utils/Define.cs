@@ -26,6 +26,12 @@ public static class Define
         public string imageUrl;
     }
 
+    public enum HeroType
+    {
+        SwordHero = 1,
+        Wizard
+    }
+
     public enum WeaponType
     {
         Sword = 1,
