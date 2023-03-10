@@ -23,7 +23,7 @@ public abstract class WeaponBase : MonoBehaviour
         _coolTime = data.coolTime;
         _projectileCount = data.projectileCount;
         _projectileSpeed = data.projectileSpeed;
-        _enhenceLevel = DataManager.Instance.GetWeaponEnhenceLevel(type);
+        _enhenceLevel = Managers.Data.GetWeaponEnhenceLevel(type);
 
     }
 
