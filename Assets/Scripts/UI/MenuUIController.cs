@@ -42,6 +42,7 @@ public class MenuUIController : MonoBehaviour
     {
         for (int i = 0; i < 17; i++)
         {
+            
             GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
             infoBoxTmp.name = "CharacterBox";
