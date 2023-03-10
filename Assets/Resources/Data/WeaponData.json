@@ -1,0 +1,147 @@
+{
+  "Sword": {
+    "1": {
+      "id": 1,
+      "lv": 1,
+      "power": 10,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 2,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/sword"
+    },
+    "2": {
+      "id": 1,
+      "lv": 2,
+      "power": 15,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/sword"
+    },
+    "3": {
+      "id": 1,
+      "lv": 3,
+      "power": 20,
+      "projectileCount": 3,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/sword"
+    }
+  },
+  "Staff": {
+    "1": {
+      "id": 2,
+      "lv": 1,
+      "power": 10,
+      "projectileCount": 1,
+      "projectileSpeed": 300,
+      "coolTime": 2,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/magic"
+    },
+    "2": {
+      "id": 2,
+      "lv": 2,
+      "power": 15,
+      "projectileCount": 1,
+      "projectileSpeed": 400,
+      "coolTime": 1.5,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/magic"
+    },
+    "3": {
+      "id": 2,
+      "lv": 3,
+      "power": 20,
+      "projectileCount": 3,
+      "projectileSpeed": 500,
+      "coolTime": 1.5,
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/magic"
+    }
+  },
+  "Bible": {
+    "1": {
+      "id": 1,
+      "lv": 1,
+      "power": 10,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 2,
+      "imageUrl": ""
+    },
+    "2": {
+      "id": 1,
+      "lv": 2,
+      "power": 15,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    },
+    "3": {
+      "id": 1,
+      "lv": 3,
+      "power": 20,
+      "projectileCount": 3,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    }
+  },
+  "FireField": {
+    "1": {
+      "id": 1,
+      "lv": 1,
+      "power": 10,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 2,
+      "imageUrl": ""
+    },
+    "2": {
+      "id": 1,
+      "lv": 2,
+      "power": 15,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    },
+    "3": {
+      "id": 1,
+      "lv": 3,
+      "power": 20,
+      "projectileCount": 3,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    }
+  },
+  "Boomerang": {
+    "1": {
+      "id": 1,
+      "lv": 1,
+      "power": 10,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 2,
+      "imageUrl": ""
+    },
+    "2": {
+      "id": 1,
+      "lv": 2,
+      "power": 15,
+      "projectileCount": 1,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    },
+    "3": {
+      "id": 1,
+      "lv": 3,
+      "power": 20,
+      "projectileCount": 3,
+      "projectileSpeed": 1,
+      "coolTime": 1.5,
+      "imageUrl": ""
+    }
+  }
+}

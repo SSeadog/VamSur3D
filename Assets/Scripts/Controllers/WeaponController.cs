@@ -1,11 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
     GameObject _weaponRoot;
+
+    public Dictionary<Define.WeaponType, int> curPlayerWeaponLevels;
+
+    UIManager uIManager;
+
     void Start()
+    {
+        FindWeaponRoot();
+
+        curPlayerWeaponLevels = new Dictionary<Define.WeaponType, int>();
+        curPlayerWeaponLevels[Define.WeaponType.Sword] = 3;
+        curPlayerWeaponLevels[Define.WeaponType.Staff] = 3;
+
+        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(curPlayerWeaponLevels.Keys);
+
+        uIManager = GameObject.Find("UIRoot").GetComponent<UIManager>();
+
+        for (int i = 0; i < weaponTypes.Count; i++)
+        {
+            LoadWeapon(DataManager.Instance.GetWeaponInfo(weaponTypes[i], curPlayerWeaponLevels[weaponTypes[i]]));
+        }
+    }
+
+    void FindWeaponRoot()
     {
         foreach (Transform tr in transform.GetComponentInChildren<Transform>())
         {
@@ -15,21 +39,30 @@ public class WeaponController : MonoBehaviour
             }
         }
 
-        if ( _weaponRoot == null )
+        if (_weaponRoot == null)
         {
             Debug.Log("WeaponRoot 없음");
         }
+    }
 
-        // 얻은 무기 로드
-        // 지금은 테스트
-        List<string> paths = new List<string>();
-        //paths.Add("Prefabs/Weapons/TestBow/TestBow");
-        paths.Add("Prefabs/Weapons/TestWeapon/TestWeapon");
-        for (int i = 0; i < paths.Count; i++)
+    public void LoadWeapon(Define.Weapon weaponData)
+    {
+        switch ((Define.WeaponType)weaponData.id)
         {
-            GameObject ori = Resources.Load<GameObject>(paths[i]);
-            GameObject instance = Instantiate(ori, _weaponRoot.transform);
-            instance.GetComponent<WeaponBase>().Init();
+            case Define.WeaponType.Sword:
+                gameObject.AddComponent<Sword>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
+                break;
+            case Define.WeaponType.Staff:
+                gameObject.AddComponent<Staff>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
+                break;
+            case Define.WeaponType.Bible:
+                break;
+            case Define.WeaponType.FireField:
+                break;
+            case Define.WeaponType.Boomerang:
+                break;
         }
     }
 }

@@ -1,0 +1,18 @@
+{
+  "SwordHero": {
+    "id": 1,
+    "hp": 100,
+    "moveSpeed": 5,
+    "power": 1,
+    "imageUrl": "Art/Textures/CharacterThumb/~~",
+    "prefabPath": "Prefabs/Characters/~~"
+  },
+  "Wizard": {
+    "id": 2,
+    "hp": 150,
+    "moveSpeed": 3,
+    "power": 1.1,
+    "imageUrl": "Art/Textures/CharacterThumb/~~",
+    "prefabPath": "Prefabs/Characters/~~"
+  }
+}
