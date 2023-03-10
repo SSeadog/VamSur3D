@@ -1744,7 +1744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 653.7094, y: 121.58731}
+  m_AnchoredPosition: {x: 469.4, y: 9.8}
   m_SizeDelta: {x: 300, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815697140
@@ -2479,6 +2479,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349122558}
   m_CullTransparentMesh: 1
+--- !u!224 &1463383394 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 226550610882008079, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+  m_PrefabInstance: {fileID: 226550611079932969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472188297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2722,8 +2727,8 @@ MonoBehaviour:
   CharacterMenuPanel: {fileID: 1539090543}
   CharacterInfoMenuPanel: {fileID: 815697138}
   CharacterBox: {fileID: 5519510946145920797, guid: 8b6de1003dcab014290763cb5f53d120, type: 3}
-  CharacterInfoBox: {fileID: 0}
-  _characterContent: {fileID: 0}
+  CharacterInfoBox: {fileID: 815697138}
+  _characterContent: {fileID: 1463383394}
   WeaponUpgradeMenuPanel: {fileID: 768056982}
   _weaponContent: {fileID: 0}
 --- !u!4 &1554271180
@@ -3959,11 +3964,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 226550610882008079, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 560
       objectReference: {fileID: 0}
     - target: {fileID: 226550611778044998, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
       propertyPath: m_Name
       value: CharacterMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 226550611778044998, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 226550611778045018, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
       propertyPath: m_Pivot.x
