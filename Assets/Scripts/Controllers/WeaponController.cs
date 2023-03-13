@@ -5,16 +5,12 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    GameObject _weaponRoot;
-
     public Dictionary<Define.WeaponType, int> curPlayerWeaponLevels;
 
     UIManager uIManager;
 
     void Start()
     {
-        FindWeaponRoot();
-
         curPlayerWeaponLevels = new Dictionary<Define.WeaponType, int>();
         curPlayerWeaponLevels[Define.WeaponType.Sword] = 3;
         curPlayerWeaponLevels[Define.WeaponType.Staff] = 3;
@@ -26,22 +22,6 @@ public class WeaponController : MonoBehaviour
         for (int i = 0; i < weaponTypes.Count; i++)
         {
             LoadWeapon(Managers.Data.GetWeaponInfo(weaponTypes[i], curPlayerWeaponLevels[weaponTypes[i]]));
-        }
-    }
-
-    void FindWeaponRoot()
-    {
-        foreach (Transform tr in transform.GetComponentInChildren<Transform>())
-        {
-            if (tr.name == "WeaponRoot")
-            {
-                _weaponRoot = tr.gameObject;
-            }
-        }
-
-        if (_weaponRoot == null)
-        {
-            Debug.Log("WeaponRoot ¾øÀ½");
         }
     }
 
