@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int gold;
+    public int totalGold;
 
     public Define.HeroType heroType;
 
@@ -16,7 +16,16 @@ public class GameManager : MonoBehaviour
 
     public void Init()
     {
+        // 임시 데이터
+        totalGold = 9999;
+        
+        heroType = Define.HeroType.Wizard;
 
+        heroLv = 29;
+        surviveTime = 1800f;
+        killCount = 999;
+        stageGold = 299;
+        totalDmg = 19999f;
     }
 
     public void Clear()
