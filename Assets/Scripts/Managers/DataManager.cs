@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataManager
@@ -9,6 +10,8 @@ public class DataManager
     private Dictionary<Define.WeaponType, Dictionary<int, Define.Weapon>> weaponDict;
     private Dictionary<Define.WeaponType, int> currentWeaponInhenceDict;
 
+    private Dictionary<Define.MonsterType, Define.Monster> monsterDict;
+
     public void Init()
     {
         // 캐릭터 정보 로드
@@ -17,6 +20,9 @@ public class DataManager
         // 무기 정보 로드
         weaponDict = Util.LoadJsonDict<Define.WeaponType, Dictionary<int, Define.Weapon>>("Data/WeaponData");
         currentWeaponInhenceDict = Util.LoadJsonDict<Define.WeaponType, int>("Data/CurrentWeaponInhenceData");
+
+        //몬스터 정보 로드
+        monsterDict = Util.LoadJsonDict<Define.MonsterType, Define.Monster>("Data/MonsterData");
     }
 
     public Define.Hero GetHeroInfo(Define.HeroType type)
@@ -32,5 +38,10 @@ public class DataManager
     public int GetWeaponEnhenceLevel(Define.WeaponType weaponType)
     {
         return currentWeaponInhenceDict[weaponType];
+    }
+
+    public Define.Monster GetMonsterInfo(Define.MonsterType monsterType)
+    {
+        return monsterDict[monsterType];
     }
 }
