@@ -14,6 +14,8 @@ public class WeaponController : MonoBehaviour
         curPlayerWeaponLevels = new Dictionary<Define.WeaponType, int>();
         curPlayerWeaponLevels[Define.WeaponType.Sword] = 3;
         curPlayerWeaponLevels[Define.WeaponType.Staff] = 3;
+        curPlayerWeaponLevels[Define.WeaponType.Bible] = 3;
+        curPlayerWeaponLevels[Define.WeaponType.FireField] = 3;
 
         List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(curPlayerWeaponLevels.Keys);
 
@@ -38,8 +40,12 @@ public class WeaponController : MonoBehaviour
                 uIManager.playerStatusUI.AddItem(weaponData);
                 break;
             case Define.WeaponType.Bible:
+                gameObject.AddComponent<Bible>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
                 break;
             case Define.WeaponType.FireField:
+                gameObject.AddComponent<FireField>().Init(weaponData);
+                uIManager.playerStatusUI.AddItem(weaponData);
                 break;
             case Define.WeaponType.Boomerang:
                 break;
