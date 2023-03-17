@@ -14,8 +14,8 @@ public class Sword : WeaponBase
         base.InitSkill(data);
 
         _rebound = 1f;
-        _detectTime = 0.1f;
-        _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/TestWeapon/AttackJudge");
+        _detectTime = 0.5f;
+        _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/Slash");
     }
 
     protected override void StartSkill()
@@ -30,7 +30,7 @@ public class Sword : WeaponBase
             for (int i = 0; i < _projectileCount; i++)
             {
                 Skill();
-                yield return new WaitForSeconds(_detectTime + 0.1f);
+                yield return new WaitForSeconds(0.2f);
             }
 
             yield return new WaitForSeconds(_coolTime);
@@ -46,7 +46,7 @@ public class Sword : WeaponBase
         float tempRad = Random.Range(rad - _rebound, rad + _rebound);
         Vector3 vec = new Vector3(Mathf.Sin(tempRad), 0f, Mathf.Cos(tempRad));
 
-        skillJudgeInstance.transform.position = transform.position + vec * 1.5f;
+        skillJudgeInstance.transform.position = transform.position + vec * 1.5f + Vector3.up;
         skillJudgeInstance.transform.rotation = Quaternion.AngleAxis(tempRad * Mathf.Rad2Deg, Vector3.up);
 
         Destroy(skillJudgeInstance, _detectTime);

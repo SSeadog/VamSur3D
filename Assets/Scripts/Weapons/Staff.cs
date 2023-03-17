@@ -12,7 +12,7 @@ public class Staff : WeaponBase
 
         _coolTime = data.coolTime;
         _arrowSpeed = data.projectileSpeed;
-        _arrow = Resources.Load<GameObject>("Prefabs/Weapons/TestBow/TestArrow");
+        _arrow = Resources.Load<GameObject>("Prefabs/Weapons/Redfire");
     }
 
     protected override void StartSkill()
@@ -39,7 +39,7 @@ public class Staff : WeaponBase
         // 해당 각도로 발사
         Vector3 moveVec = new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
 
-        GameObject instance = Instantiate(_arrow, transform.position + moveVec, Quaternion.AngleAxis(rad * Mathf.Rad2Deg, Vector3.up));
+        GameObject instance = Instantiate(_arrow, transform.position + moveVec + Vector3.up, Quaternion.AngleAxis(rad * Mathf.Rad2Deg, Vector3.up));
         instance.GetComponent<Rigidbody>().AddForce(moveVec * _arrowSpeed);
         Destroy(instance, 5f);
     }

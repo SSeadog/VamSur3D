@@ -25,6 +25,15 @@ public static class Define
         public string prefabPath;
         public string imageUrl;
     }
+    public class Monster
+    {
+        public int id;
+        public int hp;
+        public int projectileCount;
+        public float power;
+        public string prefabPath;
+        public string imageUrl;
+    }
 
     public enum HeroType
     {
@@ -39,5 +48,11 @@ public static class Define
         Bible,
         FireField,
         Boomerang
+    }
+    public enum MonsterType
+    {
+        NormalMob = 1,
+        ProjectileMob,
+        EliteMob
     }
 }
