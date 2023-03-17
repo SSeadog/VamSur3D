@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
-
-enum ECaracMove
+enum EHeroMove
 {
     Idle,
     w,//forward
@@ -29,6 +29,7 @@ public class HeroMove : MonoBehaviour
     int _power = 10;
     bool _hit = false;
     bool _move = true;
+    Vector3 fors;
 
     void Start()
     {
@@ -59,23 +60,27 @@ public class HeroMove : MonoBehaviour
     }
     void Move()
     {
-        float vX = Input.GetAxisRaw("Horizontal");//0=>1
+        float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
-        float _a = vX;
-        float _b = vZ;
+        Debug.Log(vX);
+        Debug.Log(vZ);
         _ani.SetFloat("AxisX", vX * _speed);
         _ani.SetFloat("AxisZ", vZ * _speed);
         float vY = GetComponent<Rigidbody>().velocity.y;
-        Vector3 v3 = new Vector3(_a, 0, _b);
+        Vector3 v3 = new Vector3(vX, 0, vZ);
         Vector3 vYz = v3 * 4.5f;
         vYz.y += vY;
         GetComponent<Rigidbody>().velocity = vYz;
-        if (Input.anyKey)
+        if (Input.GetButton("Horizontal") && vX != 0) 
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));   
+        }
+        if (Input.GetButton("Vertical")&& vZ != 0)
         {
             transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
     }
-    
+
     // 실제로 쓸 수 있게 수정
     public void Hitted()
     {
@@ -86,6 +91,10 @@ public class HeroMove : MonoBehaviour
         }
         if (_hp <= 0)
         {
+            if (_move == true)
+            {
+                 fors = gameObject.transform.position;
+            }
             Die();
         }
     }
@@ -106,8 +115,9 @@ public class HeroMove : MonoBehaviour
     }
     public void Die()
     {
-        _ani.SetInteger("CaracMove", (int)ECaracMove.die);
+        _ani.SetInteger("HeroMove", (int)EHeroMove.die);
         _move = false;
+        gameObject.transform.position = fors;
         NextScene();
     }
     public void NextScene()
