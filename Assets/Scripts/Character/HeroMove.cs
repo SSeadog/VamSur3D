@@ -118,6 +118,7 @@ public class HeroMove : MonoBehaviour
         _ani.SetInteger("HeroMove", (int)EHeroMove.die);
         _move = false;
         gameObject.transform.position = fors;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         NextScene();
     }
     public void NextScene()
