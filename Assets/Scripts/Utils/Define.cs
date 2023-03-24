@@ -29,6 +29,7 @@ public static class Define
     {
         public int id;
         public int hp;
+        public int exp;
         public int projectileCount;
         public float power;
         public string prefabPath;

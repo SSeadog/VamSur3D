@@ -7,9 +7,9 @@ public class MonsterController : MonoBehaviour
 {
     [SerializeField] Transform monsterParent;
     [SerializeField] GameObject _hero;
-    [SerializeField] GameObject _Nmonster;
-    [SerializeField] GameObject _Pmonster;
-    [SerializeField] GameObject _Emonster;
+    GameObject _Nmonster;
+    GameObject _Pmonster;
+    GameObject _Emonster;
 
     Transform _heroPosition;
     List<Monster> mons = new List<Monster>();
@@ -21,12 +21,16 @@ public class MonsterController : MonoBehaviour
 
     //몬스터 강화 킬카운트
     //엘리트 몬스터 소환되는 킬카운트 200단위
-    //몬스터 총량 킬카운트, 엘리트몬스터는 총량 하나로 고정,
+    //몬스터 총량 킬카운트, 엘리트몬스터는 총량 하나로 고 정,
     // >> 킬카운트 100단위 100 총량 200단위일떈 강화
     //임시 5씩 늘어남 일반몹, 투사체
 
     private void Start()
     {
+        
+        _Nmonster = Resources.Load("Prefabs/Monster/NormalMob") as GameObject;
+        _Pmonster = Resources.Load("Prefabs/Monster/ProjectileMob") as GameObject;
+        _Emonster = Resources.Load("Prefabs/Monster/EliteMob") as GameObject;
         _heroPosition = _hero.GetComponent<Transform>();
         makeMonsters();
     }
@@ -36,6 +40,7 @@ public class MonsterController : MonoBehaviour
         { 
             GameObject Nmon = Instantiate(_Nmonster, monsterParent);
             Nmon.name = "NormalMob";
+            Nmon.AddComponent<Monster>();
             Nmon.GetComponent<Monster>().type = Define.MonsterType.NormalMob;
             mons.Add(Nmon.GetComponent<Monster>());
             normalMonsterCount++;
@@ -44,6 +49,7 @@ public class MonsterController : MonoBehaviour
         {
             GameObject Pmon = Instantiate(_Pmonster, monsterParent);
             Pmon.name = "ProjectileMob";
+            Pmon.AddComponent<Monster>();
             Pmon.GetComponent<Monster>().type = Define.MonsterType.ProjectileMob;
             mons.Add(Pmon.GetComponent<Monster>());
             projectileMonsterCount++;
@@ -51,12 +57,24 @@ public class MonsterController : MonoBehaviour
 
         GameObject Emon = Instantiate(_Emonster, monsterParent);
         Emon.name = "EliteMob";
+        Emon.AddComponent<Monster>();
         Emon.GetComponent<Monster>().type = Define.MonsterType.EliteMob;
         mons.Add(Emon.GetComponent<Monster>());
 
         foreach(Monster mon in mons)
         {
-            mon.init(this, _heroPosition);
+            if(mon.GetComponent<Monster>().type == Define.MonsterType.NormalMob)
+            {
+                mon.NorMobinit(this, _heroPosition);
+            }
+            else if (mon.GetComponent<Monster>().type == Define.MonsterType.ProjectileMob)
+            {
+                mon.ProMobinit(this, _heroPosition);
+            }
+            else if(mon.GetComponent<Monster>().type == Define.MonsterType.EliteMob)
+            {
+                mon.EliMobinit(this, _heroPosition);
+            }
         }
         
     }
@@ -70,17 +88,17 @@ public class MonsterController : MonoBehaviour
             {
                 if (_mon.GetComponent<Monster>().type == Define.MonsterType.NormalMob)
                 {
-                    _mon.init(this, _heroPosition);
+                    _mon.NorMobinit(this, _heroPosition);
                     normalMonsterCount++;
                 }
                 else if (_mon.GetComponent<Monster>().type == Define.MonsterType.ProjectileMob)
                 {
-                    _mon.init(this, _heroPosition);
+                    _mon.ProMobinit(this, _heroPosition);
                     projectileMonsterCount++;
                 }
-                else
+                else if (_mon.GetComponent<Monster>().type == Define.MonsterType.EliteMob)
                 {
-                    _mon.init(this, _heroPosition);
+                    _mon.EliMobinit(this, _heroPosition);
                 }
                 isNew = false;
                 break;
