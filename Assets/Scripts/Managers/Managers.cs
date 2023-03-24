@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    public static Managers _instance;
+    public static Managers _instance; //private?
     public static Managers Instance { get { Init(); return _instance; } }
 
     public DataManager _data = new DataManager();

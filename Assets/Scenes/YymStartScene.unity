@@ -524,6 +524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 557686168, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2080844603938255582, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -825,12 +829,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: _hit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: _Hero
       value: 
       objectReference: {fileID: 735052755}
     - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: _speed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: _character
