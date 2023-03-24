@@ -117,7 +117,7 @@
   },
   "Boomerang": {
     "1": {
-      "id": 1,
+      "id": 5,
       "lv": 1,
       "power": 10,
       "projectileCount": 1,
@@ -126,7 +126,7 @@
       "imageUrl": ""
     },
     "2": {
-      "id": 1,
+      "id": 5,
       "lv": 2,
       "power": 15,
       "projectileCount": 1,
@@ -135,7 +135,7 @@
       "imageUrl": ""
     },
     "3": {
-      "id": 1,
+      "id": 5,
       "lv": 3,
       "power": 20,
       "projectileCount": 3,

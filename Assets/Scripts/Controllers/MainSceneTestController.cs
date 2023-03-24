@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MainSceneTestController : MonoBehaviour
 {
-    BoxInteractionUI _boxInteractionUI;
+    WeaponSelectUI _boxInteractionUI;
     GameObject _damageUI;
     GameOverUI _gameOverUI;
     ESCMenuUI _escMenuUI;
 
     void Start()
     {
-        _boxInteractionUI = GameObject.Find("BoxInteractionUI").GetComponent<BoxInteractionUI>();
+        _boxInteractionUI = GameObject.Find("WeaponSelectUI").GetComponent<WeaponSelectUI>();
         
         _damageUI = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
         

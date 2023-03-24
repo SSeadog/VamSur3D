@@ -18,12 +18,22 @@ public class PlayerStatusUI : MonoBehaviour
         _playerInfo = GetComponentInChildren<PlayerInfo>();
         _itemSlots = GetComponentInChildren<ItemSlots>();
 
-        _playerInfo.SetLv(99);
-        _playerInfo.SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
+        SetLv(Managers.Game.heroLv);
+        SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
     }
 
     public void AddItem(Define.Weapon weaponData)
     {
         _itemSlots.AddItem(weaponData.imageUrl);
+    }
+
+    public void SetLv(int lv)
+    {
+        _playerInfo.SetLv(Managers.Game.heroLv);
+    }
+
+    public void SetThumbnail(string path)
+    {
+        _playerInfo.SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
     }
 }

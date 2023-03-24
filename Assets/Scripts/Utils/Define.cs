@@ -43,11 +43,13 @@ public static class Define
 
     public enum WeaponType
     {
-        Sword = 1,
+        None,
+        Sword,
         Staff,
         Bible,
         FireField,
-        Boomerang
+        Boomerang,
+        Max
     }
     public enum MonsterType
     {

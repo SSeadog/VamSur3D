@@ -36,6 +36,8 @@ public class HeroMove : MonoBehaviour
         Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
         Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
 
+        Managers.Game.player = gameObject;
+
         heroColor = _render.material.color;
         ExpKill(100, true);
     }
@@ -49,6 +51,10 @@ public class HeroMove : MonoBehaviour
         }
         if (_hit == false) Hitted();
         HittedColer();
+
+        // 경험치 획득 임시 코드
+        if (Input.GetKeyDown(KeyCode.E))
+            Managers.Game.GetExp(10);
     }
 
     public void ExpKill(int exp, bool kill)
