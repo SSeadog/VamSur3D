@@ -31,6 +31,7 @@ public static class Define
         public int hp;
         public int projectileCount;
         public float power;
+        public int exp;
         public string prefabPath;
         public string imageUrl;
     }
@@ -53,6 +54,7 @@ public static class Define
     {
         NormalMob = 1,
         ProjectileMob,
-        EliteMob
+        EliteMob,
+        Max
     }
 }

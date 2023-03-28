@@ -10,9 +10,10 @@
     "id": 12,
     "hp": 5,
     "power": 2,
+    "projectileCount" : 1,
     "exp ": 1,
     "prefabPath": "Prefabs/Monster/"
-  }
+  },
   "EliteMob": {
     "id" : 13,
     "hp": 50,
