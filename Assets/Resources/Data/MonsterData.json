@@ -13,14 +13,8 @@
     "exp": 1,
     "projectileCount": 1,
     "power": 2,
-<<<<<<< HEAD
     "prefabPath": "Prefabs/Monster/ProjectileMob",
     "imageUrl": "sample"
-=======
-    "projectileCount" : 1,
-    "exp ": 1,
-    "prefabPath": "Prefabs/Monster/"
->>>>>>> parent of 7c5c1d0 (Revert "Revert "Revert "몬스터 오브젝트풀링, 팩토리 패턴 적용해봄""")
   },
   "EliteMob": {
     "id": 13,
