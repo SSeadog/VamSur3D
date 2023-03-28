@@ -5,6 +5,7 @@ using static Define;
 
 public class MonsterController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] Transform monsterParent;
     [SerializeField] GameObject _hero;
     GameObject _Nmonster;
@@ -119,5 +120,16 @@ public class MonsterController : MonoBehaviour
 
         //    return
         //}
+=======
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GenericSingleton<MonsterFactory>.getInstance().SummonMonster();
+        }
+>>>>>>> parent of 7c5c1d0 (Revert "Revert "Revert "몬스터 오브젝트풀링, 팩토리 패턴 적용해봄""")
     }
 }
+  
+
+
