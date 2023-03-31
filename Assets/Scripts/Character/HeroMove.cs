@@ -23,7 +23,10 @@ public class HeroMove : MonoBehaviour
     [SerializeField] GameObject _rotate;
     [SerializeField] GameObject _Hero;
     [SerializeField] float _speed;//캐릭터 스택은 외부 파일에서 불러옴
-    [SerializeField] int _hp;
+
+    Monster _m;
+    Define.Hero heroData;
+
     float _hittimer, _dietimer, _lifetimer = 0f;// _attacktimer틱마다
     int _totalDMG, _LV, _killcount, _exp = 0;
     int _power = 10;
@@ -32,10 +35,12 @@ public class HeroMove : MonoBehaviour
 
     void Start()
     {
-        Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
-        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
+        Define.HeroType heroType = Define.HeroType.Wizard; // 로비씬에서 넘겨준 데이터를 활용할 것
+        heroData = Managers.Data.GetHeroInfo(heroType);
 
-        heroColor = _render.material.color;
+
+        
+        heroColor =_render.material.color;
         ExpKill(100, true);
     }
 
@@ -46,8 +51,6 @@ public class HeroMove : MonoBehaviour
             Move();
             _lifetimer += Time.deltaTime;
         }
-        if (_hit == false) Hitted();
-        HittedColer();
     }
 
     public void ExpKill(int exp, bool kill)
@@ -77,16 +80,15 @@ public class HeroMove : MonoBehaviour
     }
     
     // 실제로 쓸 수 있게 수정
-    public void Hitted()
+    public void Hitted(Monster m)
     {
-        if (Input.GetKeyDown(KeyCode.M))//공격받았을때
-        {
-            _hp -= 20;
-            _hit = true;
-        }
-        if (_hp <= 0)
+        _m = m;
+        heroData.hp -= _m._monStat.hp;
+        Debug.Log("hp : "+ heroData.hp);
+        if (heroData.hp <= 0)
         {
             Die();
+            Debug.Log("die");
         }
     }
 
@@ -109,6 +111,16 @@ public class HeroMove : MonoBehaviour
         _ani.SetInteger("CaracMove", (int)ECaracMove.die);
         _move = false;
         NextScene();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Monster"))
+        {
+            Monster m = other.gameObject.GetComponent<Monster>();
+            if (_hit == false) Hitted(m);
+            HittedColer();
+        }
     }
     public void NextScene()
     {

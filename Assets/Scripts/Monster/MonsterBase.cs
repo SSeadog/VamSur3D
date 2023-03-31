@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonsterBase : MonoBehaviour
+public abstract class MonsterBase
 {
     protected GameObject _obj;
     protected Define.Monster _monStat;
@@ -11,6 +11,11 @@ public abstract class MonsterBase : MonoBehaviour
     public Define.MonsterType getMonsterType()
     {
         return _monType;
+    }
+
+    public Define.Monster getMonsterStat()
+    {
+        return _monStat; 
     }
 
 
@@ -25,7 +30,9 @@ public class NormolMonster : MonsterBase
         _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob);
         _monType = Define.MonsterType.NormalMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.NormalMob);
+        _obj.GetComponent<Monster>().LoadMonsterData(this);
         _obj.transform.position =  new Vector3(Random.Range(-20f, 20), 0.5f, Random.Range(-20f, 20f));
+        
     }
 }
 
@@ -36,6 +43,7 @@ public class ProjectileMonster : MonsterBase
         _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob);
         _monType = Define.MonsterType.ProjectileMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.ProjectileMob);
+        _obj.GetComponent<Monster>().LoadMonsterData(this);
         _obj.transform.position =  new Vector3(Random.Range(-20f, 20), 0.5f, Random.Range(-20f, 20f));
     }
 }
@@ -47,6 +55,7 @@ public class EliteMonster : MonsterBase
         _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob);
         _monType = Define.MonsterType.EliteMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.EliteMob);
+        _obj.GetComponent<Monster>().LoadMonsterData(this);
         _obj.transform.position =  new Vector3(Random.Range(-20f, 20), 0.75f, Random.Range(-20f, 20f));
     }
 }

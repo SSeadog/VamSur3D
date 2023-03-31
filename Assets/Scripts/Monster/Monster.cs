@@ -7,24 +7,35 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     MonsterBase _mb;
+    WeaponBase _wb;
+    HeroMove _hero;
 
-    int _hp;
+    public Define.MonsterType _monType;
+    public Define.Monster _monStat;
+
+    float _hp;
 
     bool isDie = false;
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
         
     }
 
-    public void hitted(MonsterBase mb)
+    public void LoadMonsterData(MonsterBase mb)
     {
-        _mb = mb;
-        if(_mb.getMonsterType() == Define.MonsterType.NormalMob)
+        _monType = mb.getMonsterType();
+        _monStat = mb.getMonsterStat(); 
+    }
+
+
+
+    public void hitted()
+    {
+        if(_monType == Define.MonsterType.NormalMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _monStat.hp;
+            _hp -= getDamage(_wb);
             if (_hp <= 0)
             {
                 Die();
@@ -32,8 +43,8 @@ public class Monster : MonoBehaviour
         }
         else if(_mb.getMonsterType() == Define.MonsterType.ProjectileMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _monStat.hp;
+            _hp -= getDamage(_wb);
             if (_hp <= 0)
             {
                 Die();
@@ -41,8 +52,8 @@ public class Monster : MonoBehaviour
         }
         else if (_mb.getMonsterType() == Define.MonsterType.EliteMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _monStat.hp;
+            _hp -= getDamage(_wb);
             if (_hp <= 0)
             {
                 Die();
@@ -57,11 +68,13 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public float getDamage() // 영웅 데미지 데이터 가져와서 리턴
+    public float getDamage(WeaponBase wb) // 영웅 데미지 데이터 가져와서 리턴
     {
-        float damage = 10;
+        _wb = wb;
+        float damage = _wb.GetPower();
         return damage;
     }
+
 
     public void DropGold() // 골드 드롭 
     {
