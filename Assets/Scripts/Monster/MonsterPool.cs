@@ -30,7 +30,7 @@ public class MonsterPool : MonoBehaviour
         }
         Init();
         GameObject temp = Instantiate(_monObjs[(int)mType]);
-        temp.AddComponent<MonsterController>();
+        temp.GetComponent<MonsterController>();
         _lstObj.Add(temp);
         return temp;
     }

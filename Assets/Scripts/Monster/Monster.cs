@@ -1,101 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    MonsterController _mc;
-    Transform _hero;
-    Define.Monster _normalMonsterInfo;
-    Define.Monster _projectileMonsterInfo;
-    Define.Monster _eliteMonsterInfo;
+    MonsterBase _mb;
+
+    int _hp;
+
+    bool isDie = false;
 
 
-    public Define.MonsterType type;
-    int _id;
-    float _hp;
-    float _power;
-    int _exp;
-    int _projectileCount;
-
-
-    public void LoadData()
-    {
-        _normalMonsterInfo = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob);
-        _projectileMonsterInfo = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob);
-        _eliteMonsterInfo = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob);
-    }
-    private void Awake()
-    {
-        LoadData();
-    }
-
-  
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
         
     }
 
-    public void NorMobinit(MonsterController mc, Transform hero)
+    public void hitted(MonsterBase mb)
     {
-        _mc = mc;
-        _hero = hero;
-        _id = _normalMonsterInfo.id;
-        _hp = _normalMonsterInfo.hp;
-        _power = _normalMonsterInfo.power;
-        _exp = _normalMonsterInfo.exp;
-        gameObject.SetActive(true);
-        Vector3 ranPos = _hero.position + new Vector3(Random.Range(-10f, 10f), 0.5f, Random.Range(-10f, 10f));
-        transform.position = ranPos;
-        
-    }
+        _mb = mb;
+        if(_mb.getMonsterType() == Define.MonsterType.NormalMob)
+        {
+            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob).hp;
+            _hp -= (int)getDamage();
+            if (_hp <= 0)
+            {
+                Die();
+            }
+        }
+        else if(_mb.getMonsterType() == Define.MonsterType.ProjectileMob)
+        {
+            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob).hp;
+            _hp -= (int)getDamage();
+            if (_hp <= 0)
+            {
+                Die();
+            }
+        }
+        else if (_mb.getMonsterType() == Define.MonsterType.EliteMob)
+        {
+            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob).hp;
+            _hp -= (int)getDamage();
+            if (_hp <= 0)
+            {
+                Die();
+            }
+        }
 
-    public void ProMobinit(MonsterController mc, Transform hero)
-    {
-        _mc = mc;
-        _hero = hero;
-        _id = _projectileMonsterInfo.id;
-        _hp = _projectileMonsterInfo.hp;
-        _power = _projectileMonsterInfo.power;
-        _projectileCount = _projectileMonsterInfo.projectileCount;
-        _exp = _projectileMonsterInfo.exp;
-        gameObject.SetActive(true);
-        Vector3 ranPos = _hero.position + new Vector3(Random.Range(-10f, 10f), 0.5f, Random.Range(-10f, 10f));
-        transform.position = ranPos;
-
-    }
-
-    public void EliMobinit(MonsterController mc, Transform hero)
-    {
-        _mc = mc;
-        _hero = hero;
-        _id = _eliteMonsterInfo.id;
-        _hp = _eliteMonsterInfo.hp;
-        _power = _eliteMonsterInfo.power;
-        _exp = _eliteMonsterInfo.exp;
-        gameObject.SetActive(true);
-        Vector3 ranPos = _hero.position + new Vector3(Random.Range(-10f, 10f), 0.75f, Random.Range(-10f, 10f));
-        transform.position = ranPos;
     }
 
     public void Die()
     {
+        isDie = true;
         gameObject.SetActive(false);
     }
 
-    public void hitted()
-    {
-        _hp -= getDamage();
-        if(_hp <= 0)
-        {
-            hitted();
-        }
-    }
-
-    public float getDamage()
+    public float getDamage() // 영웅 데미지 데이터 가져와서 리턴
     {
         float damage = 10;
         return damage;
     }
+
+    public void DropGold() // 골드 드롭 
+    {
+
+    }
 }
+
+public class Gold // 골드 클래스에서 position 계속 업데이트해줌
+{ }
