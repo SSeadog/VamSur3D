@@ -4890,9 +4890,11 @@ GameObject:
   - component: {fileID: 3071203166238714258}
   - component: {fileID: 1379504315796101638}
   - component: {fileID: 5207987601858127898}
+  - component: {fileID: 8915120191586909031}
+  - component: {fileID: 1969209560035519639}
   m_Layer: 0
   m_Name: Slash
-  m_TagString: Untagged
+  m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9753,6 +9755,31 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8915120191586909031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153472991145048103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0f75cfbffd5bf4995a2bf0a23ef8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1969209560035519639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153472991145048103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.4838486, y: 1.3683645, z: 4.5042276}
+  m_Center: {x: -0.035524487, y: -0.43961293, z: 0.15124512}
 --- !u!1 &3307283671839139976
 GameObject:
   m_ObjectHideFlags: 0

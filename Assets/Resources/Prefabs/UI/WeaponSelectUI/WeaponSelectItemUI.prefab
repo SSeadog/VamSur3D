@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7510255194158896151}
   - component: {fileID: 309731274568314363}
   m_Layer: 5
-  m_Name: BoxInteractionItemUI
+  m_Name: WeaponSelectItemUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
