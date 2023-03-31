@@ -1,10 +1,10 @@
+using UnityEngine.SceneManagement;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
 using static Define;
@@ -30,15 +30,15 @@ public class Hero : MonoBehaviour
     [SerializeField] GameObject _Hero;
     [SerializeField] public float _speed;//캐릭터 스택은 외부 파일에서 불러옴
     [SerializeField] public int _hp;
-    public float _dietimer, _lifetimer = 0f;// _attacktimer틱마다
+    public float _dietimer, _lifetimer, _hittimer = 0f;// _attacktimer틱마다
     public int _totalDMG, _LV, _killcount, _exp = 0;
+    public int _hittidpowor=20;
     public bool _hit = false;
-    public bool _move = true;
     public Vector3 fors;
 
     void Start()
     {
-        _heroState = new HeroMove();
+        // _heroState = new HeroMove();
 
         //Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
         //Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
@@ -47,39 +47,25 @@ public class Hero : MonoBehaviour
         // ExpKill(100, true);
         SetStateMove(new HeroMove());// 상태 저장,실행
     }
-
     void Update()
     {
-        if (_move == true)
         {
-            _heroState.Move();
-            _heroState.HeroNowState();
+            _heroState.NowState();
             _lifetimer += Time.deltaTime;
         }
+        _heroState.HittedColer();
     }
     public void SetStateMove(HeroState state)
     {
-        if (Input.GetKeyDown(KeyCode.M)) _heroState.HeroNowState();
         _heroState = state;
         _heroState.OnEnter(this);
     }
-    public void SetStateHitted(HeroState state)
-    {
-
-        _heroState = state;
-        _heroState.OnEnter(this);
-    }
-    public void ExpKill(int exp, bool kill)
+    public void ExpKill(int exp, bool kill)//
     {
         _exp = exp;
         if (_exp >= 100) _LV++;
         if (kill == true) _killcount++;
     }
-
-
-    // 실제로 쓸 수 있게 수정
-
-
 }
 public class HeroState
 {
@@ -88,19 +74,30 @@ public class HeroState
     {
         _hero = hero;
     }
-    public virtual void Move()
+    public virtual void HeroDieState()
     {
         Debug.Log(12);
     }
-    public virtual void HittedColer()
+
+    public virtual void NowState()
     {
 
     }
-    public virtual void HeroNowState()
+    public void HittedColer()
     {
-
+        if (_hero._hit == true)
+        {
+            _hero._hittimer += Time.deltaTime;
+            _hero._render.material.color = Color.red;
+            if (_hero._hittimer > 0.5f)
+            {
+                _hero._render.material.color = _hero.heroColor;
+                _hero._hittimer = 0f;
+                _hero._hit = false;
+            }
+        }
     }
-  
+
 }
 public class HeroMove : HeroState
 {
@@ -108,7 +105,7 @@ public class HeroMove : HeroState
     {
         base.OnEnter(hero);
     }
-    public override void Move()
+    public override void NowState()
     {
         if (Input.GetMouseButtonDown(1)) Debug.Log("move");
         float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
@@ -130,31 +127,9 @@ public class HeroMove : HeroState
         {
             _hero.transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
-        
-    }
-}
-public class HittedColerch : HeroState
-{
-    public override void OnEnter(Hero hero)
-    {
-        base.OnEnter(hero);
-    }
-    float _hittimer = 0f;
-    public override void HittedColer()
-    {
-
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            if (_hero._hit == true)
-            {
-                _hittimer += Time.deltaTime;
-                _hero._render.material.color = Color.red;
-                if (_hittimer > 0.5f)
-                {
-                    _hero._render.material.color = _hero.heroColor;
-                    _hittimer = 0f;
-                    _hero._hit = false;
-                }
-            }
+            _hero.SetStateMove(new HittedState());
         }
     }
 }
@@ -164,20 +139,19 @@ public class HittedState : HeroState
     {
         base.OnEnter(hero);
     }
-    public override void HeroNowState()
+    public override void NowState()
     {
-        //공격받았을때
+        if (_hero._hit == false)  //공격받았을때
         {
-            _hero._hp -= 20;
+            _hero._hp -= _hero._hittidpowor;
             _hero._hit = true;
+            Debug.Log(_hero._hp);
+            _hero.SetStateMove(new HeroMove());
         }
         if (_hero._hp <= 0)
         {
-            if (_hero._move == true)
-            {
-                _hero.fors = _hero.gameObject.transform.position;
-                _hero.SetStateMove(new DieState());
-            }
+            _hero.fors = _hero.gameObject.transform.position;
+            _hero.SetStateMove(new DieState());
         }
     }
 }
@@ -187,10 +161,9 @@ public class DieState : HeroState
     {
         base.OnEnter(hero);
     }
-    public override void HeroNowState()
+    public override void NowState()
     {
         _hero._ani.SetInteger("HeroMove", (int)EHeroMove.die);
-        _hero._move = false;
         _hero.gameObject.transform.position = _hero.fors;
         _hero.GetComponent<Rigidbody>().velocity = Vector3.zero;
         _hero.SetStateMove(new Scenechange());
@@ -201,7 +174,7 @@ public class DieState : HeroState
         {
             base.OnEnter(hero);
         }
-        public override void HeroNowState()
+        public override void NowState()
         {
             PlayerPrefs.SetFloat("_lifetime", _hero._lifetimer);//씬 전환시 == 1복사파일에 저장후 원본이 파기됨
             PlayerPrefs.SetInt("_totalDMG", _hero._totalDMG);
@@ -214,5 +187,3 @@ public class DieState : HeroState
         }
     }
 }
-
-

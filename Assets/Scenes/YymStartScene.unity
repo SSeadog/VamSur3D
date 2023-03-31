@@ -453,12 +453,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874698, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: _Hero
       value: 
       objectReference: {fileID: 1800875098}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: heroColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: heroColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: heroColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874700, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -844,13 +856,25 @@ PrefabInstance:
       propertyPath: _character
       value: 
       objectReference: {fileID: 1777358361}
+    - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: heroColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: heroColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191490519044218965, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
+      propertyPath: heroColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4267047524473429398, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_Name
       value: SwordHero
       objectReference: {fileID: 0}
     - target: {fileID: 4267047524473429398, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4267047524473429398, guid: 4b66b95219e92024e92c2a156ceeb51a, type: 3}
       propertyPath: m_StaticEditorFlags
