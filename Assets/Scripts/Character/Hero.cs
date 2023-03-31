@@ -26,20 +26,19 @@ public class Hero : MonoBehaviour
     public Color heroColor;
     [SerializeField] public SkinnedMeshRenderer _render;
     [SerializeField] public Animator _ani;
-    [SerializeField] GameObject _rotate;
+    [SerializeField] GameObject _rotate;// 하나 제거
     [SerializeField] GameObject _Hero;
     [SerializeField] public float _speed;//캐릭터 스택은 외부 파일에서 불러옴
     [SerializeField] public int _hp;
     public float _dietimer, _lifetimer, _hittimer = 0f;// _attacktimer틱마다
     public int _totalDMG, _LV, _killcount, _exp = 0;
-    public int _hittidpowor=20;
+    public int _hittidpowor = 20;
     public bool _hit = false;
     public Vector3 fors;
 
     void Start()
     {
         // _heroState = new HeroMove();
-
         //Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
         //Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
         //Managers.Data.GetHeroInfo(heroType);
@@ -49,10 +48,8 @@ public class Hero : MonoBehaviour
     }
     void Update()
     {
-        {
-            _heroState.NowState();
-            _lifetimer += Time.deltaTime;
-        }
+        _heroState.NowState();
+        _lifetimer += Time.deltaTime;
         _heroState.HittedColer();
     }
     public void SetStateMove(HeroState state)
@@ -63,7 +60,7 @@ public class Hero : MonoBehaviour
     public void ExpKill(int exp, bool kill)//
     {
         _exp = exp;
-        if (_exp >= 100) _LV++;
+        if (_exp >= 100) _LV++;// LV경험치 넘으면 실행
         if (kill == true) _killcount++;
     }
 }
@@ -74,15 +71,9 @@ public class HeroState
     {
         _hero = hero;
     }
-    public virtual void HeroDieState()
-    {
-        Debug.Log(12);
-    }
+    public virtual void HeroDieState(){}
 
-    public virtual void NowState()
-    {
-
-    }
+    public virtual void NowState() { }
     public void HittedColer()
     {
         if (_hero._hit == true)
@@ -97,7 +88,6 @@ public class HeroState
             }
         }
     }
-
 }
 public class HeroMove : HeroState
 {
@@ -127,9 +117,9 @@ public class HeroMove : HeroState
         {
             _hero.transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))// 몬스터한테 공격받았을때
         {
-            _hero.SetStateMove(new HittedState());
+            _hero.SetStateMove(new HittedState()); // 실행
         }
     }
 }
@@ -143,7 +133,7 @@ public class HittedState : HeroState
     {
         if (_hero._hit == false)  //공격받았을때
         {
-            _hero._hp -= _hero._hittidpowor;
+            _hero._hp -= _hero._hittidpowor;//_hittidpowor = 몬스터 공격력
             _hero._hit = true;
             Debug.Log(_hero._hp);
             _hero.SetStateMove(new HeroMove());

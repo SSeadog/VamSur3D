@@ -2463,12 +2463,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2799cf3a445964ea383f8af9f240b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroColor: {r: 1, g: 1, b: 1, a: 0}
   _render: {fileID: 2090068862843869812}
   _ani: {fileID: 2140462853314086082}
   _rotate: {fileID: 2081538175505956734}
-  _Hero: {fileID: 0}
+  _Hero: {fileID: 2081538175505956734}
   _speed: 10
   _hp: 50
+  _dietimer: 0
+  _lifetimer: 0
+  _hittimer: 0
+  _totalDMG: 0
+  _LV: 0
+  _killcount: 0
+  _exp: 0
+  _hittidpowor: 20
+  _hit: 0
+  fors: {x: 0, y: 0, z: 0}
 --- !u!114 &557686168
 MonoBehaviour:
   m_ObjectHideFlags: 0
