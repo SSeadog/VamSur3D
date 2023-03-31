@@ -38,17 +38,20 @@ public static class Define
 
     public enum HeroType
     {
-        SwordHero = 1,
+        None,
+        SwordHero,
         Wizard
     }
 
     public enum WeaponType
     {
-        Sword = 1,
+        None,
+        Sword,
         Staff,
         Bible,
         FireField,
-        Boomerang
+        Boomerang,
+        Max
     }
     public enum MonsterType
     {

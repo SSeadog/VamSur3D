@@ -1308,7 +1308,7 @@ Animator:
   m_GameObject: {fileID: 2081538175505956734}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9ce6002518e821e43b4f97c76700fbac, type: 3}
-  m_Controller: {fileID: 9100000, guid: 081111fd1834f42469e07a9a2ce295c6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 86dfaa79ee259be42a3d6effa80d38a8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2466,7 +2466,7 @@ MonoBehaviour:
   _render: {fileID: 2090068862843869812}
   _ani: {fileID: 2140462853314086082}
   _rotate: {fileID: 2081538175505956734}
-  _hero: {fileID: 2081538175505956734}
+  _Hero: {fileID: 0}
   _speed: 10
   _hp: 50
 --- !u!114 &557686168
