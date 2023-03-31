@@ -40,6 +40,7 @@ public class Staff : WeaponBase
         Vector3 moveVec = new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
 
         GameObject instance = Instantiate(_arrow, transform.position + moveVec + Vector3.up, Quaternion.AngleAxis(rad * Mathf.Rad2Deg, Vector3.up));
+        instance.GetComponent<SkillProjectile>().Init(_power);
         instance.GetComponent<Rigidbody>().AddForce(moveVec * _arrowSpeed);
         Destroy(instance, 5f);
     }

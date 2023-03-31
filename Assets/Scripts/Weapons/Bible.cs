@@ -20,6 +20,7 @@ public class Bible : WeaponBase
         {
             float rotDeg = 0f + (360f / _projectileCount) * i;
             GameObject instance = Instantiate(_original, transform);
+            instance.GetComponent<SkillProjectile>().Init(_power);
             instance.transform.localPosition = new Vector3(Mathf.Sin(rotDeg * Mathf.Deg2Rad), 0f, Mathf.Cos(rotDeg * Mathf.Deg2Rad)) * _range;
 
             _bibles.Add(instance);

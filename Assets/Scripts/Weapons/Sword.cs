@@ -40,7 +40,7 @@ public class Sword : WeaponBase
     void Skill()
     {
         GameObject skillJudgeInstance = Instantiate(_attackJudge);
-
+        skillJudgeInstance.GetComponent<SkillProjectile>().Init(_power);
         // transform.rotaion으로 벡터 구해보기
         float rad = GetMouseDirAngle();
         float tempRad = Random.Range(rad - _rebound, rad + _rebound);

@@ -348,8 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9124629634af31240b2e260fad15460b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterParent: {fileID: 564829326}
-  _hero: {fileID: 91386141}
 --- !u!4 &564829326
 Transform:
   m_ObjectHideFlags: 0
@@ -739,7 +737,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1716949080 stripped
 RectTransform:

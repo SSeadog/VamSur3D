@@ -118,8 +118,6 @@ public class HeroMove : HeroState
         if (Input.GetMouseButtonDown(1)) Debug.Log("move");
         float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
-        Debug.Log(vX);
-        Debug.Log(vZ);
         _hero._ani.SetFloat("AxisX", vX * _hero._speed);
         _hero._ani.SetFloat("AxisZ", vZ * _hero._speed);
         float vY = _hero.GetComponent<Rigidbody>().velocity.y; //velocity == Rigidbody 속도
