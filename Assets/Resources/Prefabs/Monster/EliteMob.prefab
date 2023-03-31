@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6658332522214921378}
   m_Layer: 0
   m_Name: EliteMob
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

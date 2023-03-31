@@ -44,13 +44,19 @@ public class Hero : MonoBehaviour
         //Managers.Data.GetHeroInfo(heroType);
         //heroColor = _render.material.color;
         // ExpKill(100, true);
+
         SetStateMove(new HeroMove());// 상태 저장,실행
+        Managers.Game.player = gameObject;
     }
     void Update()
     {
         _heroState.NowState();
         _lifetimer += Time.deltaTime;
         _heroState.HittedColer();
+
+        // 경험치 획득 임시 코드
+        if (Input.GetKeyDown(KeyCode.E))
+            Managers.Game.GetExp(10);
     }
     public void SetStateMove(HeroState state)
     {
@@ -67,11 +73,16 @@ public class Hero : MonoBehaviour
 public class HeroState
 {
     protected Hero _hero;
+    Monster _monster;
+
     public virtual void OnEnter(Hero hero)
     {
         _hero = hero;
     }
-    public virtual void HeroDieState(){}
+    public virtual void HeroDieState()
+    {
+        
+    }
 
     public virtual void NowState() { }
     public void HittedColer()
@@ -125,6 +136,13 @@ public class HeroMove : HeroState
 }
 public class HittedState : HeroState
 {
+    Define.Monster _mStat;
+    Define.MonsterType _mType;
+    public void MonsterInfo(Monster monster)
+    {
+        _mType = monster._monType;
+        _mStat = monster._monStat;
+    }
     public override void OnEnter(Hero hero)
     {
         base.OnEnter(hero);
@@ -133,7 +151,7 @@ public class HittedState : HeroState
     {
         if (_hero._hit == false)  //공격받았을때
         {
-            _hero._hp -= _hero._hittidpowor;//_hittidpowor = 몬스터 공격력
+            _hero._hp -= (int)_mStat.power; // 영웅 hp타입이 float
             _hero._hit = true;
             Debug.Log(_hero._hp);
             _hero.SetStateMove(new HeroMove());
@@ -147,6 +165,7 @@ public class HittedState : HeroState
 }
 public class DieState : HeroState
 {
+    
     public override void OnEnter(Hero hero)
     {
         base.OnEnter(hero);
