@@ -51,4 +51,6 @@ public abstract class WeaponBase : MonoBehaviour
     {
         return _power * (1f + 0.05f * _enhenceLevel);
     }
+
+    public abstract void Clear();
 }

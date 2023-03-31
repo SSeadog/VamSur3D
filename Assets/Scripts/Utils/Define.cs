@@ -38,7 +38,8 @@ public static class Define
 
     public enum HeroType
     {
-        SwordHero = 1,
+        None,
+        SwordHero,
         Wizard
     }
 

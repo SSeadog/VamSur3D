@@ -36,6 +36,7 @@ public class HeroMove : MonoBehaviour
         Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
         Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
 
+        Managers.Game.heroType = heroType;
         Managers.Game.player = gameObject;
 
         heroColor = _render.material.color;
@@ -68,8 +69,8 @@ public class HeroMove : MonoBehaviour
     {
         float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
-        Debug.Log(vX);
-        Debug.Log(vZ);
+        //Debug.Log(vX);
+        //Debug.Log(vZ);
         _ani.SetFloat("AxisX", vX * _speed);
         _ani.SetFloat("AxisZ", vZ * _speed);
         float vY = GetComponent<Rigidbody>().velocity.y;

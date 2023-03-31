@@ -36,4 +36,9 @@ public class FireField : WeaponBase
             yield return new WaitForSeconds(_coolTime);
         }
     }
+
+    public override void Clear()
+    {
+
+    }
 }

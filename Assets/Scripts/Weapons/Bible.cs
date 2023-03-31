@@ -72,4 +72,9 @@ public class Bible : WeaponBase
             }
         }
     }
+
+    public override void Clear()
+    {
+
+    }
 }

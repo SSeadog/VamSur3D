@@ -31,20 +31,19 @@ public class GameManager
 
     public void Init()
     {
-        // 임시 데이터
-        totalGold = 9999;
-        
-        heroType = Define.HeroType.Wizard;
 
-        heroLv = 29;
-        surviveTime = 1800f;
-        killCount = 999;
-        stageGold = 299;
-        totalDmg = 19999f;
     }
 
     public void Clear()
     {
-
+        player = null;
+        heroType = Define.HeroType.None;
+        playerWeaponLevels.Clear();
+        heroLv = 0;
+        heroExp = 0;
+        surviveTime = 0f;
+        killCount = 0;
+        stageGold = 0;
+        totalDmg = 0f;
     }
 }

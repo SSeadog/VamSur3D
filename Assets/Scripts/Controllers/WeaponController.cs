@@ -10,10 +10,10 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         Managers.Game.playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Sword] = 1;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Staff] = 1;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Bible] = 1;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.FireField] = 1;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Sword] = 3;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Staff] = 3;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Bible] = 3;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.FireField] = 3;
 
         List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(Managers.Game.playerWeaponLevels.Keys);
 
@@ -27,26 +27,16 @@ public class WeaponController : MonoBehaviour
 
     public void LoadWeapon(Define.Weapon weaponData)
     {
-        switch ((Define.WeaponType)weaponData.id)
-        {
-            case Define.WeaponType.Sword:
-                gameObject.AddComponent<Sword>().Init(weaponData);
-                uIManager.playerStatusUI.AddItem(weaponData);
-                break;
-            case Define.WeaponType.Staff:
-                gameObject.AddComponent<Staff>().Init(weaponData);
-                uIManager.playerStatusUI.AddItem(weaponData);
-                break;
-            case Define.WeaponType.Bible:
-                gameObject.AddComponent<Bible>().Init(weaponData);
-                uIManager.playerStatusUI.AddItem(weaponData);
-                break;
-            case Define.WeaponType.FireField:
-                gameObject.AddComponent<FireField>().Init(weaponData);
-                uIManager.playerStatusUI.AddItem(weaponData);
-                break;
-            case Define.WeaponType.Boomerang:
-                break;
-        }
+        Define.WeaponType weaponType = (Define.WeaponType)weaponData.id;
+        System.Type type = System.Type.GetType(weaponType.ToString());
+
+        Component beforeWeapon = gameObject.GetComponent(type);
+        if (beforeWeapon != null)
+            Destroy(beforeWeapon);
+
+        var weapon = gameObject.AddComponent(type);
+        if (weapon is WeaponBase)
+            ((WeaponBase)weapon).Init(weaponData);
+        uIManager.playerStatusUI.AddItem(weaponData);
     }
 }

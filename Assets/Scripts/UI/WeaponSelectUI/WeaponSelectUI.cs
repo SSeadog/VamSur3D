@@ -58,19 +58,20 @@ public class WeaponSelectUI : MonoBehaviour
         // 랜덤으로 얻을 수 있는 weapon 뽑기
         // 중복은 피하고
         // weapon 정보 전달
-        Define.WeaponType randomWeaponType = (Define.WeaponType)Random.Range((int)Define.WeaponType.None + 1, (int)Define.WeaponType.Max);
-        while (true)
-        {
-            bool isUnique = true;
-            foreach (WeaponSelectItemUI item in _subItems)
-            {
-                if (item.weaponInfo.id == (int)randomWeaponType)
-                    isUnique = false;
-            }
+        // Boomerang 아직 안만들어서 제외
+        Define.WeaponType randomWeaponType = (Define.WeaponType)Random.Range((int)Define.WeaponType.None + 1, (int)Define.WeaponType.Boomerang);
+        //while (true)
+        //{
+        //    bool isUnique = true;
+        //    foreach (WeaponSelectItemUI item in _subItems)
+        //    {
+        //        if (item.weaponInfo.id == (int)randomWeaponType)
+        //            isUnique = false;
+        //    }
 
-            if (isUnique)
-                break;
-        }
+        //    if (isUnique)
+        //        break;
+        //}
 
         int randomWeaponLevel = Managers.Game.playerWeaponLevels.ContainsKey(randomWeaponType) ? Managers.Game.playerWeaponLevels[randomWeaponType] + 1 : 1;
         Define.Weapon weapon = Managers.Data.GetWeaponInfo(randomWeaponType, randomWeaponLevel);

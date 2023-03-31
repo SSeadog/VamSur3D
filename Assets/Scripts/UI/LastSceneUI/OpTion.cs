@@ -16,7 +16,7 @@ public class OpTion : MonoBehaviour
     {
         Debug.Log("버튼활성화");
         //로비씬으로 
-        SceneManager.LoadScene("YymStartScene");
+        SceneManager.LoadScene("MenuScene");
     }
   
 }
