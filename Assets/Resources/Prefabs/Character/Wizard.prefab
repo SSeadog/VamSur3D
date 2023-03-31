@@ -2628,9 +2628,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2799cf3a445964ea383f8af9f240b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroColor: {r: 1, g: 1, b: 1, a: 0}
   _render: {fileID: 7858676212877042361}
   _ani: {fileID: 7905305630947859369}
   _rotate: {fileID: 7845919088774120577}
-  _character: {fileID: 7845919088774120577}
+  _Hero: {fileID: 7845919088774120577}
   _speed: 3
   _hp: 60
+  _dietimer: 0
+  _lifetimer: 0
+  _hittimer: 0
+  _totalDMG: 0
+  _LV: 0
+  _killcount: 0
+  _exp: 0
+  _hittidpowor: 20
+  _hit: 0
+  fors: {x: 0, y: 0, z: 0}

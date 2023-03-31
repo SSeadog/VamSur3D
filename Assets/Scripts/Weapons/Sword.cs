@@ -51,4 +51,9 @@ public class Sword : WeaponBase
 
         Destroy(skillJudgeInstance, _detectTime);
     }
+
+    public override void Clear()
+    {
+
+    }
 }

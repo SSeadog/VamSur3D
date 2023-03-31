@@ -7,6 +7,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -56,5 +57,11 @@ public class MenuUIController : MonoBehaviour
         GameObject selectCharacterBoxTmp = Instantiate(CharacterInfoBox);
     }
 
+    // MainStart 테스트코드
+    public void TestStartMain()
+    {
+        Managers.Game.heroType = Define.HeroType.Wizard;
+        SceneManager.LoadScene("MainScene");
+    }
 }
    

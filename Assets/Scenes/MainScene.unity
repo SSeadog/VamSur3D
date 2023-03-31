@@ -236,6 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ed3dffda0130e48b1f243d03e846e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &217957899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6740620828609752813, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
+  m_PrefabInstance: {fileID: 6740620829702434761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435138101
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +318,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &564829324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564829326}
+  - component: {fileID: 564829325}
+  m_Layer: 0
+  m_Name: MonsterController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &564829325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564829324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9124629634af31240b2e260fad15460b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterParent: {fileID: 564829326}
+  _hero: {fileID: 91386141}
+--- !u!4 &564829326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564829324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &619210498 stripped
 RectTransform:
@@ -393,7 +444,7 @@ MonoBehaviour:
   playerExpBarUI: {fileID: 1480541674}
   killCountUI: {fileID: 1057251799}
   moneyUI: {fileID: 638333662}
-  boxInteractionUI: {fileID: 1506561151}
+  weaponSelectUI: {fileID: 1506561155}
   gameOverUI: {fileID: 2128842214}
   eSCMenuUI: {fileID: 1716949081}
   settingsUI: {fileID: 1985720858}
@@ -634,15 +685,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b773852fe0a0df43bc1c53a4586e847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1506561151 stripped
+--- !u!114 &1506561155
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2297251365216002286, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
-  m_PrefabInstance: {fileID: 6740620829702434761}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 217957899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51f424fb28e38b4f9aa7bcac1691ad1, type: 3}
+  m_Script: {fileID: 11500000, guid: 57183ad5b7e4bfe49bf492e91f266cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1702299714
@@ -674,7 +726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db17f2a2efa80843b02d424125b1aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 0}
 --- !u!4 &1702299716
 Transform:
   m_ObjectHideFlags: 0
@@ -1842,13 +1893,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6740620828609752813, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
       propertyPath: m_Name
-      value: BoxInteractionUI
+      value: WeaponSelectUI
       objectReference: {fileID: 0}
     - target: {fileID: 6740620828609752813, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2297251365216002286, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b702aecc402b214f9edecc774ad3dac, type: 3}
 --- !u!1001 &7391242166455571291
 PrefabInstance:

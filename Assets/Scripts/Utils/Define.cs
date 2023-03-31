@@ -29,6 +29,7 @@ public static class Define
     {
         public int id;
         public int hp;
+        public int exp;
         public int projectileCount;
         public float power;
         public string prefabPath;
@@ -37,22 +38,26 @@ public static class Define
 
     public enum HeroType
     {
-        SwordHero = 1,
+        None,
+        SwordHero,
         Wizard
     }
 
     public enum WeaponType
     {
-        Sword = 1,
+        None,
+        Sword,
         Staff,
         Bible,
         FireField,
-        Boomerang
+        Boomerang,
+        Max
     }
     public enum MonsterType
     {
         NormalMob = 1,
         ProjectileMob,
-        EliteMob
+        EliteMob,
+        Max
     }
 }

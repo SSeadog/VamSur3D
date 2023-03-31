@@ -7,8 +7,8 @@ public class Managers : MonoBehaviour
     public static Managers _instance; //private?
     public static Managers Instance { get { Init(); return _instance; } }
 
-    public DataManager _data = new DataManager();
-    public GameManager _game = new GameManager();
+    DataManager _data = new DataManager();
+    GameManager _game = new GameManager();
 
     public static DataManager Data { get { return Instance._data; } }
     public static GameManager Game { get { return Instance._game; } }

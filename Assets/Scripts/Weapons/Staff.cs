@@ -43,4 +43,9 @@ public class Staff : WeaponBase
         instance.GetComponent<Rigidbody>().AddForce(moveVec * _arrowSpeed);
         Destroy(instance, 5f);
     }
+
+    public override void Clear()
+    {
+
+    }
 }

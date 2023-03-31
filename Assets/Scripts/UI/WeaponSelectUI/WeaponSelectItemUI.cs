@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class BoxInteractionItemUI : MonoBehaviour
+public class WeaponSelectItemUI : MonoBehaviour
 {
     // Todo
     // 데이터를 받아서 설정하기
     // 클릭 이벤트 설정
+
+    public Define.Weapon weaponInfo;
 
     Image _itemImage;
     TMP_Text _itemName;
@@ -20,8 +22,9 @@ public class BoxInteractionItemUI : MonoBehaviour
 
     Button _button;
 
-    public void Init()
+    public void Init(Define.Weapon weaponInfo)
     {
+        this.weaponInfo = weaponInfo;
         _itemImage = transform.Find("ItemImage").GetComponent<Image>();
         _itemName = transform.Find("ItemNameText").GetComponent<TMP_Text>();
         _itemRank = transform.Find("ItemRankText").GetComponent<TMP_Text>();
@@ -32,21 +35,23 @@ public class BoxInteractionItemUI : MonoBehaviour
         _button = GetComponent<Button>();
 
         string testUrl = "";
-        string testName = "test";
+        string testName = ((Define.WeaponType) weaponInfo.id).ToString();
         string testRank = "testR";
         string testDesc = "test test test test test";
-        int testNextLevel = 1;
+        int testNextLevel = weaponInfo.lv;
         string testNextLevelOption = "test";
 
         SetData(testUrl, testName, testRank, testDesc, testNextLevel, testNextLevelOption);
 
-        UnityAction action = () => { Debug.Log("서브 아이템 클릭!"); };
-        SetClickEvent(action);
-    }
+        UnityAction action = () =>
+        {
+            Debug.Log($"{(Define.WeaponType)weaponInfo.id} {weaponInfo.lv}");
+            Managers.Game.playerWeaponLevels[(Define.WeaponType)weaponInfo.id] = weaponInfo.lv;
+            Managers.Game.player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
+            Managers.Game.uIManager.weaponSelectUI.Close();
+        };
 
-    void Start()
-    {
-        //Init();
+        SetClickEvent(action);
     }
 
     void SetData(string imageUrl, string itemName, string itemRank, string itemDesc, int nextLevel, string nextlevelOption)
