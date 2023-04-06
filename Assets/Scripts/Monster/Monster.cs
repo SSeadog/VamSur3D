@@ -25,7 +25,7 @@ public class Monster : MonoBehaviour
     public void LoadMonsterData(MonsterBase mb)
     {
         _monType = mb.getMonsterType();
-        _monStat = mb.getMonsterStat(); 
+        _monStat = mb.getMonsterStat();
     }
 
 

@@ -26,10 +26,9 @@ public class Hero : MonoBehaviour
     public Color heroColor;
     [SerializeField] public SkinnedMeshRenderer _render;
     [SerializeField] public Animator _ani;
-    [SerializeField] GameObject _rotate;// 하나 제거
     [SerializeField] GameObject _Hero;
     [SerializeField] public float _speed;//캐릭터 스택은 외부 파일에서 불러옴
-    [SerializeField] public int _hp;
+    [SerializeField] public float _hp;
     public float _dietimer, _lifetimer, _hittimer = 0f;// _attacktimer틱마다
     public int _totalDMG, _LV, _killcount, _exp = 0;
     public int _hittidpowor = 20;
@@ -58,6 +57,43 @@ public class Hero : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             Managers.Game.GetExp(10);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+        if (collision.gameObject.GetComponent<Monster>() !=null )
+        {
+            MonsterInfo(collision.gameObject.GetComponent<Monster>());
+        }
+
+        hitted();
+        
+    }
+    //
+    Define.Monster _mStat;
+    Define.MonsterType _mType;
+    public void MonsterInfo(Monster monster)
+    {
+        Debug.Log("MonsterInfo"+(_mStat == null));
+        _mType = monster._monType;
+        _mStat = monster._monStat;
+    }
+    public void hitted()
+    {
+        Debug.Log("hitted 실행");
+        if (_hit == false)  
+        {
+
+            _hp -= _mStat.power;
+            _hit = true;
+            Debug.Log(_hp);
+            Debug.Log("hitted 데미지 싱행");
+        }
+        if (_hp <= 0)
+        {
+            fors = gameObject.transform.position;
+            SetStateMove(new DieState());
+        }
+    }
     public void SetStateMove(HeroState state)
     {
         _heroState = state;
@@ -79,10 +115,7 @@ public class HeroState
     {
         _hero = hero;
     }
-    public virtual void HeroDieState()
-    {
-        
-    }
+    public virtual void HeroDieState(){}
 
     public virtual void NowState() { }
     public void HittedColer()
@@ -130,7 +163,8 @@ public class HeroMove : HeroState
         }
         if (Input.GetKeyDown(KeyCode.M))// 몬스터한테 공격받았을때
         {
-            _hero.SetStateMove(new HittedState()); // 실행
+            Debug.Log("패치확인");
+           // _hero.SetStateMove(new HittedState()); // 실행
         }
     }
 }
@@ -151,7 +185,7 @@ public class HittedState : HeroState
     {
         if (_hero._hit == false)  //공격받았을때
         {
-            _hero._hp -= (int)_mStat.power; // 영웅 hp타입이 float
+            _hero._hp -= (int)_mStat.power; // 영웅 hp타입이 float o
             _hero._hit = true;
             Debug.Log(_hero._hp);
             _hero.SetStateMove(new HeroMove());
@@ -165,7 +199,7 @@ public class HittedState : HeroState
 }
 public class DieState : HeroState
 {
-    
+
     public override void OnEnter(Hero hero)
     {
         base.OnEnter(hero);
