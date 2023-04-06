@@ -10,10 +10,10 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         Managers.Game.playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Sword] = 3;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Staff] = 3;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Bible] = 3;
-        Managers.Game.playerWeaponLevels[Define.WeaponType.FireField] = 3;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Sword] = 1;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Staff] = 1;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.Bible] = 1;
+        Managers.Game.playerWeaponLevels[Define.WeaponType.FireField] = 1;
 
         List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(Managers.Game.playerWeaponLevels.Keys);
 

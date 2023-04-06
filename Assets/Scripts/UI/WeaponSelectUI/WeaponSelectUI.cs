@@ -26,6 +26,15 @@ public class WeaponSelectUI : MonoBehaviour
         Init();
     }
 
+    void Update()
+    {
+        // 모든 아이템이 최고레벨이라서 선택할 게 없을 때만 동작하도록 수정 필요
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Close();
+        }
+    }
+
     public void Open()
     {
         // active true
@@ -59,26 +68,37 @@ public class WeaponSelectUI : MonoBehaviour
         // 중복은 피하고
         // weapon 정보 전달
         // Boomerang 아직 안만들어서 제외
-        Define.WeaponType randomWeaponType = (Define.WeaponType)Random.Range((int)Define.WeaponType.None + 1, (int)Define.WeaponType.Boomerang);
-        //while (true)
-        //{
-        //    bool isUnique = true;
-        //    foreach (WeaponSelectItemUI item in _subItems)
-        //    {
-        //        if (item.weaponInfo.id == (int)randomWeaponType)
-        //            isUnique = false;
-        //    }
+        // GetUpgradeableWeapon()함수 만들기?
+        Define.WeaponType randomWeaponType = Define.WeaponType.None;
+        while (true)
+        {
+            randomWeaponType = (Define.WeaponType)Random.Range((int)Define.WeaponType.None + 1, (int)Define.WeaponType.Boomerang);
 
-        //    if (isUnique)
-        //        break;
-        //}
+            bool isUnique = true;
+            foreach (WeaponSelectItemUI item in _subItems)
+            {
+                if (item.weaponInfo.id == (int)randomWeaponType)
+                    isUnique = false;
+            }
+
+            if (isUnique)
+                break;
+        }
 
         int randomWeaponLevel = Managers.Game.playerWeaponLevels.ContainsKey(randomWeaponType) ? Managers.Game.playerWeaponLevels[randomWeaponType] + 1 : 1;
-        Define.Weapon weapon = Managers.Data.GetWeaponInfo(randomWeaponType, randomWeaponLevel);
-
-        GameObject instance = Instantiate(_subItem, _subitemRoot.transform);
-        WeaponSelectItemUI weaponSelectItemUI = instance.GetComponent<WeaponSelectItemUI>();
-        _subItems.Add(weaponSelectItemUI);
-        weaponSelectItemUI.Init(weapon);
+        Define.Weapon weapon = null;
+        try
+        {
+            weapon = Managers.Data.GetWeaponInfo(randomWeaponType, randomWeaponLevel);
+            GameObject instance = Instantiate(_subItem, _subitemRoot.transform);
+            WeaponSelectItemUI weaponSelectItemUI = instance.GetComponent<WeaponSelectItemUI>();
+            _subItems.Add(weaponSelectItemUI);
+            weaponSelectItemUI.Init(weapon);
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.Log($"{randomWeaponType}은 최고레벨입니다");
+            // 다른 무기를 찾고 모든 무기가 최고레벨인지도 체크 필요
+        }
     }
 }
