@@ -57,30 +57,28 @@ public class Hero : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             Managers.Game.GetExp(10);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-       
-        if (collision.gameObject.GetComponent<Monster>() !=null )
-        {
-            MonsterInfo(collision.gameObject.GetComponent<Monster>());
-        }
-
-        hitted();
-        
-    }
-    //
     Define.Monster _mStat;
     Define.MonsterType _mType;
+
     public void MonsterInfo(Monster monster)
     {
-        Debug.Log("MonsterInfo"+(_mStat == null));
+        Debug.Log("MonsterInfo" + (_mStat == null));
         _mType = monster._monType;
         _mStat = monster._monStat;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.GetComponent<Monster>() != null)
+        {
+            MonsterInfo(collision.gameObject.GetComponent<Monster>());
+            hitted();
+        }
     }
     public void hitted()
     {
         Debug.Log("hitted 실행");
-        if (_hit == false)  
+        if (_hit == false)
         {
 
             _hp -= _mStat.power;
@@ -115,7 +113,7 @@ public class HeroState
     {
         _hero = hero;
     }
-    public virtual void HeroDieState(){}
+    public virtual void HeroDieState() { }
 
     public virtual void NowState() { }
     public void HittedColer()
@@ -164,7 +162,7 @@ public class HeroMove : HeroState
         if (Input.GetKeyDown(KeyCode.M))// 몬스터한테 공격받았을때
         {
             Debug.Log("패치확인");
-           // _hero.SetStateMove(new HittedState()); // 실행
+            // _hero.SetStateMove(new HittedState()); // 실행
         }
     }
 }
