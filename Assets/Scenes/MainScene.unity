@@ -210,7 +210,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &91386145
 MonoBehaviour:
@@ -319,6 +319,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &538687078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7845919088774120577, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+  m_PrefabInstance: {fileID: 1255258263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564829324
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +581,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: _Hero
+      value: 
+      objectReference: {fileID: 538687078}
     - target: {fileID: 7846996910102874700, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: m_RootOrder
       value: 5
