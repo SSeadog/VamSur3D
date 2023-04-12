@@ -12,38 +12,39 @@ public class Monster : MonoBehaviour
 
     bool isDie = false;
 
+    float _playerSkillDamage;
+    float _monsterDamage;
 
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
-    public void hitted(MonsterBase mb)
+    public float getDamage { get {return _mb.getMonsterStat.power; } } // 영웅에게 데미지를 주는 함수
+    public void Init(MonsterBase mb)
     {
         _mb = mb;
-        if(_mb.getMonsterType() == Define.MonsterType.NormalMob)
+    }
+
+    public void hitted()
+    {
+        if(_mb.getMonsterType == Define.MonsterType.NormalMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _mb.getMonsterStat.hp;
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
             }
         }
-        else if(_mb.getMonsterType() == Define.MonsterType.ProjectileMob)
+        else if(_mb.getMonsterType == Define.MonsterType.ProjectileMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _mb.getMonsterStat.hp;
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
             }
         }
-        else if (_mb.getMonsterType() == Define.MonsterType.EliteMob)
+        else if (_mb.getMonsterType == Define.MonsterType.EliteMob)
         {
-            _hp = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob).hp;
-            _hp -= (int)getDamage();
+            _hp = _mb.getMonsterStat.hp;
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
@@ -57,12 +58,14 @@ public class Monster : MonoBehaviour
         isDie = true;
         gameObject.SetActive(false);
     }
-
-    public float getDamage() // 영웅 데미지 데이터 가져와서 리턴
+    private void OnTriggerEnter(Collider other)
     {
-        float damage = 10;
-        return damage;
+        if(other.CompareTag("PlayerSkill"))
+        {
+            _playerSkillDamage = other.GetComponent<SkillProjectile>().Damage;
+        }
     }
+   
 
     public void DropGold() // 골드 드롭 
     {

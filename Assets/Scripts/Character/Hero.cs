@@ -63,8 +63,8 @@ public class Hero : MonoBehaviour
     public void MonsterInfo(Monster monster)
     {
         Debug.Log("MonsterInfo" + (_mStat == null));
-        _mType = monster._monType;
-        _mStat = monster._monStat;
+        //_mType = monster._monType;
+        //_mStat = monster._monStat;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -170,8 +170,8 @@ public class HittedState : HeroState
     Define.MonsterType _mType;
     public void MonsterInfo(Monster monster)
     {
-        _mType = monster._monType;
-        _mStat = monster._monStat;
+        //_mType = monster._monType;
+        //_mStat = monster._monStat;
     }
     public override void OnEnter(Hero hero)
     {

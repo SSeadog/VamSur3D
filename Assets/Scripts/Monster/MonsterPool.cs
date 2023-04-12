@@ -23,7 +23,7 @@ public class MonsterPool : MonoBehaviour
     {
         foreach (GameObject obj in _lstObj)
         {
-            if(obj.activeSelf == false && obj.GetComponent<MonsterBase>().getMonsterType() == mType)
+            if(obj.activeSelf == false && obj.GetComponent<MonsterBase>().getMonsterType == mType)
             {
                 return obj;
             }
