@@ -17,6 +17,9 @@ public class SkillProjectile : MonoBehaviour
         if (!other.CompareTag("Monster"))
             return;
 
+        if (gameObject.name == "Boomerang(Clone)")
+            gameObject.GetComponent<BoomerangProjectile>().Attack();
+
         // 데미지는 _damage를 이용해서 전달
         Debug.Log($"{gameObject.name}스킬 충돌!! 대상 : {other.name} 데미지 : {_damage}");
     }

@@ -8,6 +8,8 @@ public class MonsterPool : MonoBehaviour
     private static MonsterPool _instance;
     GameObject[] _monObjs = null;
 
+    public List<GameObject> LstObj { get { return _lstObj; } }
+
     void Init()
     {
         if (_monObjs != null) return;
