@@ -6,54 +6,47 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    [SerializeField] GameObject _coin;
     MonsterBase _mb;
-    WeaponBase _wb;
-    HeroMove _hero;
+    
 
-    public Define.MonsterType _monType;
-    public Define.Monster _monStat;
-
-    float _hp;
+    public int _hp;
 
     bool isDie = false;
 
-    private void Start()
+    float _playerSkillDamage;
+    float _monsterDamage;
+
+    public float getDamage { get {return _mb.getMonsterStat.power; } } // 영웅에게 데미지를 주는 함수
+    public void Init(MonsterBase mb)
     {
-        
+        _mb = mb;
+        _hp = _mb.getMonsterStat.hp;
     }
 
-    public void LoadMonsterData(MonsterBase mb)
-    {
-        _monType = mb.getMonsterType();
-        _monStat = mb.getMonsterStat();
-    }
-
-
+    public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
 
     public void hitted()
     {
-        if(_monType == Define.MonsterType.NormalMob)
+        if(_mb.getMonsterType == Define.MonsterType.NormalMob)
         {
-            _hp = _monStat.hp;
-            _hp -= getDamage(_wb);
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
             }
         }
-        else if(_mb.getMonsterType() == Define.MonsterType.ProjectileMob)
+        else if(_mb.getMonsterType == Define.MonsterType.ProjectileMob)
         {
-            _hp = _monStat.hp;
-            _hp -= getDamage(_wb);
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
             }
         }
-        else if (_mb.getMonsterType() == Define.MonsterType.EliteMob)
+        else if (_mb.getMonsterType == Define.MonsterType.EliteMob)
         {
-            _hp = _monStat.hp;
-            _hp -= getDamage(_wb);
+            _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
                 Die();
@@ -66,19 +59,17 @@ public class Monster : MonoBehaviour
     {
         isDie = true;
         gameObject.SetActive(false);
+        GameObject tmp = Instantiate(_coin);
+        tmp.transform.position = transform.position;
     }
-
-    public float getDamage(WeaponBase wb) // 영웅 데미지 데이터 가져와서 리턴
+    private void OnTriggerEnter(Collider other)
     {
-        _wb = wb;
-        float damage = _wb.GetPower();
-        return damage;
-    }
-
-
-    public void DropGold() // 골드 드롭 
-    {
-
+        if(other.CompareTag("PlayerSkill"))
+        {
+            _playerSkillDamage = other.gameObject.GetComponent<SkillProjectile>().Damage;
+            hitted();
+            Debug.Log("hit");
+        }
     }
 }
 

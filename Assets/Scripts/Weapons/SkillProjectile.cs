@@ -6,6 +6,7 @@ public class SkillProjectile : MonoBehaviour
 {
     float _damage = 0f;
 
+    public float Damage { get { return _damage; } }
     public void Init(float damage)
     {
         _damage = damage;
