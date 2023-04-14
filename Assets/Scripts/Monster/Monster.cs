@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    [SerializeField] GameObject _coin;
     MonsterBase _mb;
+    
 
-    int _hp;
+    public int _hp;
 
     bool isDie = false;
 
@@ -19,13 +21,15 @@ public class Monster : MonoBehaviour
     public void Init(MonsterBase mb)
     {
         _mb = mb;
+        _hp = _mb.getMonsterStat.hp;
     }
+
+    public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
 
     public void hitted()
     {
         if(_mb.getMonsterType == Define.MonsterType.NormalMob)
         {
-            _hp = _mb.getMonsterStat.hp;
             _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
@@ -34,7 +38,6 @@ public class Monster : MonoBehaviour
         }
         else if(_mb.getMonsterType == Define.MonsterType.ProjectileMob)
         {
-            _hp = _mb.getMonsterStat.hp;
             _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
@@ -43,7 +46,6 @@ public class Monster : MonoBehaviour
         }
         else if (_mb.getMonsterType == Define.MonsterType.EliteMob)
         {
-            _hp = _mb.getMonsterStat.hp;
             _hp -= (int)_playerSkillDamage;
             if (_hp <= 0)
             {
@@ -57,19 +59,17 @@ public class Monster : MonoBehaviour
     {
         isDie = true;
         gameObject.SetActive(false);
+        GameObject tmp = Instantiate(_coin);
+        tmp.transform.position = transform.position;
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("PlayerSkill"))
         {
-            _playerSkillDamage = other.GetComponent<SkillProjectile>().Damage;
+            _playerSkillDamage = other.gameObject.GetComponent<SkillProjectile>().Damage;
+            hitted();
+            Debug.Log("hit");
         }
-    }
-   
-
-    public void DropGold() // °ñµå µå·Ó 
-    {
-
     }
 }
 

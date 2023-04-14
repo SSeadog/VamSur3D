@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 855208147162188015}
   - component: {fileID: 8417364355688557983}
   - component: {fileID: 3784192556216797531}
+  - component: {fileID: 3617158391468026533}
   m_Layer: 0
   m_Name: ProjectileMob
   m_TagString: Monster
@@ -97,3 +98,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3617158391468026533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472644362701637827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536da16292a30ea4294e0877b50f350f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coin: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
+  _hp: 0

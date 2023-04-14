@@ -23,7 +23,7 @@ public class MonsterPool : MonoBehaviour
     {
         foreach (GameObject obj in _lstObj)
         {
-            if(obj.activeSelf == false && obj.GetComponent<MonsterBase>().getMonsterType == mType)
+            if(obj.activeSelf == false && obj.GetComponent<Monster>().sendMonsterType == mType)
             {
                 return obj;
             }
@@ -31,7 +31,6 @@ public class MonsterPool : MonoBehaviour
         Init();
         GameObject temp = Instantiate(_monObjs[(int)mType]);
         temp.GetComponent<MonsterController>();
-        temp.AddComponent<Monster>();
         _lstObj.Add(temp);
         return temp;
     }

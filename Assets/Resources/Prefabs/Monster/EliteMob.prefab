@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2839116816578220120}
   - component: {fileID: 6305047240652082559}
   - component: {fileID: 6658332522214921378}
+  - component: {fileID: 4173375147524315655}
   m_Layer: 0
   m_Name: EliteMob
   m_TagString: Monster
@@ -98,3 +99,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4173375147524315655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625935366970595559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536da16292a30ea4294e0877b50f350f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coin: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
+  _hp: 0
