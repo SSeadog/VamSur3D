@@ -27,70 +27,94 @@ public class Hero : MonoBehaviour
     [SerializeField] public SkinnedMeshRenderer _render;
     [SerializeField] public Animator _ani;
     [SerializeField] GameObject _Hero;
-    [SerializeField] public float _speed;//캐릭터 스택은 외부 파일에서 불러옴
-    [SerializeField] public float _hp;
-    public float _dietimer, _lifetimer, _hittimer = 0f;// _attacktimer틱마다
-    public int _totalDMG, _LV, _killcount, _exp = 0;
+    //캐릭터 스택은 외부 파일에서 불러옴
+    public float _dietimer, _lifetimer, _hittimer, _hp, _attackpower = 0f;// _attacktimer틱마다
+    public int _totalDMG, _LV, _killcount, _exp, _speed = 0;
     public int _hittidpowor = 20;
     public bool _hit = false;
-    public Vector3 fors;
+    public bool wizard = false;
+    public bool sword = true;
 
+    public Vector3 fors;
+    Define.Hero _herodata;
+    private void Awake()
+    {
+        if (sword) { swordheroDataSet(); }
+        if (wizard) { wizardDataSet(); }
+        _hp = _herodata.hp;
+        _speed = _herodata.moveSpeed;
+        _attackpower = _herodata.power;
+    }
+    void swordheroDataSet()
+    {
+        Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
+        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
+        Managers.Data.GetHeroInfo(heroType);
+        _herodata = heroData;
+    }
+    void wizardDataSet()
+    {
+        Define.HeroType heroType = Define.HeroType.Wizard; // 로비씬에서 넘겨준 데이터를 활용할 것
+        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
+        Managers.Data.GetHeroInfo(heroType);
+        _herodata = heroData;
+    }
     void Start()
     {
-        // _heroState = new HeroMove();
-        //Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
-        //Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
-        //Managers.Data.GetHeroInfo(heroType);
-        //heroColor = _render.material.color;
-        // ExpKill(100, true);
-
+        Debug.Log(Managers.Game.surviveTime);
+        _heroState = new HeroMove();
         SetStateMove(new HeroMove());// 상태 저장,실행
         Managers.Game.player = gameObject;
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _hp -= 30;
+            SetStateMove(new DieState());
+        }
+        Managers.Game.surviveTime += Time.deltaTime;
         _heroState.NowState();
-        _lifetimer += Time.deltaTime;
         _heroState.HittedColer();
-
         // 경험치 획득 임시 코드
         if (Input.GetKeyDown(KeyCode.E))
             Managers.Game.GetExp(10);
     }
     Define.Monster _mStat;
     Define.MonsterType _mType;
-
     public void MonsterInfo(Monster monster)
     {
         Debug.Log("MonsterInfo" + (_mStat == null));
         //_mType = monster._monType;
         //_mStat = monster._monStat;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
         if (collision.gameObject.GetComponent<Monster>() != null)
         {
             MonsterInfo(collision.gameObject.GetComponent<Monster>());
-            hitted();
+            if (_hit == false) StartCoroutine("hittedWait");
         }
     }
     public void hitted()
     {
         Debug.Log("hitted 실행");
-        if (_hit == false)
-        {
-
-            _hp -= _mStat.power;
-            _hit = true;
-            Debug.Log(_hp);
-            Debug.Log("hitted 데미지 싱행");
-        }
+        _hp -= _mStat.power;
+        Debug.Log(_hp);
+        Debug.Log("hitted 데미지 싱행");
         if (_hp <= 0)
         {
             fors = gameObject.transform.position;
             SetStateMove(new DieState());
         }
+    }
+    IEnumerator hittedWait()
+    {
+        _hit = true;
+        Debug.Log("hittedWait");
+        hitted();
+        yield return new WaitForSeconds(0.5f);
+        _hit = false;
     }
     public void SetStateMove(HeroState state)
     {
@@ -108,13 +132,11 @@ public class HeroState
 {
     protected Hero _hero;
     Monster _monster;
-
     public virtual void OnEnter(Hero hero)
     {
         _hero = hero;
     }
     public virtual void HeroDieState() { }
-
     public virtual void NowState() { }
     public void HittedColer()
     {
@@ -122,12 +144,11 @@ public class HeroState
         {
             _hero._hittimer += Time.deltaTime;
             _hero._render.material.color = Color.red;
-            if (_hero._hittimer > 0.5f)
-            {
-                _hero._render.material.color = _hero.heroColor;
-                _hero._hittimer = 0f;
-                _hero._hit = false;
-            }
+        }
+        if (_hero._hit == false)
+        {   
+            _hero._render.material.color = _hero.heroColor;
+            _hero._hittimer = 0f;
         }
     }
 }
@@ -156,11 +177,6 @@ public class HeroMove : HeroState
         if (Input.GetButton("Vertical") && vZ != 0)
         {
             _hero.transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
-        }
-        if (Input.GetKeyDown(KeyCode.M))// 몬스터한테 공격받았을때
-        {
-            Debug.Log("패치확인");
-            // _hero.SetStateMove(new HittedState()); // 실행
         }
     }
 }
@@ -195,13 +211,13 @@ public class HittedState : HeroState
 }
 public class DieState : HeroState
 {
-
     public override void OnEnter(Hero hero)
     {
         base.OnEnter(hero);
     }
     public override void NowState()
     {
+        Debug.Log(Managers.Game.surviveTime);
         _hero._ani.SetInteger("HeroMove", (int)EHeroMove.die);
         _hero.gameObject.transform.position = _hero.fors;
         _hero.GetComponent<Rigidbody>().velocity = Vector3.zero;

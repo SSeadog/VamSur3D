@@ -29,7 +29,7 @@ public class CaracterData : MonoBehaviour
     public void Text()
     {
         _caracLV.text = "레벨" + _LV;
-        _livetimetx.text =   $"{_livetime.ToString("F1")}"+"초 생존" ;//$문은 형변환에사용
+        _livetimetx.text =  $"{Managers.Game.surviveTime.ToString("F1")}"+"초 생존" ;//$문은 형변환에사용
         _goldtx.text = "획득골드" + _gold;
         _killstx.text = "총킬" + _kills;
         _damagestx.text = "총데미지" + _damages;
