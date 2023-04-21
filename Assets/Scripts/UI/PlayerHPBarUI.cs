@@ -7,9 +7,8 @@ public class PlayerHPBarUI : MonoBehaviour
 {
     // Todo
     // 실제 Player HP 데이터 받아서 지속적으로 UI갱신되도록 해야함
-    float maxHP = 100f;
-    [SerializeField] float curHP = 70f;
-
+    float maxHP = 0;
+    Hero _hero;
     GameObject _target;
     Vector3 _offset;
 
@@ -17,12 +16,15 @@ public class PlayerHPBarUI : MonoBehaviour
 
     public void Init()
     {
+        _hero=Managers.Game.player.GetComponent<Hero>();
+
         _target = GameObject.FindGameObjectWithTag("Player");
         _offset = new Vector3(0, 0.2f, -1f);
 
         transform.rotation = Camera.main.transform.rotation;
 
         _foreground = transform.Find("Panel/Foreground").GetComponent<RectTransform>();
+        maxHP = _hero._hp;
     }
 
     void Start()
@@ -33,7 +35,7 @@ public class PlayerHPBarUI : MonoBehaviour
     void Update()
     {
         transform.position = _target.transform.position + _offset;
-        ResizeBar(curHP / maxHP);
+        ResizeBar(_hero._hp / maxHP);
     }
 
     void ResizeBar(float percent)
