@@ -24,7 +24,18 @@ public static class Define
         public float coolTime;
         public string prefabPath;
         public string imageUrl;
+        public string rank;
+        public string desc;
+        public string levelDesc;
     }
+
+    public class WeaponEnhance
+    {
+        public int id;
+        public int enhanceLv;
+        public float power;
+    }
+
     public class Monster
     {
         public int id;
