@@ -25,6 +25,7 @@ public class Monster : MonoBehaviour
     }
 
     public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
+    public Define.Monster sendMonsterStat {  get { return _mb.getMonsterStat;} }
 
     public void hitted()
     {
@@ -73,5 +74,5 @@ public class Monster : MonoBehaviour
     }
 }
 
-public class Gold // 골드 클래스에서 position 계속 업데이트해줌
+public class ExpGem // 골드 클래스에서 position 계속 업데이트해줌
 { }
