@@ -14,7 +14,6 @@ public class SelectedInfoBox : MonoBehaviour
     
     public void OnClickedCharacterBox()
     {
-       
         hoveringCharacterBox = gameObject.transform;
         selectedBackground = hoveringCharacterBox.Find("SelectedImageBackground");
         cb.isBeforeBoxInfo(this);

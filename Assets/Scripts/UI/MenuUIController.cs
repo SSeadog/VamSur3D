@@ -9,7 +9,8 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] GameObject CharacterInfoBox;
     [SerializeField] Transform _characterContent;
     [SerializeField] GameObject WeaponUpgradeMenuPanel;
-    [SerializeField] Transform _weaponContent;
+    [SerializeField] GameObject WeaponUpgradeInfoMenuPanel;
+    [SerializeField] Transform _weaponUpgradeContent;
 
 
 
@@ -18,7 +19,7 @@ public class MenuUIController : MonoBehaviour
     public void OnSelectCharacterMenu()
     {
         CharacterMenuPanel.SetActive(true);
-        initSelectBox();
+        initSelectBox(CharacterMenuPanel);
     }
 
     public void OpenSelectCharacterPanel()
@@ -26,19 +27,36 @@ public class MenuUIController : MonoBehaviour
         CharacterInfoMenuPanel.SetActive(true);
     }
 
-    public void OpenWeaponUpgradePanel()
+    public void OnSelectWeaponUpgradeMenu()
     {
         WeaponUpgradeMenuPanel.SetActive(true);
+        initSelectBox(WeaponUpgradeMenuPanel);
     }
 
-    public void initSelectBox()
+    public void OpenWeaponUpgradePanel()
     {
-        for (int i = 0; i < 17; i++)
+        WeaponUpgradeInfoMenuPanel.SetActive(true);
+    }
+
+    public void initSelectBox(GameObject panel)
+    {
+        if (panel == CharacterMenuPanel)
         {
-            
-            GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
-            infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
-            infoBoxTmp.name = "CharacterBox";
+            for (int i = 0; i < 17; i++)
+            {
+                GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
+                infoBoxTmp.GetComponent<SelectedInfoBox>().Init(panel.GetComponent<CharacterBoxController>());
+                infoBoxTmp.name = "CharacterBox";
+            }
+        }
+        else if (panel == WeaponUpgradeMenuPanel)
+        {
+            for (int i = 0; i < 17; i++)
+            {
+                GameObject infoBoxTmp = Instantiate(CharacterBox, _weaponUpgradeContent);
+                infoBoxTmp.GetComponent<SelectedInfoBox>().Init(panel.GetComponent<CharacterBoxController>());
+                infoBoxTmp.name = "CharacterBox";
+            }
         }
     }
 

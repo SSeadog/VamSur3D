@@ -16,7 +16,7 @@ public class PlayerHPBarUI : UIBase
 
     public void Init()
     {
-        _hero=Managers.Game.player.GetComponent<Hero>();
+        _hero = GenericSingleton<GameManager>.getInstance().player.GetComponent<Hero>();
 
         _target = GameObject.FindGameObjectWithTag("Player");
         _offset = new Vector3(0, 0.2f, -1f);
