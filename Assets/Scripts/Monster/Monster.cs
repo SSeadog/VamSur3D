@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] GameObject _coin;
+    [SerializeField] GameObject _gem;
     [SerializeField] Hero _hero;
     
     MonsterBase _mb;
@@ -31,6 +31,10 @@ public class Monster : MonoBehaviour
 
     public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
     public Define.Monster sendMonsterStat {  get { return _mb.getMonsterStat;} }
+
+    public float sendSkillDamage { get { return _playerSkillDamage; } }
+
+    public GameObject sendGemInfo { get { return _gem; } }
 
     public void ChangeUnitState(MonsterState state)
     {
