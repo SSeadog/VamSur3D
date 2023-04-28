@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using UnityEditor.Build.Content;
-using System;
 using UnityEngine;
-using DG.Tweening;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 
 public class MenuUIController : MonoBehaviour
@@ -60,7 +52,7 @@ public class MenuUIController : MonoBehaviour
     // MainStart 테스트코드
     public void TestStartMain()
     {
-        Managers.Game.heroType = Define.HeroType.Wizard;
+        GenericSingleton<GameManager>.getInstance().heroType = Define.HeroType.Wizard;
         SceneManager.LoadScene("MainScene");
     }
 }

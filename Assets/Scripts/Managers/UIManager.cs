@@ -4,29 +4,21 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public PlayerStatusUI playerStatusUI;
-    public PlayerHPBarUI playerHPBarUI;
-    public PlayerExpBarUI playerExpBarUI;
-    public KillCountUI killCountUI;
-    public MoneyUI moneyUI;
-    public WeaponSelectUI weaponSelectUI;
-    public GameOverUI gameOverUI;
-    public ESCMenuUI eSCMenuUI;
-    public SettingsUI settingsUI;
+    private Dictionary<string, UIBase> _dictUI = new Dictionary<string, UIBase>();
 
-    private void Start()
+    public void AddUI(string key, UIBase uIBase)
     {
-        Managers.Game.uIManager = this;
+        _dictUI.Add(key, uIBase);
     }
 
-    void Update()
+    public T GetUI<T>() where T : UIBase
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (eSCMenuUI.gameObject.activeSelf == false)
-                eSCMenuUI.ShowUI();
-            else
-                eSCMenuUI.CloseUI();
-        }
+        return _dictUI[typeof(T).ToString()] as T;
+    }
+
+    public GameObject GetDamageUI()
+    {
+        GameObject original = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
+        return Instantiate(original);
     }
 }

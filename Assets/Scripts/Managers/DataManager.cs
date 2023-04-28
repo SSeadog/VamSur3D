@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DataManager
+public class DataManager : MonoBehaviour
 {
     private Dictionary<Define.HeroType, Define.Hero> _heroDict;
 
@@ -13,7 +13,12 @@ public class DataManager
 
     private Dictionary<Define.MonsterType, Define.Monster> _monsterDict;
 
-    public void Init()
+    void Awake()
+    {
+        Init();
+    }
+
+    void Init()
     {
         // 캐릭터 정보 로드
         _heroDict = Util.LoadJsonDict<Define.HeroType, Define.Hero>("Data/HeroData");

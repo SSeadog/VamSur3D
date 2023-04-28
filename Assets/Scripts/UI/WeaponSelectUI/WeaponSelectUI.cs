@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponSelectUI : MonoBehaviour
+public class WeaponSelectUI : UIBase
 {
     // Todo
     // subItem 실제 데이터를 받아서 로드
@@ -85,11 +83,11 @@ public class WeaponSelectUI : MonoBehaviour
                 break;
         }
 
-        int randomWeaponLevel = Managers.Game.playerWeaponLevels.ContainsKey(randomWeaponType) ? Managers.Game.playerWeaponLevels[randomWeaponType] + 1 : 1;
+        int randomWeaponLevel = GenericSingleton<GameManager>.getInstance().playerWeaponLevels.ContainsKey(randomWeaponType) ? GenericSingleton<GameManager>.getInstance().playerWeaponLevels[randomWeaponType] + 1 : 1;
         Define.Weapon weapon = null;
         try
         {
-            weapon = Managers.Data.GetWeaponInfo(randomWeaponType, randomWeaponLevel);
+            weapon = GenericSingleton<DataManager>.getInstance().GetWeaponInfo(randomWeaponType, randomWeaponLevel);
             GameObject instance = Instantiate(_subItem, _subitemRoot.transform);
             WeaponSelectItemUI weaponSelectItemUI = instance.GetComponent<WeaponSelectItemUI>();
             _subItems.Add(weaponSelectItemUI);

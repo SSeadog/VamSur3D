@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -46,9 +44,9 @@ public class WeaponSelectItemUI : MonoBehaviour
         UnityAction action = () =>
         {
             Debug.Log($"{(Define.WeaponType)weaponInfo.id} {weaponInfo.lv}");
-            Managers.Game.playerWeaponLevels[(Define.WeaponType)weaponInfo.id] = weaponInfo.lv;
-            Managers.Game.player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
-            Managers.Game.uIManager.weaponSelectUI.Close();
+            GenericSingleton<GameManager>.getInstance().playerWeaponLevels[(Define.WeaponType)weaponInfo.id] = weaponInfo.lv;
+            GenericSingleton<GameManager>.getInstance().player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
+            GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Close();
         };
 
         SetClickEvent(action);

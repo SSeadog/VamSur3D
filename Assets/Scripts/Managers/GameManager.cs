@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
-    public UIManager uIManager;
     public int totalGold;
 
     public GameObject player;
@@ -23,15 +21,10 @@ public class GameManager
         if (heroExp >= heroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
             heroLv++;
-            uIManager.playerStatusUI.SetLv(heroLv);
+            GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().SetLv(heroLv);
             // 무기 선택 UI 띄우기
-            uIManager.weaponSelectUI.Open();
+            GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Open();
         }
-    }
-
-    public void Init()
-    {
-
     }
 
     public void Clear()

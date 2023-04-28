@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -9,16 +7,16 @@ public class WeaponController : MonoBehaviour
 
     void Start()
     {
-        Managers.Game.playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
-        Managers.Game.playerWeaponLevels[Define.WeaponType.Boomerang] = 3;
+        GenericSingleton<GameManager>.getInstance().playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
+        GenericSingleton<GameManager>.getInstance().playerWeaponLevels[Define.WeaponType.Boomerang] = 3;
 
-        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(Managers.Game.playerWeaponLevels.Keys);
+        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(GenericSingleton<GameManager>.getInstance().playerWeaponLevels.Keys);
 
         uIManager = GameObject.Find("UIRoot").GetComponent<UIManager>();
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
-            LoadWeapon(Managers.Data.GetWeaponInfo(weaponTypes[i], Managers.Game.playerWeaponLevels[weaponTypes[i]]));
+            LoadWeapon(GenericSingleton<DataManager>.getInstance().GetWeaponInfo(weaponTypes[i], GenericSingleton<GameManager>.getInstance().playerWeaponLevels[weaponTypes[i]]));
         }
     }
 
@@ -34,6 +32,6 @@ public class WeaponController : MonoBehaviour
         var weapon = gameObject.AddComponent(type);
         if (weapon is WeaponBase)
             ((WeaponBase)weapon).Init(weaponData);
-        uIManager.playerStatusUI.AddItem(weaponData);
+        GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().AddItem(weaponData);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PopupUIBase : MonoBehaviour
+public abstract class PopupUIBase : UIBase
 {
     PopupUIBase _before;
 

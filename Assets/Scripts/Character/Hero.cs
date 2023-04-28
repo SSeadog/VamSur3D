@@ -1,14 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine.Analytics;
-using UnityEngine.UIElements;
-using UnityEngine.VFX;
-using static Define;
-using static UnityEngine.UI.CanvasScaler;
 
 enum EHeroMove
 {
@@ -48,23 +40,23 @@ public class Hero : MonoBehaviour
     void swordheroDataSet()
     {
         Define.HeroType heroType = Define.HeroType.SwordHero; // 로비씬에서 넘겨준 데이터를 활용할 것
-        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
-        Managers.Data.GetHeroInfo(heroType);
+        Define.Hero heroData = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
+        GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
         _herodata = heroData;
     }
     void wizardDataSet()
     {
         Define.HeroType heroType = Define.HeroType.Wizard; // 로비씬에서 넘겨준 데이터를 활용할 것
-        Define.Hero heroData = Managers.Data.GetHeroInfo(heroType);
-        Managers.Data.GetHeroInfo(heroType);
+        Define.Hero heroData = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
+        GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
         _herodata = heroData;
     }
     void Start()
     {
-        Debug.Log(Managers.Game.surviveTime);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().surviveTime);
         _heroState = new HeroMove();
         SetStateMove(new HeroMove());// 상태 저장,실행
-        Managers.Game.player = gameObject;
+        GenericSingleton<GameManager>.getInstance().player = gameObject;
     }
     void Update()
     {
@@ -73,12 +65,12 @@ public class Hero : MonoBehaviour
             _hp -= 30;
             SetStateMove(new DieState());
         }
-        Managers.Game.surviveTime += Time.deltaTime;
+        GenericSingleton<GameManager>.getInstance().surviveTime += Time.deltaTime;
         _heroState.NowState();
         _heroState.HittedColer();
         // 경험치 획득 임시 코드
         if (Input.GetKeyDown(KeyCode.E))
-            Managers.Game.GetExp(10);
+            GenericSingleton<GameManager>.getInstance().GetExp(10);
     }
     Define.Monster _mStat;
     Define.MonsterType _mType;
@@ -217,7 +209,7 @@ public class DieState : HeroState
     }
     public override void NowState()
     {
-        Debug.Log(Managers.Game.surviveTime);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().surviveTime);
         _hero._ani.SetInteger("HeroMove", (int)EHeroMove.die);
         _hero.gameObject.transform.position = _hero.fors;
         _hero.GetComponent<Rigidbody>().velocity = Vector3.zero;
