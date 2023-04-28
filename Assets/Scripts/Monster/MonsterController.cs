@@ -6,8 +6,6 @@ using static Define;
 
 public class MonsterController : MonoBehaviour
 {
-    [SerializeField] GameObject _coin;
-
     bool isRespawnCoolTime = false;
     //몬스터 강화 킬카운트
     //엘리트 몬스터 소환되는 킬카운트 200단위
@@ -35,7 +33,6 @@ public class MonsterController : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         isRespawnCoolTime = false;
     }
-    public GameObject DropCoin { get { return _coin; } }
 }
   
 

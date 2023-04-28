@@ -58,6 +58,7 @@ public class MenuUIController : MonoBehaviour
     }
 
     // MainStart 테스트코드
+    //캐릭터 선택된 정보 메인씬으로 전달
     public void TestStartMain()
     {
         Managers.Game.heroType = Define.HeroType.Wizard;

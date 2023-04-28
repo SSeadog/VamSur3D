@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2258018960496557231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 986489594011004630}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d6032d13c4ee8c441b8173423b65deb2, type: 3}
-  m_Color: {r: 0.990566, g: 0.9734584, b: 0.53733534, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ab9dfc12b3edfea47a31b61cf604f88c, type: 3}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,10 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2258018960496557231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e480b31df53306444a4d4a28f8d96cab, type: 3}
+  m_Script: {fileID: 11500000, guid: f639c9ad3e1ccef438fac37fb6861638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinBase: {fileID: 2536564368114615350}
+  _gemBase: {fileID: 2536564368114615350}
 --- !u!95 &6927797366920600521
 Animator:
   serializedVersion: 5

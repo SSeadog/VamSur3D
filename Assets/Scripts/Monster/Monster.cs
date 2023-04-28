@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static Define;
 
 public class Monster : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Monster : MonoBehaviour
     MonsterBase _mb;
     MonsterState _state;
 
-
+    bool isHit;
     public int _hp;
 
     
@@ -34,7 +35,7 @@ public class Monster : MonoBehaviour
 
     public float sendSkillDamage { get { return _playerSkillDamage; } }
 
-    public GameObject sendGemInfo { get { return _gem; } }
+    public GameObject sendGemInfo { get { return _gem;} }
 
     public void ChangeUnitState(MonsterState state)
     {
@@ -65,7 +66,7 @@ public class Monster : MonoBehaviour
         if(other.CompareTag("PlayerSkill"))
         {
             _playerSkillDamage = other.gameObject.GetComponent<SkillProjectile>().Damage;
-            //hitted();
+            ChangeUnitState(new State.HittedState());
             Debug.Log("hit");
         }
     }
@@ -74,5 +75,7 @@ public class Monster : MonoBehaviour
 
 public class ExpGem // 골드 클래스에서 position 계속 업데이트해줌
 {
+
+
 
 }
