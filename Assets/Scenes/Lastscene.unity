@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4970f90a2446984ba3646e12a3cdeaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroImage: {fileID: 1529527195}
   _caracLV: {fileID: 14346652}
   _livetimetx: {fileID: 1037640288}
   _goldtx: {fileID: 271190106}

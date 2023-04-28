@@ -219,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91386141}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f79672e774b1a741a991742a8f0c9f6, type: 3}
   m_Name: 
@@ -599,6 +599,14 @@ PrefabInstance:
       propertyPath: _Hero
       value: 
       objectReference: {fileID: 538687078}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: sword
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: wizard
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: heroColor.b
       value: 1
