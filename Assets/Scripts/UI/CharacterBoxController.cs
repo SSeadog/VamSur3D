@@ -30,10 +30,17 @@ public class CharacterBoxController : MonoBehaviour
         _menuUIController.OpenSelectCharacterPanel();
     }
 
-    public void OnReturnMainMenuButton()
+    public void OnReturnMainMenuButtonFromCharacterInfoMenu()
     {
-        gameObject.SetActive(false);
         childObject = transform.Find("CharacterInfoMenu").gameObject;
         childObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+    public void OnReturnMainMenuButtonFromWeaponInfoMenu()
+    {
+        childObject = transform.Find("WeaponInfoMenu").gameObject;
+        childObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 } 
