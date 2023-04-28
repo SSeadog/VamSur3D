@@ -110,5 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536da16292a30ea4294e0877b50f350f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
+  _gem: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
+  _hero: {fileID: 0}
   _hp: 0

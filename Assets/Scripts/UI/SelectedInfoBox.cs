@@ -6,6 +6,8 @@ using UnityEngine;
 public class SelectedInfoBox : MonoBehaviour
 {
     CharacterBoxController cb;
+    WeaponBoxController wb;
+
     Transform hoveringCharacterBox;
     public Transform selectedBackground;
     Vector3 Maxv3 = new Vector3(1.05f, 1.05f, 1.05f);
@@ -13,7 +15,7 @@ public class SelectedInfoBox : MonoBehaviour
 
     
     public void OnClickedCharacterBox()
-    {
+    { 
         hoveringCharacterBox = gameObject.transform;
         selectedBackground = hoveringCharacterBox.Find("SelectedImageBackground");
         cb.isBeforeBoxInfo(this);
@@ -23,9 +25,26 @@ public class SelectedInfoBox : MonoBehaviour
         StartCoroutine(ClickCharacterBoxEvent());
     }
 
+    public void OnClickedWeaponBox()
+    {
+
+        hoveringCharacterBox = gameObject.transform;
+        selectedBackground = hoveringCharacterBox.Find("SelectedImageBackground");
+        wb.isBeforeBoxInfo(this);
+        wb.getMenuUIControllerData();
+        selectedBackground.gameObject.SetActive(true);
+
+        StartCoroutine(ClickCharacterBoxEvent());
+    }
+
     public void Init(CharacterBoxController cbc)
     {
         cb = cbc;
+    }
+
+    public void Init(WeaponBoxController wbc)
+    {
+        wb = wbc;
     }
 
     IEnumerator ClickCharacterBoxEvent()
