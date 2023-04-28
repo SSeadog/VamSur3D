@@ -36,10 +36,10 @@ public class WeaponSelectItemUI : MonoBehaviour
 
         string testUrl = "";
         string testName = ((Define.WeaponType) weaponInfo.id).ToString();
-        string testRank = "testR";
-        string testDesc = "test test test test test";
+        string testRank = weaponInfo.rank;
+        string testDesc = weaponInfo.desc;
         int testNextLevel = weaponInfo.lv;
-        string testNextLevelOption = "test";
+        string testNextLevelOption = weaponInfo.levelDesc;
 
         SetData(testUrl, testName, testRank, testDesc, testNextLevel, testNextLevelOption);
 
