@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// UIRoot를 통해 씬에 배치한 UI들을 UIManager에 등록
+// !!등록하려는 UI는 UIBase를 상속받아야함!!
 public class UIManager : MonoBehaviour
 {
     private Dictionary<string, UIBase> _dictUI = new Dictionary<string, UIBase>();
