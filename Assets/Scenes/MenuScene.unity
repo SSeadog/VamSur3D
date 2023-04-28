@@ -1165,7 +1165,6 @@ GameObject:
   - component: {fileID: 768056986}
   - component: {fileID: 768056985}
   - component: {fileID: 768056984}
-  - component: {fileID: 768056983}
   - component: {fileID: 768056988}
   m_Layer: 5
   m_Name: PowerUpsMenu
@@ -1174,20 +1173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &768056983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768056982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee15d58dbf25554b9389169462f0101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuUIController: {fileID: 1554271179}
-  BeforeBoxInfo: {fileID: 0}
 --- !u!114 &768056984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b9151a1b563b341bbadbe669f0b816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuUIController: {fileID: 1554271179}
+  wBeforeBoxInfo: {fileID: 0}
 --- !u!1 &815697138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4723546323657247123, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
@@ -1939,6 +1926,7 @@ MonoBehaviour:
   _characterContent: {fileID: 341063718}
   WeaponUpgradeMenuPanel: {fileID: 768056982}
   _weaponContent: {fileID: 1726409902}
+  WeaponSelectPanel: {fileID: 644250793}
 --- !u!4 &1554271180
 Transform:
   m_ObjectHideFlags: 0
@@ -2037,8 +2025,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 768056983}
-        m_TargetAssemblyTypeName: CharacterBoxController, Assembly-CSharp
+      - m_Target: {fileID: 768056988}
+        m_TargetAssemblyTypeName: WeaponBoxController, Assembly-CSharp
         m_MethodName: OnReturnMainMenuButtonFromWeaponInfoMenu
         m_Mode: 1
         m_Arguments:

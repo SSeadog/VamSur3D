@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class WeaponBoxController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] MenuUIController _menuUIController;
+    public Transform wBeforeBoxInfo = null;
+    GameObject childObject;
+    public void isBeforeBoxInfo(SelectedInfoBox ib)
     {
-        
+        if (wBeforeBoxInfo == null)
+        {
+            wBeforeBoxInfo = ib.selectedBackground;
+            return;
+        }
+        wBeforeBoxInfo.gameObject.SetActive(false);
+        wBeforeBoxInfo = ib.selectedBackground;
+    }
+    public void getMenuUIControllerData()
+    {
+        _menuUIController.OpenSelectWeaponPanel();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnReturnMainMenuButtonFromWeaponInfoMenu()
     {
-        
+        childObject = transform.Find("WeaponInfoMenu").gameObject;
+        childObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
