@@ -3,6 +3,8 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
     [SerializeField] GameObject _coin;
+
+    bool isRespawnCoolTime = false;
     //몬스터 강화 킬카운트
     //엘리트 몬스터 소환되는 킬카운트 200단위
     //몬스터 총량 킬카운트, 엘리트몬스터는 총량 하나로 고 정,
@@ -10,18 +12,25 @@ public class MonsterController : MonoBehaviour
     //임시 5씩 늘어남 일반몹, 투사체
     private void Start()
     {
-
+        
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (isRespawnCoolTime == false)
         {
-            GenericSingleton<MonsterFactory>.getInstance().SummonMonster();
+            StartCoroutine(RespawnCollTime());
         }
-
     }
 
+    IEnumerator RespawnCollTime()
+    {
+        isRespawnCoolTime = true;
+        GenericSingleton<MonsterFactory>.getInstance().SummonMonster();
+        Debug.Log("소환");
+        yield return new WaitForSeconds(10.0f);
+        isRespawnCoolTime = false;
+    }
     public GameObject DropCoin { get { return _coin; } }
 }
   

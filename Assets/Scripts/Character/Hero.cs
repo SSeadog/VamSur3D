@@ -74,17 +74,17 @@ public class Hero : MonoBehaviour
     }
     Define.Monster _mStat;
     Define.MonsterType _mType;
-    public void MonsterInfo(Monster monster)
+    public void MonsterInfo(Define.Monster monster)
     {
         Debug.Log("MonsterInfo" + (_mStat == null));
         //_mType = monster._monType;
-        //_mStat = monster._monStat;
+        _mStat = monster;
     }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.GetComponent<Monster>() != null)
         {
-            MonsterInfo(collision.gameObject.GetComponent<Monster>());
+            MonsterInfo(collision.gameObject.GetComponent<Monster>().sendMonsterStat);
             if (_hit == false) StartCoroutine("hittedWait");
         }
     }

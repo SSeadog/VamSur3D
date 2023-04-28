@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4659073936285950110}
   - component: {fileID: 6927797366920600521}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: ExpGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986489594011004630}
   m_Layer: 0
-  m_Name: CoinBase
+  m_Name: ExpGemBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
