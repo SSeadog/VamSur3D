@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace State{
+namespace State
+{
     public class MonsterState
     {
         protected Monster _monster;
@@ -31,37 +33,37 @@ namespace State{
             base.OnEnter(monster);
         }
 
-        public override void MainLoop() 
+        public override void MainLoop()
         {
             void hitted()
             {
-                //if (_mb.getMonsterType == Define.MonsterType.NormalMob)
-                //{
-                //    _hp -= (int)_playerSkillDamage;
-                //    if (_hp <= 0)
-                //    {
-                //        Die();
-                //    }
-                //}
-                //else if (_mb.getMonsterType == Define.MonsterType.ProjectileMob)
-                //{
-                //    _hp -= (int)_playerSkillDamage;
-                //    if (_hp <= 0)
-                //    {
-                //        Die();
-                //    }
-                //}
-                //else if (_mb.getMonsterType == Define.MonsterType.EliteMob)
-                //{
-                //    _hp -= (int)_playerSkillDamage;
-                //    if (_hp <= 0)
-                //    {
-                //        Die();
-                //    }
-                //}
+                if (_monster.sendMonsterType == Define.MonsterType.NormalMob)
+                {
+                    _monster._hp -= (int)_monster.sendSkillDamage;
+                    if (_monster._hp <= 0)
+                    {
+                        _monster.ChangeUnitState(new DieState());
+                    }
+                }
+                else if (_monster.sendMonsterType == Define.MonsterType.ProjectileMob)
+                {
+                    _monster._hp -= (int)_monster.sendSkillDamage;
+                    if (_monster._hp <= 0)
+                    {
+                        _monster.ChangeUnitState(new DieState());
+                    }
+                }
+                else if (_monster.sendMonsterType == Define.MonsterType.EliteMob)
+                {
+                    _monster._hp -= (int)_monster.sendSkillDamage;
+                    if (_monster._hp <= 0)
+                    {
+                        _monster.ChangeUnitState(new DieState());
+                    }
+                }
             }
         }
-        
+
     }
 
     public class DieState : MonsterState
@@ -75,15 +77,13 @@ namespace State{
 
         public override void MainLoop()
         {
-            base.MainLoop();
-        }
-
-        public void Die()
-        {
-            //isDie = true;
-            //gameObject.SetActive(false);
-            //GameObject tmp = Instantiate(_coin);
-            //tmp.transform.position = transform.position;
+            void Die()
+            {
+                isDie = true;
+                _monster.gameObject.SetActive(false);
+                //GameObject tmp = Instantiate(_monster.sendGemInfo);
+                //tmp.transform.position = _monster.transform.position;
+            }
         }
     }
 }
