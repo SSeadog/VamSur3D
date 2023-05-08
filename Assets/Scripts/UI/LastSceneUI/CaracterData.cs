@@ -4,13 +4,12 @@ using UnityEngine.UI;
 public class CaracterData : MonoBehaviour
 {
     [SerializeField] Image heroImage;
-    [SerializeField] Text _caracLV;
-    [SerializeField] Text _livetimetx;
-    [SerializeField] Text _goldtx;
-    [SerializeField] Text _killstx;
-    [SerializeField] Text _damagestx;
-    [SerializeField] Text _null;
-    Hero _hero;
+    [SerializeField] Text _characterLVTXT;
+    [SerializeField] Text _liveTimeTXT;
+    [SerializeField] Text _goldTXT;
+    [SerializeField] Text _killsTXT;
+    [SerializeField] Text _damagesTXT;
+    [SerializeField] Text vacantTXT;
     private void Start()
     {
         Text();
@@ -18,12 +17,11 @@ public class CaracterData : MonoBehaviour
     }
     public void Text()
     {
-        _caracLV.text = "·¹º§" + GenericSingleton<GameManager>.getInstance().heroLv;
-        _livetimetx.text =  $"{GenericSingleton<GameManager>.getInstance().surviveTime.ToString("F1")}"+"ÃÊ »ýÁ¸" ;//$¹®Àº Çüº¯È¯¿¡»ç¿ë
-        _goldtx.text = "È¹µæ°ñµå" + GenericSingleton<GameManager>.getInstance().stageGold;
-        _killstx.text = "ÃÑÅ³" + GenericSingleton<GameManager>.getInstance().killCount;
-        _damagestx.text = "ÃÑµ¥¹ÌÁö" + GenericSingleton<GameManager>.getInstance().totalDmg;
-        _hero = new Hero();
+        _characterLVTXT.text = "·¹º§" + GenericSingleton<GameManager>.getInstance().heroLv;
+        _liveTimeTXT.text =  $"{GenericSingleton<GameManager>.getInstance().surviveTime.ToString("F1")}"+"ÃÊ »ýÁ¸" ;//$¹®Àº Çüº¯È¯¿¡»ç¿ë
+        _goldTXT.text = "È¹µæ°ñµå" + GenericSingleton<GameManager>.getInstance().stageGold;
+        _killsTXT.text = "ÃÑÅ³" + GenericSingleton<GameManager>.getInstance().killCount;
+        _damagesTXT.text = "ÃÑµ¥¹ÌÁö" + GenericSingleton<GameManager>.getInstance().totalDmg;
         if (GenericSingleton<GameManager>.getInstance().heroType == Define.HeroType.Wizard)
         {
             heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/WizardThumb", typeof(Sprite)) as Sprite;
