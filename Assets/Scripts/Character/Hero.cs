@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
-using static Define;
+using Define;
 enum EHeroMove
 {
     Idle,
@@ -14,7 +14,7 @@ enum EHeroMove
 }
 public class Hero : MonoBehaviour
 {
-    Define.Hero _herodata;
+    public Define.Hero _herodata;
     HeroState _heroState;
     public Color heroColor;
     [SerializeField] public SkinnedMeshRenderer _render;
@@ -27,7 +27,9 @@ public class Hero : MonoBehaviour
     public Vector3 fors;
     private void Awake()
     {
-        heroDataSet(GenericSingleton<GameManager>.getInstance().heroType);//Managers.Game.heroType== // 로비씬에서 넘겨준 데이터를 활용할 것선택된 타입
+        GenericSingleton<GameManager>.getInstance().Player = gameObject;
+
+        heroDataSet(GenericSingleton<GameManager>.getInstance().HeroType);//Managers.Game.heroType== // 로비씬에서 넘겨준 데이터를 활용할 것선택된 타입
         _hp = _herodata.hp;
         _attackpower = _herodata.power;
         Debug.Log(_hp);
@@ -41,10 +43,9 @@ public class Hero : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(GenericSingleton<GameManager>.getInstance().surviveTime);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
         _heroState = new HeroMove();
         SetStateMove(new HeroMove());// 상태 저장,실행
-        GenericSingleton<GameManager>.getInstance().player = gameObject;
     }
     void Update()
     {
@@ -52,7 +53,7 @@ public class Hero : MonoBehaviour
         {
             SetStateMove(new DieState());
         }
-        GenericSingleton<GameManager>.getInstance().surviveTime += Time.deltaTime;
+        GenericSingleton<GameManager>.getInstance().SurviveTime += Time.deltaTime;
         _heroState.NowState();
         _heroState.HittedColer();
         // 경험치 획득 임시 코드 // 몬스터가 죽었을때 실행하게 몬스터 코드에 있는게 맞음 몬스터 마다 경험치가 다르니
@@ -99,7 +100,6 @@ public class Hero : MonoBehaviour
 }
 public class HeroState
 {
-    protected Define.Hero _herodata;
     protected Hero _hero;
     public virtual void OnEnter(Hero hero)
     {
@@ -131,8 +131,8 @@ public class HeroMove : HeroState
     {
         float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
-        _hero._ani.SetFloat("AxisX", vX * _herodata.moveSpeed);
-        _hero._ani.SetFloat("AxisZ", vZ * _herodata.moveSpeed);
+        _hero._ani.SetFloat("AxisX", vX * _hero._herodata.moveSpeed);
+        _hero._ani.SetFloat("AxisZ", vZ * _hero._herodata.moveSpeed);
         float vY = _hero.GetComponent<Rigidbody>().velocity.y; //velocity == Rigidbody 속도
         Vector3 v3 = new Vector3(vX, 0, vZ).normalized;
         Vector3 vYz = v3 * 4.5f;

@@ -44,8 +44,8 @@ public class WeaponSelectItemUI : MonoBehaviour
         UnityAction action = () =>
         {
             Debug.Log($"{(Define.WeaponType)weaponInfo.id} {weaponInfo.lv}");
-            GenericSingleton<GameManager>.getInstance().playerWeaponLevels[(Define.WeaponType)weaponInfo.id] = weaponInfo.lv;
-            GenericSingleton<GameManager>.getInstance().player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
+            GenericSingleton<GameManager>.getInstance().SetPlayerWeaponLevel((Define.WeaponType)weaponInfo.id, weaponInfo.lv);
+            GenericSingleton<GameManager>.getInstance().Player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
             GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Close();
         };
 

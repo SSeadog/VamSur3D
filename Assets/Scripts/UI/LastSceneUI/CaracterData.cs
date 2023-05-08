@@ -18,17 +18,17 @@ public class CaracterData : MonoBehaviour
     }
     public void Text()
     {
-        _caracLV.text = "·¹º§" + GenericSingleton<GameManager>.getInstance().heroLv;
-        _livetimetx.text =  $"{GenericSingleton<GameManager>.getInstance().surviveTime.ToString("F1")}"+"ÃÊ »ýÁ¸" ;//$¹®Àº Çüº¯È¯¿¡»ç¿ë
-        _goldtx.text = "È¹µæ°ñµå" + GenericSingleton<GameManager>.getInstance().stageGold;
-        _killstx.text = "ÃÑÅ³" + GenericSingleton<GameManager>.getInstance().killCount;
-        _damagestx.text = "ÃÑµ¥¹ÌÁö" + GenericSingleton<GameManager>.getInstance().totalDmg;
+        _caracLV.text = "·¹º§" + GenericSingleton<GameManager>.getInstance().HeroLv;
+        _livetimetx.text =  $"{GenericSingleton<GameManager>.getInstance().SurviveTime.ToString("F1")}"+"ÃÊ »ýÁ¸" ;//$¹®Àº Çüº¯È¯¿¡»ç¿ë
+        _goldtx.text = "È¹µæ°ñµå" + GenericSingleton<GameManager>.getInstance().StageGold;
+        _killstx.text = "ÃÑÅ³" + GenericSingleton<GameManager>.getInstance().KillCount;
+        _damagestx.text = "ÃÑµ¥¹ÌÁö" + GenericSingleton<GameManager>.getInstance().TotalDmg;
         _hero = new Hero();
-        if (GenericSingleton<GameManager>.getInstance().heroType == Define.HeroType.Wizard)
+        if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.Wizard)
         {
             heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/WizardThumb", typeof(Sprite)) as Sprite;
         }
-        if (GenericSingleton<GameManager>.getInstance().heroType == Define.HeroType.SwordHero)
+        if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.SwordHero)
         {
             heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/SwordHeroThumb", typeof(Sprite)) as Sprite;
         }
