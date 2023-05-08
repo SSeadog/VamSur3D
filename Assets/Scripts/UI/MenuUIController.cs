@@ -1,13 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using UnityEditor.Build.Content;
-using System;
 using UnityEngine;
-using DG.Tweening;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -18,15 +11,13 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] Transform _characterContent;
     [SerializeField] GameObject WeaponUpgradeMenuPanel;
     [SerializeField] Transform _weaponContent;
-
-
-
+    [SerializeField] GameObject WeaponSelectPanel;
 
     // Start is called before the first frame update
     public void OnSelectCharacterMenu()
     {
         CharacterMenuPanel.SetActive(true);
-        initSelectBox();
+        initCharaterSelectBox();
     }
 
     public void OpenSelectCharacterPanel()
@@ -34,12 +25,19 @@ public class MenuUIController : MonoBehaviour
         CharacterInfoMenuPanel.SetActive(true);
     }
 
-    public void OpenWeaponUpgradePanel()
+    public void OnSelectWeaponUpgradeMenu()
     {
         WeaponUpgradeMenuPanel.SetActive(true);
+        initWeaponSelectBox();
     }
 
-    public void initSelectBox()
+    public void OpenSelectWeaponPanel()
+    {
+        WeaponSelectPanel.SetActive(true);
+        
+    }
+
+    public void initCharaterSelectBox()
     {
         for (int i = 0; i < 17; i++)
         {
@@ -47,6 +45,28 @@ public class MenuUIController : MonoBehaviour
             GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
             infoBoxTmp.name = "CharacterBox";
+
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            entry.callback.AddListener((eventData) => { infoBoxTmp.GetComponent<SelectedInfoBox>().OnClickedCharacterBox(); });
+
+            infoBoxTmp.GetComponent<EventTrigger>().triggers.Add(entry);
+        }
+    }
+
+    public void initWeaponSelectBox()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject infoBoxTmp = Instantiate(CharacterBox, _weaponContent);
+            infoBoxTmp.GetComponent<SelectedInfoBox>().Init(WeaponUpgradeMenuPanel.GetComponent<WeaponBoxController>());
+            infoBoxTmp.name = "WeaponBox";
+
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            entry.callback.AddListener((eventData) => { infoBoxTmp.GetComponent<SelectedInfoBox>().OnClickedWeaponBox(); });
+
+            infoBoxTmp.GetComponent<EventTrigger>().triggers.Add(entry);
         }
     }
 
@@ -58,9 +78,10 @@ public class MenuUIController : MonoBehaviour
     }
 
     // MainStart 테스트코드
+    //캐릭터 선택된 정보 메인씬으로 전달
     public void TestStartMain()
     {
-        Managers.Game.heroType = Define.HeroType.Wizard;
+        GenericSingleton<GameManager>.getInstance().heroType = Define.HeroType.Wizard;
         SceneManager.LoadScene("MainScene");
     }
 }

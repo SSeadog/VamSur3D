@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
+    protected Define.WeaponType _weaponType;
     protected float _power;
     protected float _coolTime;
     protected int _projectileCount;
     protected float _projectileSpeed;
-    protected int _enhenceLevel;
+    protected int _enhanceLevel;
 
     public virtual void Init(Define.Weapon data)
     {
@@ -18,13 +17,12 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void InitSkill(Define.Weapon data)
     {
-        Define.WeaponType type = (Define.WeaponType)data.id;
+        _weaponType = (Define.WeaponType)data.id;
         _power = data.power;
         _coolTime = data.coolTime;
         _projectileCount = data.projectileCount;
         _projectileSpeed = data.projectileSpeed;
-        _enhenceLevel = Managers.Data.GetWeaponEnhenceLevel(type);
-
+        _enhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhenceLevel(_weaponType);
     }
 
     protected abstract void StartSkill();
@@ -43,13 +41,9 @@ public abstract class WeaponBase : MonoBehaviour
         return rad;
     }
 
-    private void ApplyEnhenceLevel(Define.Weapon data)
-    {
-    }
-
     public float GetPower()
     {
-        return _power * (1f + 0.05f * _enhenceLevel);
+        return _power * GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(_weaponType, _enhanceLevel).power;
     }
 
     public abstract void Clear();

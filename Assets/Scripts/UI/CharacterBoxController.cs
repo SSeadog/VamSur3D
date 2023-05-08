@@ -9,20 +9,19 @@ public class CharacterBoxController : MonoBehaviour
 
     //이전오브젝트정보를 받아와서 지금 현재 오브젝트가 실행될 경우 이전오브젝트의 setactive(false)
     [SerializeField]    MenuUIController _menuUIController;
-    public Transform BeforeBoxInfo = null;
+    public Transform cBeforeBoxInfo = null;
     GameObject childObject;
 
     int num = 1;
     public void isBeforeBoxInfo(SelectedInfoBox ib)
     {
-        if (BeforeBoxInfo == null)
+        if (cBeforeBoxInfo == null)
         {
-            BeforeBoxInfo = ib.selectedBackground;
+            cBeforeBoxInfo = ib.selectedBackground;
             return;
         }
-        BeforeBoxInfo.gameObject.SetActive(false);
-        BeforeBoxInfo = ib.selectedBackground;
-
+        cBeforeBoxInfo.gameObject.SetActive(false);
+        cBeforeBoxInfo = ib.selectedBackground;
     }
 
     public void getMenuUIControllerData()
@@ -30,10 +29,12 @@ public class CharacterBoxController : MonoBehaviour
         _menuUIController.OpenSelectCharacterPanel();
     }
 
-    public void OnReturnMainMenuButton()
+    public void OnReturnMainMenuButtonFromCharacterInfoMenu()
     {
-        gameObject.SetActive(false);
         childObject = transform.Find("CharacterInfoMenu").gameObject;
         childObject.SetActive(false);
+        gameObject.SetActive(false);
     }
+
+
 } 

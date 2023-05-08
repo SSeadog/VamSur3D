@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamageUI : MonoBehaviour
+public class DamageUI : UIBase
 {
     // Todo
     // 크리티컬 데미지 색 구분 필요
