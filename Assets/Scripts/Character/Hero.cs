@@ -99,10 +99,9 @@ public class Hero : MonoBehaviour
     public void hitted()
     {
         Debug.Log("hitted 角青");
-        Debug.Log(_mStat.power);
         _hp -= _mStat.power;
         Debug.Log(_hp);
-        Debug.Log("hitted 单固瘤 角青");
+        Debug.Log("hitted 单固瘤 教青");
         if (_hp <= 0)
         {
             fors = gameObject.transform.position;
