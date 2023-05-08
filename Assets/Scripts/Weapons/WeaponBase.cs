@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
@@ -24,7 +22,7 @@ public abstract class WeaponBase : MonoBehaviour
         _coolTime = data.coolTime;
         _projectileCount = data.projectileCount;
         _projectileSpeed = data.projectileSpeed;
-        _enhanceLevel = Managers.Data.GetWeaponEnhenceLevel(_weaponType);
+        _enhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhenceLevel(_weaponType);
     }
 
     protected abstract void StartSkill();
@@ -45,7 +43,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     public float GetPower()
     {
-        return _power * Managers.Data.GetWeaponEnhanceInfo(_weaponType, _enhanceLevel).power;
+        return _power * GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(_weaponType, _enhanceLevel).power;
     }
 
     public abstract void Clear();

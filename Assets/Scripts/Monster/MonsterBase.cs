@@ -18,7 +18,7 @@ public class NormolMonster : MonsterBase
 {
     public override void Init()
     {
-        _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.NormalMob);
+        _monStat = GenericSingleton<DataManager>.getInstance().GetMonsterInfo(Define.MonsterType.NormalMob);
         _monType = Define.MonsterType.NormalMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.NormalMob);
         _obj.GetComponent<Monster>().Init(this);
@@ -31,7 +31,7 @@ public class ProjectileMonster : MonsterBase
 {
     public override void Init()
     {
-        _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.ProjectileMob);
+        _monStat = GenericSingleton<DataManager>.getInstance().GetMonsterInfo(Define.MonsterType.ProjectileMob);
         _monType = Define.MonsterType.ProjectileMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.ProjectileMob);
         _obj.GetComponent<Monster>().Init(this);
@@ -43,7 +43,7 @@ public class EliteMonster : MonsterBase
 {
     public override void Init()
     {
-        _monStat = Managers.Data.GetMonsterInfo(Define.MonsterType.EliteMob);
+        _monStat = GenericSingleton<DataManager>.getInstance().GetMonsterInfo(Define.MonsterType.EliteMob);
         _monType = Define.MonsterType.EliteMob;
         _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.EliteMob);
         _obj.GetComponent<Monster>().Init(this);

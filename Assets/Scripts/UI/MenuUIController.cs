@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using UnityEditor.Build.Content;
-using System;
 using UnityEngine;
-using DG.Tweening;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
@@ -33,7 +25,7 @@ public class MenuUIController : MonoBehaviour
         CharacterInfoMenuPanel.SetActive(true);
     }
 
-    public void OpenWeaponUpgradePanel()
+    public void OnSelectWeaponUpgradeMenu()
     {
         WeaponUpgradeMenuPanel.SetActive(true);
         initWeaponSelectBox();
@@ -89,7 +81,7 @@ public class MenuUIController : MonoBehaviour
     //캐릭터 선택된 정보 메인씬으로 전달
     public void TestStartMain()
     {
-        Managers.Game.heroType = Define.HeroType.Wizard;
+        GenericSingleton<GameManager>.getInstance().HeroType = Define.HeroType.Wizard;
         SceneManager.LoadScene("MainScene");
     }
 }

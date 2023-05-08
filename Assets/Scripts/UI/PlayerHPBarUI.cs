@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHPBarUI : MonoBehaviour
+public class PlayerHPBarUI : UIBase
 {
     // Todo
     // 실제 Player HP 데이터 받아서 지속적으로 UI갱신되도록 해야함
@@ -16,7 +16,7 @@ public class PlayerHPBarUI : MonoBehaviour
 
     public void Init()
     {
-        _hero=Managers.Game.player.GetComponent<Hero>();
+        _hero = GenericSingleton<GameManager>.getInstance().Player.GetComponent<Hero>();
 
         _target = GameObject.FindGameObjectWithTag("Player");
         _offset = new Vector3(0, 0.2f, -1f);

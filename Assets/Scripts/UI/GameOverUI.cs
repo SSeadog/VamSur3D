@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
+public class GameOverUI : UIBase
 {
     // Todo
     // Manager에서 GameEnd 플래그 만들면 해당 플래그에 맞게 로드하기
@@ -56,6 +56,6 @@ public class GameOverUI : MonoBehaviour
 
     void OnQuitButtonClicked()
     {
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("Lastscene");
     }
 }

@@ -1,49 +1,64 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
-    public UIManager uIManager;
-    public int totalGold;
+    Dictionary<Define.WeaponType, int> _playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
 
-    public GameObject player;
-    public Define.HeroType heroType;
-    public Dictionary<Define.WeaponType, int> playerWeaponLevels;
-    public int heroLv = 1;
-    public int heroExp;
-    public float surviveTime;
-    public int killCount;
-    public int stageGold;
-    public float totalDmg;
+    public GameObject Player { get; set; }
+    public Define.HeroType HeroType { get; set; } = Define.HeroType.Wizard;
+    public int HeroLv { get; set; }
+    public int HeroExp { get; set; }
+    public float SurviveTime { get; set; }
+    public int KillCount { get; set; }
+    public int TotlGold { get; set; }
+    public int StageGold { get; set; }
+    public float TotalDmg { get; set; }
 
     public void GetExp(int exp)
     {
-        heroExp += exp;
-        if (heroExp >= heroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
+        HeroExp += exp;
+        if (HeroExp >= HeroExp * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
-            heroLv++;
-            uIManager.playerStatusUI.SetLv(heroLv);
+            HeroLv++;
+            GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().SetLv(HeroLv);
             // 무기 선택 UI 띄우기
-            uIManager.weaponSelectUI.Open();
+            GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Open();
         }
     }
 
-    public void Init()
+    public List<Define.WeaponType> GetCurrentWeaponList()
     {
+        return new List<Define.WeaponType>(_playerWeaponLevels.Keys);
+    }
 
+    public int GetCurrentWeaponLevel(Define.WeaponType type)
+    {
+        return _playerWeaponLevels[type];
+    }
+
+    public void SetPlayerWeaponLevel(Define.WeaponType type, int level)
+    {
+        if (_playerWeaponLevels.ContainsKey(type))
+        {
+            _playerWeaponLevels[type] = level;
+        }
+        else
+        {
+            _playerWeaponLevels.Add(type, level);
+        }
     }
 
     public void Clear()
     {
-        player = null;
-        heroType = Define.HeroType.None;
-        playerWeaponLevels.Clear();
-        heroLv = 0;
-        heroExp = 0;
-        surviveTime = 0f;
-        killCount = 0;
-        stageGold = 0;
-        totalDmg = 0f;
+        Player = null;
+        HeroType = Define.HeroType.None;
+        _playerWeaponLevels.Clear();
+        HeroLv = 0;
+        HeroExp = 0;
+        SurviveTime = 0f;
+        KillCount = 0;
+        StageGold = 0;
+        TotalDmg = 0f;
     }
 }

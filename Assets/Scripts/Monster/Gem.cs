@@ -25,6 +25,6 @@ public class Gem : MonoBehaviour
         //영웅이 일정거리 들어왔을때 끌어들이도록하는 조건 추가
         //천천히 딸려오도록 고려
         //위치는 영웅을 따라오도록
-        transform.position = Vector3.Lerp(transform.position, Managers.Game.player.transform.position, 0.5f);
+        transform.position = Vector3.Lerp(transform.position, GenericSingleton<GameManager>.getInstance().Player.transform.position, 0.5f);
     }
 }
