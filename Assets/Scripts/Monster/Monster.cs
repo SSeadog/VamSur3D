@@ -15,27 +15,22 @@ public class Monster : MonoBehaviour
     MonsterBase _mb;
     MonsterState _state;
 
-    bool isHit;
-    public int _hp;
-
-    
-
     float _playerSkillDamage;
-    float _monsterDamage;
+    bool isHit;
 
+    public int _hp;
+    
     public float getDamage { get {return _mb.getMonsterStat.power; } } // 영웅에게 데미지를 주는 함수
+    public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
+    public Define.Monster sendMonsterStat {  get { return _mb.getMonsterStat;} }
+    public float sendSkillDamage { get { return _playerSkillDamage; } }
+    public GameObject sendGemInfo { get { return _gem;} }
+
     public void Init(MonsterBase mb)
     {
         _mb = mb;
         _hp = _mb.getMonsterStat.hp;
     }
-
-    public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }
-    public Define.Monster sendMonsterStat {  get { return _mb.getMonsterStat;} }
-
-    public float sendSkillDamage { get { return _playerSkillDamage; } }
-
-    public GameObject sendGemInfo { get { return _gem;} }
 
     public void ChangeUnitState(MonsterState state)
     {

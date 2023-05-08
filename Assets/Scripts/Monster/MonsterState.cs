@@ -6,8 +6,10 @@ namespace State
 {
     public class MonsterState
     {
-        bool _isHit;
         protected Monster _monster;
+
+        bool _isHit;
+        
 
         public virtual void OnEnter(Monster monster)
         {

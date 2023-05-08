@@ -5,17 +5,18 @@ using UnityEngine;
 public class WeaponBoxController : MonoBehaviour
 {
     [SerializeField] MenuUIController _menuUIController;
-    public Transform wBeforeBoxInfo = null;
     GameObject childObject;
+    Transform wBeforeBoxInfo = null;
+
     public void isBeforeBoxInfo(SelectedInfoBox ib)
     {
         if (wBeforeBoxInfo == null)
         {
-            wBeforeBoxInfo = ib.selectedBackground;
+            wBeforeBoxInfo = ib.SelectBackground;
             return;
         }
         wBeforeBoxInfo.gameObject.SetActive(false);
-        wBeforeBoxInfo = ib.selectedBackground;
+        wBeforeBoxInfo = ib.SelectBackground;
     }
     public void getMenuUIControllerData()
     {

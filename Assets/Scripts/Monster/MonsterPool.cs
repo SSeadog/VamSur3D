@@ -5,8 +5,9 @@ using UnityEngine;
 public class MonsterPool : MonoBehaviour
 {
     List<GameObject> _lstObj = new List<GameObject>();
-    private static MonsterPool _instance;
     GameObject[] _monObjs = null;
+
+
 
     public List<GameObject> LstObj { get { return _lstObj; } }
 

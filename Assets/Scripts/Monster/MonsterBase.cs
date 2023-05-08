@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Utils;
 using UnityEngine;
 
@@ -10,9 +8,7 @@ public abstract class MonsterBase
     protected Define.MonsterType _monType;
 
     public Define.MonsterType getMonsterType { get { return _monType; } }
-
     public Define.Monster getMonsterStat { get { return _monStat; } }
-
 
     public abstract void Init();
 

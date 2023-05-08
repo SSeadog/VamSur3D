@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterFactory : MonoBehaviour
 {
     List<MonsterFactoryBase> monFactories = new List<MonsterFactoryBase>();
+   
     public int killCount;
     void Init()
     {

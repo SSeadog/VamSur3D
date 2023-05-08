@@ -1,15 +1,16 @@
 using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectedInfoBox : MonoBehaviour
 {
     CharacterBoxController cb;
     WeaponBoxController wb;
-
     Transform hoveringCharacterBox;
-    public Transform selectedBackground;
+    Transform selectedBackground;
+
+    public Transform SelectBackground { get { return selectedBackground; } }
+
     Vector3 Maxv3 = new Vector3(1.05f, 1.05f, 1.05f);
     Vector3 Minv3 = Vector3.one;
 
