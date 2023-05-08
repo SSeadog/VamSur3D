@@ -14,7 +14,7 @@ public class PlayerStatusUI : UIBase
         _playerInfo = GetComponentInChildren<PlayerInfo>();
         _itemSlots = GetComponentInChildren<ItemSlots>();
 
-        SetLv(GenericSingleton<GameManager>.getInstance().heroLv);
+        SetLv(GenericSingleton<GameManager>.getInstance().HeroLv);
         SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
     }
 
@@ -25,7 +25,7 @@ public class PlayerStatusUI : UIBase
 
     public void SetLv(int lv)
     {
-        _playerInfo.SetLv(GenericSingleton<GameManager>.getInstance().heroLv);
+        _playerInfo.SetLv(GenericSingleton<GameManager>.getInstance().HeroLv);
     }
 
     public void SetThumbnail(string path)

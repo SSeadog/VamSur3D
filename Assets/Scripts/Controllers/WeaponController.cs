@@ -3,20 +3,16 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    UIManager uIManager;
-
     void Start()
     {
-        GenericSingleton<GameManager>.getInstance().playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
-        GenericSingleton<GameManager>.getInstance().playerWeaponLevels[Define.WeaponType.Boomerang] = 3;
+        // 임시 코드
+        GenericSingleton<GameManager>.getInstance().SetPlayerWeaponLevel(Define.WeaponType.Boomerang, 3);
 
-        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(GenericSingleton<GameManager>.getInstance().playerWeaponLevels.Keys);
-
-        uIManager = GameObject.Find("UIRoot").GetComponent<UIManager>();
+        List<Define.WeaponType> weaponTypes = GenericSingleton<GameManager>.getInstance().GetCurrentWeaponList();
 
         for (int i = 0; i < weaponTypes.Count; i++)
         {
-            LoadWeapon(GenericSingleton<DataManager>.getInstance().GetWeaponInfo(weaponTypes[i], GenericSingleton<GameManager>.getInstance().playerWeaponLevels[weaponTypes[i]]));
+            LoadWeapon(GenericSingleton<DataManager>.getInstance().GetWeaponInfo(weaponTypes[i], GenericSingleton<GameManager>.getInstance().GetCurrentWeaponLevel(weaponTypes[i])));
         }
     }
 

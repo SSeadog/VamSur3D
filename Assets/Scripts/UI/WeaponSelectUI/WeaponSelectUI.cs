@@ -83,7 +83,7 @@ public class WeaponSelectUI : UIBase
                 break;
         }
 
-        int randomWeaponLevel = GenericSingleton<GameManager>.getInstance().playerWeaponLevels.ContainsKey(randomWeaponType) ? GenericSingleton<GameManager>.getInstance().playerWeaponLevels[randomWeaponType] + 1 : 1;
+        int randomWeaponLevel = GenericSingleton<GameManager>.getInstance().GetCurrentWeaponList().Contains(randomWeaponType) ? GenericSingleton<GameManager>.getInstance().GetCurrentWeaponLevel(randomWeaponType) + 1 : 1;
         Define.Weapon weapon = null;
         try
         {

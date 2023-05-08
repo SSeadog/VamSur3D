@@ -21,7 +21,7 @@ public class PlayerExpBarUI : UIBase
 
     void Update()
     {
-        curExp = GenericSingleton<GameManager>.getInstance().heroExp - (GenericSingleton<GameManager>.getInstance().heroLv - 1) * 100f;
+        curExp = GenericSingleton<GameManager>.getInstance().HeroExp - (GenericSingleton<GameManager>.getInstance().HeroLv - 1) * 100f;
         maxExp = 100f;
         ResizeBar(curExp / maxExp);
     }

@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+// 디버그 코드
 
 public class MainSceneTestController : MonoBehaviour
 {
