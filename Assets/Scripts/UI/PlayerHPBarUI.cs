@@ -14,7 +14,7 @@ public class PlayerHPBarUI : UIBase
 
     RectTransform _foreground;
 
-    public void Init()
+    public override void Init()
     {
         _hero = GenericSingleton<GameManager>.getInstance().Player.GetComponent<Hero>();
 
@@ -25,11 +25,6 @@ public class PlayerHPBarUI : UIBase
 
         _foreground = transform.Find("Panel/Foreground").GetComponent<RectTransform>();
         maxHP = _hero._hp;
-    }
-
-    void Start()
-    {
-        Init();
     }
 
     void Update()

@@ -18,7 +18,7 @@ public class GameOverUI : UIBase
     Image[] _images;
     float[] _imgAlphas;
 
-    public void Init()
+    public override void Init()
     {
         _quitButton = GetComponentInChildren<Button>();
         _quitButton.onClick.AddListener(() => { OnQuitButtonClicked(); });

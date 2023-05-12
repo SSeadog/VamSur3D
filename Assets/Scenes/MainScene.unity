@@ -366,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9124629634af31240b2e260fad15460b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
 --- !u!4 &564829326
 Transform:
   m_ObjectHideFlags: 0
@@ -414,7 +413,7 @@ GameObject:
   - component: {fileID: 668197301}
   - component: {fileID: 668197303}
   m_Layer: 0
-  m_Name: UIRoot
+  m_Name: UIRegister
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

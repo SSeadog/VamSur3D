@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class UIBase : MonoBehaviour
 {
-    // 모든 UI들의 부모가 되는 클래스
+    public virtual void Init()
+    {
+
+    }
+
+    void Start()
+    {
+        Init();
+    }
 }

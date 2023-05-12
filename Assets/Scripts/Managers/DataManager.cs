@@ -4,11 +4,9 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     private Dictionary<Define.HeroType, Define.Hero> _heroDict;
-
     private Dictionary<Define.WeaponType, Dictionary<int, Define.Weapon>> _weaponDict;
     private Dictionary<Define.WeaponType, List<Define.WeaponEnhance>> _weaponEnhanceDict;
     private Dictionary<Define.WeaponType, int> _currentWeaponInhanceDict;
-
     private Dictionary<Define.MonsterType, Define.Monster> _monsterDict;
 
     void Awake()

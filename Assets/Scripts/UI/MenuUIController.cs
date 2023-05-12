@@ -81,7 +81,7 @@ public class MenuUIController : MonoBehaviour
     //캐릭터 선택된 정보 메인씬으로 전달
     public void TestStartMain()
     {
-        GenericSingleton<GameManager>.getInstance().HeroType = Define.HeroType.Wizard;
+        GenericSingleton<GameManager>.getInstance().GameStart(Define.HeroType.Wizard);
         SceneManager.LoadScene("MainScene");
     }
 }

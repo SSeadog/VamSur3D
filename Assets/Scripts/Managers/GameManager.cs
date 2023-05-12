@@ -15,14 +15,24 @@ public class GameManager : MonoBehaviour
     public int StageGold { get; set; }
     public float TotalDmg { get; set; }
 
+    public void GameStart(Define.HeroType heroType)
+    {
+        HeroType = heroType;
+        HeroLv = 1;
+        HeroExp = 0;
+        SurviveTime = 0f;
+        KillCount = 0;
+        StageGold = 0;
+        TotalDmg = 0f;
+    }
+
     public void GetExp(int exp)
     {
         HeroExp += exp;
-        if (HeroExp >= HeroExp * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
+        if (HeroExp >= HeroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
             HeroLv++;
             GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().SetLv(HeroLv);
-            // 무기 선택 UI 띄우기
             GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Open();
         }
     }

@@ -1,4 +1,3 @@
-using Utils;
 using UnityEngine;
 
 public abstract class MonsterBase

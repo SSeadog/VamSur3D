@@ -9,14 +9,9 @@ public class PlayerExpBarUI : UIBase
 
     RectTransform _foreground;
 
-    public void Init()
+    public override void Init()
     {
         _foreground = transform.Find("Panel/Foreground").GetComponent<RectTransform>();
-    }
-
-    void Start()
-    {
-        Init();
     }
 
     void Update()
