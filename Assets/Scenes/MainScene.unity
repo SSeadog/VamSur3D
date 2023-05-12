@@ -366,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9124629634af31240b2e260fad15460b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
 --- !u!4 &564829326
 Transform:
   m_ObjectHideFlags: 0
@@ -606,6 +605,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: wizard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}

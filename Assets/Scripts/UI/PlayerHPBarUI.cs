@@ -24,7 +24,7 @@ public class PlayerHPBarUI : UIBase
         transform.rotation = Camera.main.transform.rotation;
 
         _foreground = transform.Find("Panel/Foreground").GetComponent<RectTransform>();
-        maxHP = _hero._hp;
+        maxHP = _hero.HeroHP;
     }
 
     void Start()
@@ -35,7 +35,7 @@ public class PlayerHPBarUI : UIBase
     void Update()
     {
         transform.position = _target.transform.position + _offset;
-        ResizeBar(_hero._hp / maxHP);
+        ResizeBar(_hero.HeroHP / maxHP);
     }
 
     void ResizeBar(float percent)

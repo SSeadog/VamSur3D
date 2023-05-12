@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public void GetExp(int exp)
     {
         HeroExp += exp;
-        if (HeroExp >= HeroExp * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
+        if (HeroExp >= HeroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
             HeroLv++;
             GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().SetLv(HeroLv);
