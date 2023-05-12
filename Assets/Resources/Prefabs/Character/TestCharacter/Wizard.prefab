@@ -744,8 +744,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7845919088774120577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4766386, y: -0.8901546, z: -0.37606394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2593,10 +2593,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7846996910102874700}
   - component: {fileID: 7846996910102874699}
-  - component: {fileID: 3291139547685527472}
+  - component: {fileID: 91386144}
+  - component: {fileID: 91386149}
+  - component: {fileID: 91386145}
+  - component: {fileID: 91386146}
   m_Layer: 0
   m_Name: Wizard
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2629,20 +2632,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2799cf3a445964ea383f8af9f240b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroColor: {r: 1, g: 1, b: 1, a: 0}
-  _render: {fileID: 7858676212877042361}
-  _ani: {fileID: 7905305630947859369}
-  _rotate: {fileID: 7845919088774120577}
-  _Hero: {fileID: 7845919088774120577}
-  _speed: 3
-  _hp: 60
-  _dietimer: 0
-  _lifetimer: 0
-  _hittimer: 0
-  _totalDMG: 0
-  _LV: 0
-  _killcount: 0
-  _exp: 0
-  _hittidpowor: 20
-  _hit: 0
-  fors: {x: 0, y: 0, z: 0}
+--- !u!54 &91386144
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846996910102874698}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &91386149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846996910102874698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &91386145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846996910102874698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f79672e774b1a741a991742a8f0c9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &91386146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846996910102874698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ed3dffda0130e48b1f243d03e846e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

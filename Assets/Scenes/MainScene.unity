@@ -608,6 +608,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846996910102874699, guid: dbb2d901a26760b41a86835022075cca, type: 3}
       propertyPath: heroColor.b
       value: 1
       objectReference: {fileID: 0}
