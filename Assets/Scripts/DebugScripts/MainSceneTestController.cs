@@ -7,7 +7,6 @@ public class MainSceneTestController : MonoBehaviour
     WeaponSelectUI _boxInteractionUI;
     GameObject _damageUI;
     GameOverUI _gameOverUI;
-    ESCMenuUI _escMenuUI;
 
     void Start()
     {
@@ -15,11 +14,8 @@ public class MainSceneTestController : MonoBehaviour
         
         _damageUI = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
         
-        _gameOverUI = GameObject.Find("UIRoot").transform.Find("GameOverUI").GetComponent<GameOverUI>();
+        _gameOverUI = GenericSingleton<UIManager>.getInstance().GetUI<GameOverUI>();
         _gameOverUI.Init();
-
-        _escMenuUI = GameObject.Find("UIRoot").transform.Find("ESCMenuUI").GetComponent<ESCMenuUI>();
-        _escMenuUI.Init();
     }
 
     void Update()

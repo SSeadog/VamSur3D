@@ -5,7 +5,7 @@ public class UIRegister : MonoBehaviour
 {
     [SerializeField] private List<UIBase> lstUI;
 
-    void Start()
+    void Awake()
     {
         RegistUI();
     }
