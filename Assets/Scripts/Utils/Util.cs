@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public static class Util
@@ -20,15 +21,32 @@ public static class Util
 
     public static Dictionary<T, T2> LoadJsonDict<T, T2>(string path)
     {
-        TextAsset textAsset = Resources.Load<TextAsset>(path);
-        return JsonConvert.DeserializeObject<Dictionary<T, T2>>(textAsset.text);
+
+        string text = "";
+        if (path.IndexOf(".json") == -1)
+        {
+            text = Resources.Load<TextAsset>(path).text;
+        }
+        else
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                text = sr.ReadToEnd();
+            }
+        }
+
+        return JsonConvert.DeserializeObject<Dictionary<T, T2>>(text);
     }
     #endregion
 
     #region
-    public static void WriteJson<T>(string path, T info)
+    public static void SaveJson<T>(T data, string fileName)
     {
-
+        string json = JsonConvert.SerializeObject(data);
+        using (StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/" + fileName))
+        {
+            sw.Write(json);
+        }
     }
     #endregion
 }

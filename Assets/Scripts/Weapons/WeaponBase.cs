@@ -22,7 +22,7 @@ public abstract class WeaponBase : MonoBehaviour
         _coolTime = data.coolTime;
         _projectileCount = data.projectileCount;
         _projectileSpeed = data.projectileSpeed;
-        _enhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhenceLevel(_weaponType);
+        _enhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_weaponType);
     }
 
     protected abstract void StartSkill();

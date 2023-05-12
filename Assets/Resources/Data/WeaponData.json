@@ -255,7 +255,7 @@
       "projectileCount": 1,
       "projectileSpeed": 1,
       "coolTime": 2,
-      "imageUrl": "",
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/circular",
       "rank": "EPIC",
       "desc": "적중하면 튕기는 부메랑 투척!",
       "levelDesc": "신규 획득!"
@@ -267,7 +267,7 @@
       "projectileCount": 2,
       "projectileSpeed": 1,
       "coolTime": 2,
-      "imageUrl": "",
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/circular",
       "rank": "EPIC",
       "desc": "적중하면 튕기는 부메랑 투척!",
       "levelDesc": "투사체 + 1"
@@ -279,7 +279,7 @@
       "projectileCount": 2,
       "projectileSpeed": 1,
       "coolTime": 1.5,
-      "imageUrl": "",
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/circular",
       "rank": "EPIC",
       "desc": "적중하면 튕기는 부메랑 투척!",
       "levelDesc": "데미지 + 10\n쿨타임 - 0.5"
@@ -291,7 +291,7 @@
       "projectileCount": 3,
       "projectileSpeed": 2,
       "coolTime": 1.5,
-      "imageUrl": "",
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/circular",
       "rank": "EPIC",
       "desc": "적중하면 튕기는 부메랑 투척!",
       "levelDesc": "투사체 + 1\n 투사체 속도 + 1(수정 필요)"
@@ -303,7 +303,7 @@
       "projectileCount": 3,
       "projectileSpeed": 1,
       "coolTime": 1.5,
-      "imageUrl": "",
+      "imageUrl": "Art/Textures/UI/icon/DarkBrownTheme/simple/circular",
       "rank": "EPIC",
       "desc": "적중하면 튕기는 부메랑 투척!",
       "levelDesc": "투사체 + 1\n쿨타임 - 0.5\n데미지 + 5"

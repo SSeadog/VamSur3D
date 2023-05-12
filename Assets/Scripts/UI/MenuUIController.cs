@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] GameObject CharacterInfoBox;
     [SerializeField] Transform _characterContent;
     [SerializeField] GameObject WeaponUpgradeMenuPanel;
+    [SerializeField] GameObject WeaponBox;
     [SerializeField] Transform _weaponContent;
     [SerializeField] GameObject WeaponSelectPanel;
 
@@ -31,10 +33,10 @@ public class MenuUIController : MonoBehaviour
         initWeaponSelectBox();
     }
 
-    public void OpenSelectWeaponPanel()
+    public void OpenSelectWeaponPanel(Define.WeaponType type)
     {
         WeaponSelectPanel.SetActive(true);
-        
+        WeaponSelectPanel.GetComponent<WeaponInfoMenu>().SetData(type);
     }
 
     public void initCharaterSelectBox()
@@ -56,10 +58,16 @@ public class MenuUIController : MonoBehaviour
 
     public void initWeaponSelectBox()
     {
-        for (int i = 0; i < 5; i++)
+        // 무기 개수만큼 로드하고 데이터도 전달하기
+        List<Define.WeaponType> weaponTypes = new List<Define.WeaponType>(GenericSingleton<DataManager>.getInstance().WeaponDict.Keys);
+        foreach (Define.WeaponType weaponType in weaponTypes)
         {
-            GameObject infoBoxTmp = Instantiate(CharacterBox, _weaponContent);
+            Define.Weapon weaponInfo = GenericSingleton<DataManager>.getInstance().GetWeaponInfo(weaponType);
+            int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(weaponType);
+
+            GameObject infoBoxTmp = Instantiate(WeaponBox, _weaponContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(WeaponUpgradeMenuPanel.GetComponent<WeaponBoxController>());
+            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(weaponInfo.imageUrl, weaponType.ToString());
             infoBoxTmp.name = "WeaponBox";
 
             EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -69,8 +77,6 @@ public class MenuUIController : MonoBehaviour
             infoBoxTmp.GetComponent<EventTrigger>().triggers.Add(entry);
         }
     }
-
-  
 
     public void initSelectedCharacter()
     {
