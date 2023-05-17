@@ -14,4 +14,3 @@ public class GenericSingleton<T> where T : MonoBehaviour
         return _instance;
     }
 }
-

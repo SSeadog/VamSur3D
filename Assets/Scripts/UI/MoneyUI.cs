@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyUI : MonoBehaviour
+public class MoneyUI : UIBase
 {
     // Todo
     // 실제 데이터 받아서 보여주기

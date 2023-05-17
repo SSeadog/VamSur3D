@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerStatusUI : MonoBehaviour
+public class PlayerStatusUI : UIBase
 {
     // Todo
     // CharacterInfo UI에 캐릭터 썸네일 로드
@@ -18,7 +14,7 @@ public class PlayerStatusUI : MonoBehaviour
         _playerInfo = GetComponentInChildren<PlayerInfo>();
         _itemSlots = GetComponentInChildren<ItemSlots>();
 
-        SetLv(Managers.Game.heroLv);
+        SetLv(GenericSingleton<GameManager>.getInstance().HeroLv);
         SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
     }
 
@@ -29,7 +25,7 @@ public class PlayerStatusUI : MonoBehaviour
 
     public void SetLv(int lv)
     {
-        _playerInfo.SetLv(Managers.Game.heroLv);
+        _playerInfo.SetLv(GenericSingleton<GameManager>.getInstance().HeroLv);
     }
 
     public void SetThumbnail(string path)

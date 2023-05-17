@@ -821,12 +821,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4970f90a2446984ba3646e12a3cdeaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _caracLV: {fileID: 14346652}
-  _livetimetx: {fileID: 1037640288}
-  _goldtx: {fileID: 271190106}
-  _killstx: {fileID: 1205445273}
-  _damagestx: {fileID: 134328018}
-  _null: {fileID: 1644045254}
+  heroImage: {fileID: 1529527195}
+  _characterLVTXT: {fileID: 0}
+  _liveTimeTXT: {fileID: 0}
+  _goldTXT: {fileID: 0}
+  _killsTXT: {fileID: 0}
+  _damagesTXT: {fileID: 0}
+  vacantTXT: {fileID: 0}
 --- !u!1 &610060670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1859111369
 Transform:
   m_ObjectHideFlags: 0

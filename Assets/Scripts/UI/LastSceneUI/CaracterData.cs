@@ -1,37 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CaracterData : MonoBehaviour
 {
-
-    [SerializeField] Text _caracLV;
-    [SerializeField] Text _livetimetx;
-    [SerializeField] Text _goldtx;
-    [SerializeField] Text _killstx;
-    [SerializeField] Text _damagestx;
-    [SerializeField] Text _null;
-    int _LV = 0;
-    float _livetime = 0f;
-    int _gold = 0;
-    int _kills = 0;
-    int _damages = 0;
+    [SerializeField] Image heroImage;
+    [SerializeField] Text _characterLVTXT;
+    [SerializeField] Text _liveTimeTXT;
+    [SerializeField] Text _goldTXT;
+    [SerializeField] Text _killsTXT;
+    [SerializeField] Text _damagesTXT;
+    [SerializeField] Text vacantTXT;
     private void Start()
-
     {
-       _livetime = PlayerPrefs.GetFloat("_lifetime");//PlayerPrefs.setint("이름"값),PlayerPrefs.getint("받을이름")
-       _damages = PlayerPrefs.GetInt("_totalDMG");
-        _LV = PlayerPrefs.GetInt("_LV");
-        _kills = PlayerPrefs.GetInt("_killcount");
-        Debug.Log(_livetime);
         Text();
+        GenericSingleton<GameManager>.getInstance().Clear();
     }
     public void Text()
     {
-        _caracLV.text = "레벨" + _LV;
-        _livetimetx.text =  $"{Managers.Game.surviveTime.ToString("F1")}"+"초 생존" ;//$문은 형변환에사용
-        _goldtx.text = "획득골드" + _gold;
-        _killstx.text = "총킬" + _kills;
-        _damagestx.text = "총데미지" + _damages;
+        _characterLVTXT.text = "레벨" + GenericSingleton<GameManager>.getInstance().HeroLv;
+        _liveTimeTXT.text =  $"{GenericSingleton<GameManager>.getInstance().SurviveTime.ToString("F1")}"+"초 생존" ;//$문은 형변환에사용
+        _goldTXT.text = "획득골드" + GenericSingleton<GameManager>.getInstance().StageGold;
+        _killsTXT.text = "총킬" + GenericSingleton<GameManager>.getInstance().KillCount;
+        _damagesTXT.text = "총데미지" + GenericSingleton<GameManager>.getInstance().TotalDmg;
+        if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.Wizard)
+        {
+            heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/WizardThumb", typeof(Sprite)) as Sprite;
+        }
+        if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.SwordHero)
+        {
+            heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/SwordHeroThumb", typeof(Sprite)) as Sprite;
+        }
     }
 }

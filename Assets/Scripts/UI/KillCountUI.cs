@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class KillCountUI : MonoBehaviour
+public class KillCountUI : UIBase
 {
     // Todo
     // 실제 데이터 받아서 보여주기

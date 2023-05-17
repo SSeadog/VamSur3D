@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerExpBarUI : MonoBehaviour
+public class PlayerExpBarUI : UIBase
 {
     // Todo
     // 실제 데이터 받아서 연동하기
@@ -23,7 +21,7 @@ public class PlayerExpBarUI : MonoBehaviour
 
     void Update()
     {
-        curExp = Managers.Game.heroExp - (Managers.Game.heroLv - 1) * 100f;
+        curExp = GenericSingleton<GameManager>.getInstance().HeroExp - (GenericSingleton<GameManager>.getInstance().HeroLv - 1) * 100f;
         maxExp = 100f;
         ResizeBar(curExp / maxExp);
     }

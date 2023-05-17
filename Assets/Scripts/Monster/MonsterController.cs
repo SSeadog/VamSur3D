@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static Define;
 
 public class MonsterController : MonoBehaviour
 {

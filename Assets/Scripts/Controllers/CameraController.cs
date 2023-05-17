@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    GameObject _target;
-
     [SerializeField] float offsetX = 12f;
     [SerializeField] float offsetY = -8f;
+
+    GameObject _target;
 
     void Start()
     {
