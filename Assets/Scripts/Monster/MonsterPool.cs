@@ -7,8 +7,6 @@ public class MonsterPool : MonoBehaviour
     List<GameObject> _lstObj = new List<GameObject>();
     GameObject[] _monObjs = null;
 
-
-
     public List<GameObject> LstObj { get { return _lstObj; } }
 
     void Init()
