@@ -14,6 +14,7 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] GameObject WeaponBox;
     [SerializeField] Transform _weaponContent;
     [SerializeField] GameObject WeaponSelectPanel;
+    [SerializeField] GameObject _settingsMenu;
 
     // Start is called before the first frame update
     public void OnSelectCharacterMenu()
@@ -31,6 +32,11 @@ public class MenuUIController : MonoBehaviour
     {
         WeaponUpgradeMenuPanel.SetActive(true);
         initWeaponSelectBox();
+    }
+
+    public void OnSettingsMenu()
+    {
+        _settingsMenu.SetActive(true);
     }
 
     public void OpenSelectWeaponPanel(Define.WeaponType type)
@@ -67,7 +73,7 @@ public class MenuUIController : MonoBehaviour
 
             GameObject infoBoxTmp = Instantiate(WeaponBox, _weaponContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(WeaponUpgradeMenuPanel.GetComponent<WeaponBoxController>());
-            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(weaponInfo.imageUrl, weaponType.ToString());
+            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(weaponInfo.thumbnailPath, weaponType.ToString());
             infoBoxTmp.name = "WeaponBox";
 
             EventTrigger.Entry entry = new EventTrigger.Entry();

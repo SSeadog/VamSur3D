@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHPBarUI : UIBase
 {
-    // Todo
-    // 실제 Player HP 데이터 받아서 지속적으로 UI갱신되도록 해야함
     float maxHP = 0;
     Hero _hero;
     GameObject _target;

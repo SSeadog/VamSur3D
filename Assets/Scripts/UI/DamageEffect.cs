@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamageUI : UIBase
+public class DamageEffect : UIBase
 {
-    // Todo
-    // 크리티컬 데미지 색 구분 필요
-
     Vector3 _moveVec = new Vector3(0, 1f, 0);
     TMP_Text _damageText;
-    int _damage;
+    float _damage;
     float _speed = 3f;
     float _lifeTime = 0.5f;
     float _timer = 0;
 
 
-    public void SetText(int damage)
+    public void SetText(float damage)
     {
         _damage = damage;
     }

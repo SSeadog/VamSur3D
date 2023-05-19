@@ -32,6 +32,13 @@ public class WeaponBoxController : MonoBehaviour
     public void OnReturnMainMenuButtonFromWeaponInfoMenu()
     {
         childObject = transform.Find("WeaponInfoMenu").gameObject;
+        
+        SelectedInfoBox[] boxes = GetComponentsInChildren<SelectedInfoBox>();
+        foreach(SelectedInfoBox box in boxes)
+        {
+            Destroy(box.gameObject);
+        }
+
         childObject.SetActive(false);
         gameObject.SetActive(false);
     }

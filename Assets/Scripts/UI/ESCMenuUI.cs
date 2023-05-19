@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class ESCMenuUI : PopupUIBase
 {
-    // Todo
-    // Fade 효과 주기
-
     Button _resumeButton;
     Button _settingsButton;
     Button _exitButton;

@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player { get; set; }
     public Define.HeroType HeroType { get; set; } = Define.HeroType.Wizard;
-    public int HeroLv { get; set; }
-    public int HeroExp { get; set; }
+    public int HeroLv { get; set; } = 1;
+    public int HeroExp { get; set; } = 0;
     public float SurviveTime { get; set; }
     public int KillCount { get; set; }
     public int TotlGold { get; set; } = 101;
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public void GetExp(int exp)
     {
         HeroExp += exp;
+        Debug.Log($"HeroExp: {HeroExp} HeroLv: {HeroLv}");
         if (HeroExp >= HeroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
             HeroLv++;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
         return _playerWeaponLevels[type];
     }
 
-    public void SetPlayerWeaponLevel(Define.WeaponType type, int level)
+    public void SetCurrentWeaponLevel(Define.WeaponType type, int level)
     {
         if (_playerWeaponLevels.ContainsKey(type))
         {

@@ -14567,8 +14567,8 @@ GameObject:
   - component: {fileID: 198371139109276902}
   - component: {fileID: 199651328102623302}
   - component: {fileID: 6334665807874306836}
-  - component: {fileID: 2033862829651553182}
   - component: {fileID: 3185318102985856374}
+  - component: {fileID: 4337801987268272804}
   m_Layer: 0
   m_Name: Redfire
   m_TagString: PlayerSkill
@@ -19402,18 +19402,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2033862829651553182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692517446758730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0f75cfbffd5bf4995a2bf0a23ef8bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &3185318102985856374
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19427,3 +19415,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4337801987268272804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692517446758730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83cfc7514c897c54aae2bd90283cdf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageEffectOriginal: {fileID: 6982492613998358070, guid: 4bb7a1e5b260e6f418d063ead142ea36, type: 3}

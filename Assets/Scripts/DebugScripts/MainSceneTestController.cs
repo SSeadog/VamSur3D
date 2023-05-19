@@ -31,7 +31,7 @@ public class MainSceneTestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             GameObject instance = Instantiate(_damageUI, transform.position + Vector3.forward, Quaternion.Euler(40, 0, 0));
-            instance.GetComponent<DamageUI>().SetText(Random.Range(1, 100));
+            instance.GetComponent<DamageEffect>().SetText(Random.Range(1, 100));
         }
         if (Input.GetKeyDown(KeyCode.L))
         {

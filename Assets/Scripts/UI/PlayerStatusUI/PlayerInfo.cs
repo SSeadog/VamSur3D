@@ -13,7 +13,7 @@ public class PlayerInfo : UIBase
 
     public override void Init()
     {
-        _thumbnailImage = transform.Find("ThumbFrame/Thumbnail").GetComponent<Image>();
+        _thumbnailImage = transform.Find("ThumbFrame/ThumbMask/Thumb").GetComponent<Image>();
         _lvText = transform.Find("LvFrame/LvText").GetComponent<TMP_Text>();
     }
 

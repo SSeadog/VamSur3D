@@ -15,12 +15,14 @@ public class PlayerStatusUI : UIBase
         _itemSlots = GetComponentInChildren<ItemSlots>();
 
         SetLv(GenericSingleton<GameManager>.getInstance().HeroLv);
-        SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
+        Define.HeroType heroType = GenericSingleton<GameManager>.getInstance().HeroType;
+        string path = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType).thumbnailPath;
+        SetThumbnail(path);
     }
 
     public void AddItem(Define.Weapon weaponData)
     {
-        _itemSlots.AddItem(weaponData.imageUrl);
+        _itemSlots.AddItem(weaponData.thumbnailPath);
     }
 
     public void SetLv(int lv)
@@ -30,6 +32,6 @@ public class PlayerStatusUI : UIBase
 
     public void SetThumbnail(string path)
     {
-        _playerInfo.SetThumbnail("Art/Textures/CharacterThumbnails/Seadog-modified");
+        _playerInfo.SetThumbnail(path);
     }
 }

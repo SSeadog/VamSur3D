@@ -22,7 +22,7 @@ public class WeaponInfoMenu : MonoBehaviour
         int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type);
         Define.WeaponEnhanceData enhanceData = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(_type, curEnhanceLevel);
 
-        Sprite thumb = Instantiate(Resources.Load<Sprite>(weaponData.imageUrl));
+        Sprite thumb = Instantiate(Resources.Load<Sprite>(weaponData.thumbnailPath));
         _thumbImage.sprite = thumb;
         _nameText.text = _type.ToString();
         _lvText.text = curEnhanceLevel.ToString();
@@ -31,11 +31,13 @@ public class WeaponInfoMenu : MonoBehaviour
     }
     public void EnhanceWeapon()
     {
-        Define.Weapon weaponData = GenericSingleton<DataManager>.getInstance().GetWeaponInfo(_type);
-        int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type);
-        Define.WeaponEnhanceData enhanceData = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(_type, curEnhanceLevel);
-
         bool result = GenericSingleton<GameManager>.getInstance().UpgradeWeaponEnhanceLevel(_type);
+
+        if (result == true)
+        {
+            int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type);
+            _lvText.text = curEnhanceLevel.ToString();
+        }
 
         Debug.Log($"강화 성공 여부: {result} {_type}강화 레벨: {GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type)}");
     }

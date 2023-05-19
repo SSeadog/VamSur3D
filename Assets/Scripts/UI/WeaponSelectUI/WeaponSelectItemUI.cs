@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class WeaponSelectItemUI : MonoBehaviour
 {
-    // Todo
-    // 데이터를 받아서 설정하기
-    // 클릭 이벤트 설정
-
     public Define.Weapon weaponInfo;
 
     Image _itemImage;
@@ -44,7 +40,7 @@ public class WeaponSelectItemUI : MonoBehaviour
         UnityAction action = () =>
         {
             Debug.Log($"{(Define.WeaponType)weaponInfo.id} {weaponInfo.lv}");
-            GenericSingleton<GameManager>.getInstance().SetPlayerWeaponLevel((Define.WeaponType)weaponInfo.id, weaponInfo.lv);
+            GenericSingleton<GameManager>.getInstance().SetCurrentWeaponLevel((Define.WeaponType)weaponInfo.id, weaponInfo.lv);
             GenericSingleton<GameManager>.getInstance().Player.GetComponent<WeaponController>().LoadWeapon(weaponInfo);
             GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Close();
         };

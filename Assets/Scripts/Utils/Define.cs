@@ -6,7 +6,7 @@ namespace Define
         public int hp;
         public int moveSpeed;
         public float power;
-        public string imageUrl;
+        public string thumbnailPath;
         public string prefabPath;
     }
     
@@ -19,7 +19,7 @@ namespace Define
         public float projectileSpeed;
         public float coolTime;
         public string prefabPath;
-        public string imageUrl;
+        public string thumbnailPath;
         public string rank;
         public string desc;
         public string levelDesc;

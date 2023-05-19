@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class KillCountUI : UIBase
 {
-    // Todo
-    // 실제 데이터 받아서 보여주기
-    [SerializeField] int killCount = 1234;
-
     TMP_Text _text;
 
     public override void Init()
@@ -21,7 +17,7 @@ public class KillCountUI : UIBase
 
     void Update()
     {
-        SetKillCount(killCount);
+        SetKillCount(GenericSingleton<GameManager>.getInstance().KillCount);
     }
 
     void SetKillCount(int kc)

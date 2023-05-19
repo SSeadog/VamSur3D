@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class SkillProjectile : MonoBehaviour
 {
-    float _damage = 0f;
+    [SerializeField] GameObject _damageEffectOriginal;
+    private float _damage = 0f;
 
     public float Damage { get { return _damage; } }
+
     public void Init(float damage)
     {
         _damage = damage;
+    }
+
+    protected virtual void OnTriggerEnterAction()
+    {
+        DamageEffect effect = Instantiate(_damageEffectOriginal, transform.position + Vector3.forward, Quaternion.Euler(40, 0, 0)).GetComponent<DamageEffect>();
+        effect.SetText(_damage);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,10 +26,6 @@ public class SkillProjectile : MonoBehaviour
         if (!other.CompareTag("Monster"))
             return;
 
-        if (gameObject.name == "Boomerang(Clone)")
-            gameObject.GetComponent<BoomerangProjectile>().Attack();
-
-        // 데미지는 _damage를 이용해서 전달
-        Debug.Log($"{gameObject.name}스킬 충돌!! 대상 : {other.name} 데미지 : {_damage}");
+        OnTriggerEnterAction();
     }
 }

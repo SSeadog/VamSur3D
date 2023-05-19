@@ -6,22 +6,17 @@ using UnityEngine.UI;
 
 public class MoneyUI : UIBase
 {
-    // Todo
-    // 실제 데이터 받아서 보여주기
-    [SerializeField] int money = 777;
-
     TMP_Text _text;
 
     public override void Init()
     {
         base.Init();
         _text = transform.Find("Panel/Text").GetComponent<TMP_Text>();
-
     }
 
     void Update()
     {
-        SetMoney(money);
+        SetMoney(GenericSingleton<GameManager>.getInstance().StageGold);
     }
 
     void SetMoney(int m)

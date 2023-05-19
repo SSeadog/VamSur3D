@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class WeaponSelectUI : UIBase
 {
-    // Todo
-    // subItem 실제 데이터를 받아서 로드
-
     GameObject _subitemRoot;
     GameObject _subItem;
 

@@ -4,7 +4,7 @@
     "hp": 100,
     "moveSpeed": 5,
     "power": 1,
-    "imageUrl": "Art/Textures/CharacterThumb/SwordHeroThumb",
+    "thumbnailPath": "Art/Textures/CharacterThumbnails/SwordHeroThumb",
     "prefabPath": "Prefabs/Character/TestCharacter/SwordHero"
   },
   "Wizard": {
@@ -12,7 +12,7 @@
     "hp": 60,
     "moveSpeed": 3,
     "power": 1.1,
-    "imageUrl": "Art/Textures/CharacterThumb/WizardThumb",
+    "thumbnailPath": "Art/Textures/CharacterThumbnails/WizardThumb",
     "prefabPath": "Prefabs/Character/TestCharacter/Wizard"
   }
 }

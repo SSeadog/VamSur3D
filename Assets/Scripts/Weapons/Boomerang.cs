@@ -29,7 +29,7 @@ public class Boomerang : WeaponBase
                 GameObject instance = Instantiate(_original);
                 instance.transform.position = transform.position + Vector3.up + mouseVec * 2f;
                 instance.GetComponent<SkillProjectile>().Init(GetPower());
-                instance.GetComponent<BoomerangProjectile>().Init(mouseVec, _projectileSpeed);
+                instance.GetComponent<BoomerangProjectile>().SetData(mouseVec, _projectileSpeed);
 
                 yield return new WaitForSeconds(0.2f);
             }

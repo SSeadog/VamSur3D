@@ -11,4 +11,9 @@ public class SettingsUI : PopupUIBase
             CloseUI();
         }
     }
+
+    public void OnReturnMainMenuButton()
+    {
+        gameObject.SetActive(false);
+    }
 }

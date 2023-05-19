@@ -76,6 +76,9 @@ public class Bible : WeaponBase
 
     public override void Clear()
     {
+        foreach (var instance in _bibles)
+            Destroy(instance);
 
+        _bibles.Clear();
     }
 }
