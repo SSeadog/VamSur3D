@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace State
 {
@@ -24,15 +26,31 @@ namespace State
 
     public class MoveState : MonsterState
     {
+        Hero _hero;
+        int monsterSpeed = 2;
         public override void OnEnter(Monster monster)
         {
             base.OnEnter(monster);
         }
         public override void MainLoop()
         {
-            
+            _hero = GenericSingleton<GameManager>.getInstance().Player.gameObject.GetComponent<Hero>();
             //플레이어를 따라가도록 하는 기능
+            _monster.transform.position = Vector3.MoveTowards(_monster.transform.position, _hero.transform.position, Time.deltaTime * monsterSpeed);
+
+
         }
+
+        
+
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    if(collision.gameObject.CompareTag("Player"))
+        //    {
+        //        _hero = collision.gameObject.GetComponent<Hero>();
+        //    }
+
+        //}
     }
 
     public class HittedState : MonsterState
@@ -45,6 +63,8 @@ namespace State
 
         public override void MainLoop()
         {
+
+           
             _hp = _monster._hp;
             if (_monster.sendMonsterType == Define.MonsterType.NormalMob)
             {
@@ -84,6 +104,8 @@ namespace State
 
             }
         }
+
+     
 
     }
 
