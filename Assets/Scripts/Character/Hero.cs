@@ -14,8 +14,8 @@ enum EHeroMove
 }
 public class Hero : MonoBehaviour
 {
-   
-    HeroState _HeroState;
+    HeroState _heroState;
+    HeroTypeCheck _heroTypeCheck = new HeroTypeCheck();
     Define.Monster _mStat;
     Define.Hero _heroData;
     public Define.Hero _HeroData { get { return _heroData; } set { _heroData = value; } }
@@ -31,31 +31,12 @@ public class Hero : MonoBehaviour
     public Vector3 _fors { get { return fors; } set { fors = value; } }
     bool hit = false;   public bool _hit { get { return hit; } set { hit = value; } }
     float _hp = 0f;   public float HeroHP { get { return _hp; } set { _hp = value; } }
-    float _attackPower = 0f;
-    private void Awake()
-    {
-        heroDataSet(GenericSingleton<GameManager>.getInstance().HeroType);
-        _HeroAni = GetComponentInChildren<Animator>();
-        _render = GetComponentInChildren<SkinnedMeshRenderer>();
-        _heroColor = _render.material.color;
-        Debug.Log(_HeroAni);
-        GenericSingleton<GameManager>.getInstance().Player = gameObject;
-        Debug.Log(_HeroData );
-        HeroHP = _HeroData.hp;
-        _attackPower = _HeroData.power;//
-    }
-   public  void heroDataSet(HeroType inheroType)
-    {
-        Define.HeroType heroType = inheroType; 
-        Define.Hero heroData = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
-        GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
-        _HeroData = heroData;
-    }
     void Start()
     {
-
+        heroDataSave();
+        Debug.Log(_HeroAni);
         Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
-        _HeroState = new HeroMove();
+        _heroState = new HeroMove();
         SetStateMove(new HeroMove());// 상태 저장,실행
 
     }
@@ -66,8 +47,8 @@ public class Hero : MonoBehaviour
             SetStateMove(new DieState());
         }
         GenericSingleton<GameManager>.getInstance().SurviveTime += Time.deltaTime;
-        _HeroState.NowState();
-        _HeroState.HittedColer();
+        _heroState.NowState();
+        _heroState.HittedColer();
         // 경험치 획득 임시 코드 // 몬스터가 죽었을때 실행하게 몬스터 코드에 있는게 맞음 몬스터 마다 경험치가 다르니
         if (Input.GetKeyDown(KeyCode.E))
             GenericSingleton<GameManager>.getInstance().GetExp(10);
@@ -75,7 +56,7 @@ public class Hero : MonoBehaviour
 
     public void MonsterInfo(Define.Monster monster)
     {
-        Debug.Log("MonsterInfo" + (_mStat == null));
+    //  Debug.Log("MonsterInfo" + (_mStat == null));
         _mStat = monster;
     }
     private void OnCollisionStay(Collision collision)
@@ -105,8 +86,18 @@ public class Hero : MonoBehaviour
     }
     public void SetStateMove(HeroState state)
     {
-        _HeroState = state;
-        _HeroState.OnEnter(this);
+        _heroState = state;
+        _heroState.OnEnter(this);
+    }
+    void heroDataSave()
+    {
+        _heroTypeCheck.HeroCheck(GenericSingleton<GameManager>.getInstance().HeroType);
+        _HeroData = _heroTypeCheck._heroData;
+        _HeroAni = GetComponentInChildren<Animator>();
+        _render = GetComponentInChildren<SkinnedMeshRenderer>();
+        _heroColor = _render.material.color;
+        HeroHP = _HeroData.hp;
+        GenericSingleton<GameManager>.getInstance().Player = gameObject;
     }
 }
 public class HeroState
@@ -116,7 +107,6 @@ public class HeroState
     public virtual void OnEnter(Hero hero)
     {
         _hero = hero;
-        _hero.heroDataSet(GenericSingleton<GameManager>.getInstance().HeroType);
     }
     public virtual void HeroDieState() { }
     public virtual void NowState() { }
