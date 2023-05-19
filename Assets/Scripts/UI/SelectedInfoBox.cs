@@ -37,6 +37,9 @@ public class SelectedInfoBox : MonoBehaviour
 
     void Start()
     {
+        if (_thumbPath == null || _name == null)
+            return;
+
         _nameText.text = _name;
         _thumb.sprite = Instantiate(Resources.Load<Sprite>(_thumbPath));
         _thumb.color = Color.white;
