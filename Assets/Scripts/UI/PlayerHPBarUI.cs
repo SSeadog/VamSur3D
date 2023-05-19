@@ -33,6 +33,7 @@ public class PlayerHPBarUI : UIBase
 
     void ResizeBar(float percent)
     {
+        Debug.Log(_foreground);
         _foreground.localScale = new Vector3(percent, 1f, 0f);
     }
 }

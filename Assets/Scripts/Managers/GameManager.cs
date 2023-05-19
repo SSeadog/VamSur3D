@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
     Dictionary<Define.WeaponType, int> _playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
 
     public GameObject Player { get; set; }
-    public Define.HeroType HeroType { get; set; } = Define.HeroType.Wizard;
-    public int HeroLv { get; set; } = 1;
-    public int HeroExp { get; set; } = 0;
+    public Define.HeroType HeroType { get; set; } = Define.HeroType.SwordHero;//SwordHero//Wizard 를 메뉴씬에서 씬전환시 set해준다
+    public int HeroLv { get; set; }
+    public int HeroExp { get; set; }
     public float SurviveTime { get; set; }
     public int KillCount { get; set; }
     public int TotlGold { get; set; } = 101;
