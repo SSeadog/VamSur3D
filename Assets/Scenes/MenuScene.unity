@@ -943,6 +943,7 @@ GameObject:
   - component: {fileID: 644250794}
   - component: {fileID: 644250796}
   - component: {fileID: 644250795}
+  - component: {fileID: 644250797}
   m_Layer: 5
   m_Name: WeaponInfoMenu
   m_TagString: Untagged
@@ -1013,6 +1014,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644250793}
   m_CullTransparentMesh: 1
+--- !u!114 &644250797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644250793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61c73e9bd09e0e46ab73abdba988683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _thumbImage: {fileID: 353208889}
+  _nameText: {fileID: 705722663}
+  _lvText: {fileID: 1725406188}
+  _descriptionText: {fileID: 193936427}
+  _costText: {fileID: 525903793}
+  _button: {fileID: 1606617430}
 --- !u!224 &676036970 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8606950565915606428, guid: ce92df340401c39438e4aae7fa9bef17, type: 3}
@@ -1165,7 +1184,6 @@ GameObject:
   - component: {fileID: 768056986}
   - component: {fileID: 768056985}
   - component: {fileID: 768056984}
-  - component: {fileID: 768056988}
   - component: {fileID: 768056989}
   m_Layer: 5
   m_Name: PowerUpsMenu
@@ -1257,20 +1275,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &768056988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768056982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee15d58dbf25554b9389169462f0101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuUIController: {fileID: 1554271179}
-  BeforeBoxInfo: {fileID: 0}
 --- !u!114 &768056989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,7 +1288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuUIController: {fileID: 1554271179}
-  wBeforeBoxInfo: {fileID: 0}
 --- !u!1 &815697138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4723546323657247123, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
@@ -1940,6 +1943,7 @@ MonoBehaviour:
   CharacterInfoBox: {fileID: 815697138}
   _characterContent: {fileID: 341063718}
   WeaponUpgradeMenuPanel: {fileID: 768056982}
+  WeaponBox: {fileID: 5519510946145920797, guid: e057c04cfc7243a4295ab7a14eccffa7, type: 3}
   _weaponContent: {fileID: 1726409902}
   WeaponSelectPanel: {fileID: 644250793}
 --- !u!4 &1554271180
@@ -2040,7 +2044,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 768056988}
+      - m_Target: {fileID: 768056989}
         m_TargetAssemblyTypeName: WeaponBoxController, Assembly-CSharp
         m_MethodName: OnReturnMainMenuButtonFromWeaponInfoMenu
         m_Mode: 1
@@ -2173,7 +2177,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606617431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 644250797}
+        m_TargetAssemblyTypeName: WeaponInfoMenu, Assembly-CSharp
+        m_MethodName: EnhanceWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606617431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,6 +2382,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8606950565915606428, guid: ce92df340401c39438e4aae7fa9bef17, type: 3}
   m_PrefabInstance: {fileID: 213977898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1708994058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708994060}
+  - component: {fileID: 1708994059}
+  m_Layer: 0
+  m_Name: DebugScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1708994059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708994058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c843d77e42bf442ba7135ff376e407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1708994060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708994058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1327.6954, y: 409.41, z: 2.9654498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709133498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,7 +2698,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 560, y: 760}
+  m_SizeDelta: {x: 560, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1726409903
 MonoBehaviour:

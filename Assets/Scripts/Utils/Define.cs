@@ -25,11 +25,12 @@ namespace Define
         public string levelDesc;
     }
 
-    public class WeaponEnhance
+    public class WeaponEnhanceData
     {
         public int id;
         public int enhanceLv;
         public float power;
+        public int cost;
     }
 
     public class Monster

@@ -7,8 +7,8 @@ public class ItemSlot : MonoBehaviour
 {
     public bool isFilled = false;
 
-    string _itemImagePath;
-    Image _itemImage;
+    private string _itemImagePath;
+    private Image _itemImage;
     
     public void Init()
     {

@@ -4,23 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : UIBase
 {
-    string _thumbnailPath;
-    int _lv;
+    private Image _thumbnailImage;
+    private TMP_Text _lvText;
+    private string _thumbnailPath;
+    private int _lv;
 
-    Image _thumbnailImage;
-    TMP_Text _lvText;
-
-    public void Init()
+    public override void Init()
     {
         _thumbnailImage = transform.Find("ThumbFrame/Thumbnail").GetComponent<Image>();
         _lvText = transform.Find("LvFrame/LvText").GetComponent<TMP_Text>();
-    }
-
-    void Start()
-    {
-        Init();
     }
 
     public void SetThumbnail(string path)

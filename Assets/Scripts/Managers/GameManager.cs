@@ -11,18 +11,28 @@ public class GameManager : MonoBehaviour
     public int HeroExp { get; set; }
     public float SurviveTime { get; set; }
     public int KillCount { get; set; }
-    public int TotlGold { get; set; }
+    public int TotlGold { get; set; } = 101;
     public int StageGold { get; set; }
     public float TotalDmg { get; set; }
+
+    public void GameStart(Define.HeroType heroType)
+    {
+        HeroType = heroType;
+        HeroLv = 1;
+        HeroExp = 0;
+        SurviveTime = 0f;
+        KillCount = 0;
+        StageGold = 0;
+        TotalDmg = 0f;
+    }
 
     public void GetExp(int exp)
     {
         HeroExp += exp;
-        if (HeroExp >= HeroExp * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
+        if (HeroExp >= HeroLv * 100) // 레벨업 조건은 임시 조건. 추후 수정 필요
         {
             HeroLv++;
             GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().SetLv(HeroLv);
-            // 무기 선택 UI 띄우기
             GenericSingleton<UIManager>.getInstance().GetUI<WeaponSelectUI>().Open();
         }
     }
@@ -47,6 +57,20 @@ public class GameManager : MonoBehaviour
         {
             _playerWeaponLevels.Add(type, level);
         }
+    }
+
+    public bool UpgradeWeaponEnhanceLevel(Define.WeaponType weaponType)
+    {
+        int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(weaponType);
+        int cost = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(weaponType, curEnhanceLevel).cost;
+        if (TotlGold > cost)
+        {
+            TotlGold -= cost;
+            GenericSingleton<DataManager>.getInstance().SetWeaponEnhanceLevel(weaponType, curEnhanceLevel + 1);
+            return true;
+        }
+
+        return false;
     }
 
     public void Clear()

@@ -7,6 +7,12 @@ public class WeaponBoxController : MonoBehaviour
     [SerializeField] MenuUIController _menuUIController;
     GameObject childObject;
     Transform wBeforeBoxInfo = null;
+    Define.WeaponType _curSelectWeaponType;
+
+    public void SetData(Define.WeaponType type)
+    {
+        _curSelectWeaponType = type;
+    }
 
     public void isBeforeBoxInfo(SelectedInfoBox ib)
     {
@@ -20,7 +26,7 @@ public class WeaponBoxController : MonoBehaviour
     }
     public void getMenuUIControllerData()
     {
-        _menuUIController.OpenSelectWeaponPanel();
+        _menuUIController.OpenSelectWeaponPanel(_curSelectWeaponType);  
     }
 
     public void OnReturnMainMenuButtonFromWeaponInfoMenu()

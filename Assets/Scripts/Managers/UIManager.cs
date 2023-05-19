@@ -23,4 +23,17 @@ public class UIManager : MonoBehaviour
         GameObject original = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
         return Instantiate(original);
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ESCMenuUI eSCMenuUI = GetUI<ESCMenuUI>();
+
+            if (eSCMenuUI.gameObject.activeSelf == false)
+                eSCMenuUI.ShowUI();
+            else
+                eSCMenuUI.CloseUI();
+        }
+    }
 }

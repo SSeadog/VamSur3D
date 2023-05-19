@@ -11,9 +11,12 @@ public class KillCountUI : UIBase
 
     TMP_Text _text;
 
-    void Start()
+    public override void Init()
     {
+        base.Init();
+
         _text = transform.Find("Panel/Text").GetComponent<TMP_Text>();
+
     }
 
     void Update()

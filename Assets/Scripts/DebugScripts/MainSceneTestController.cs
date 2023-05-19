@@ -7,7 +7,6 @@ public class MainSceneTestController : MonoBehaviour
     WeaponSelectUI _boxInteractionUI;
     GameObject _damageUI;
     GameOverUI _gameOverUI;
-    ESCMenuUI _escMenuUI;
 
     void Start()
     {
@@ -15,11 +14,8 @@ public class MainSceneTestController : MonoBehaviour
         
         _damageUI = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
         
-        _gameOverUI = GameObject.Find("UIRoot").transform.Find("GameOverUI").GetComponent<GameOverUI>();
+        _gameOverUI = GenericSingleton<UIManager>.getInstance().GetUI<GameOverUI>();
         _gameOverUI.Init();
-
-        _escMenuUI = GameObject.Find("UIRoot").transform.Find("ESCMenuUI").GetComponent<ESCMenuUI>();
-        _escMenuUI.Init();
     }
 
     void Update()
@@ -35,7 +31,7 @@ public class MainSceneTestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             GameObject instance = Instantiate(_damageUI, transform.position + Vector3.forward, Quaternion.Euler(40, 0, 0));
-            instance.GetComponent<DamageUI>().Init(Random.Range(1, 100));
+            instance.GetComponent<DamageUI>().SetText(Random.Range(1, 100));
         }
         if (Input.GetKeyDown(KeyCode.L))
         {

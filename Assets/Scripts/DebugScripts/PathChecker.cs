@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIBase : MonoBehaviour
+public class PathChecker : MonoBehaviour
 {
-    public virtual void Init()
-    {
-
-    }
-
     void Start()
     {
-        Init();
+        Debug.Log(Application.persistentDataPath);
     }
 }

@@ -11,10 +11,12 @@ public class MoneyUI : UIBase
     [SerializeField] int money = 777;
 
     TMP_Text _text;
-    
-    void Start()
+
+    public override void Init()
     {
+        base.Init();
         _text = transform.Find("Panel/Text").GetComponent<TMP_Text>();
+
     }
 
     void Update()

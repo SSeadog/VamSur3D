@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSlots : MonoBehaviour
+public class ItemSlots : UIBase
 {
     // 칸은 미리 다 있어야하고
     // 빈칸은 null로 두고
     ItemSlot[] _items = new ItemSlot[6];
 
-    void Start()
-    {
-        Init();
-    }
-
-    public void Init()
+    public override void Init()
     {
         GenerateSlots();
     }

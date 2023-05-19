@@ -822,12 +822,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroImage: {fileID: 1529527195}
-  _characterLVTXT: {fileID: 0}
-  _liveTimeTXT: {fileID: 0}
-  _goldTXT: {fileID: 0}
-  _killsTXT: {fileID: 0}
-  _damagesTXT: {fileID: 0}
-  vacantTXT: {fileID: 0}
+  _characterLVTXT: {fileID: 14346652}
+  _liveTimeTXT: {fileID: 1037640288}
+  _goldTXT: {fileID: 271190106}
+  _killsTXT: {fileID: 1205445273}
+  _damagesTXT: {fileID: 134328018}
+  vacantTXT: {fileID: 1644045254}
 --- !u!1 &610060670
 GameObject:
   m_ObjectHideFlags: 0

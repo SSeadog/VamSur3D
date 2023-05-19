@@ -6,11 +6,6 @@ public abstract class PopupUIBase : UIBase
 {
     PopupUIBase _before;
 
-    public virtual void Init()
-    {
-
-    }
-
     public virtual void Init(PopupUIBase before = null)
     {
         _before = before;
