@@ -1,7 +1,7 @@
 {
   "NormalMob": {
     "id": 11,
-    "hp": 10,
+    "hp": 30,
     "exp": 1,
     "power": 3,
     "prefabPath": "Prefabs/Monster/NormalMob",
@@ -9,7 +9,7 @@
   },
   "ProjectileMob": {
     "id": 12,
-    "hp": 5,
+    "hp": 30,
     "exp": 1,
     "projectileCount": 1,
     "power": 2,
@@ -18,7 +18,7 @@
   },
   "EliteMob": {
     "id": 13,
-    "hp": 50,
+    "hp": 90,
     "exp": 5,
     "power": 10,
     "prefabPath": "Prefabs/Monster/EliteMob",

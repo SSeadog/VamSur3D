@@ -7,8 +7,6 @@ public class MonsterPool : MonoBehaviour
     List<GameObject> _lstObj = new List<GameObject>();
     GameObject[] _monObjs = null;
 
-
-
     public List<GameObject> LstObj { get { return _lstObj; } }
 
     void Init()
@@ -36,6 +34,7 @@ public class MonsterPool : MonoBehaviour
         temp.GetComponent<MonsterController>();
         _lstObj.Add(temp);
         return temp;
+
     }
 
     public void ClearPoolObejct()

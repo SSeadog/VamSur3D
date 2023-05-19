@@ -1,11 +1,6 @@
 using State;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using Define;
+
 
 public class Monster : MonoBehaviour
 {
@@ -30,6 +25,7 @@ public class Monster : MonoBehaviour
     {
         _mb = mb;
         _hp = _mb.getMonsterStat.hp;
+        ChangeUnitState(new MoveState());
     }
 
     public void ChangeUnitState(MonsterState state)
@@ -37,12 +33,6 @@ public class Monster : MonoBehaviour
         _state = state;
         if (_state != null) _state.OnEnter(this);
     }
-    public bool isMoveEnd()
-    {
-        if (Vector3.Distance(transform.position, _hero.transform.position) < 0) return true;
-        return false;
-    }
-
     private void Update()
     {
         if (_state == null)
@@ -61,7 +51,7 @@ public class Monster : MonoBehaviour
         if(other.CompareTag("PlayerSkill"))
         {
             _playerSkillDamage = other.gameObject.GetComponent<SkillProjectile>().Damage;
-            ChangeUnitState(new State.HittedState());
+            ChangeUnitState(new HittedState());
             Debug.Log("hit");
         }
     }

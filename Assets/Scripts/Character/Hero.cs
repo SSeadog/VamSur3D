@@ -54,19 +54,21 @@ public class Hero : MonoBehaviour
             GenericSingleton<GameManager>.getInstance().GetExp(10);
     }
 
-    public void MonsterInfo(Define.Monster monster)
+    public void MonsterInfo(Monster monster)
     {
-    //  Debug.Log("MonsterInfo" + (_mStat == null));
-        _mStat = monster;
+        Debug.Log("MonsterInfo" + (_mStat == null));
+        _mStat = monster.sendMonsterStat;
     }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.GetComponent<Monster>() != null)
         {
-            MonsterInfo(collision.gameObject.GetComponent<Monster>().sendMonsterStat);
+            MonsterInfo(collision.gameObject.GetComponent<Monster>());
             if (_hit == false) StartCoroutine("hittedWait");
         }
     }
+
+
     IEnumerator hittedWait()
     {
         _hit = true;
