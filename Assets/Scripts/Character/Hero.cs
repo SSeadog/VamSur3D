@@ -5,10 +5,6 @@ using Define;
 enum EHeroMove
 {
     Idle,
-    w,//forward
-    a,//left
-    s,//back
-    d,//right
     die,
 
 }
