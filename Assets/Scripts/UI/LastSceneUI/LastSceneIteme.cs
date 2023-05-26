@@ -11,19 +11,19 @@ public class LastSceneIteme : MonoBehaviour
     [SerializeField] Text _dmg;
     [SerializeField] Text _dps;
     [SerializeField] Text _kills;
-    WeaponData _weaponData;
-    ItemData _data;
-    float time;
-    public void init(ItemData data, WeaponData weaponData)//무기정보 받아서 출력값 변경
+   // public void init(ItemData data, WeaponData weaponData)//무기정보 받아서 출력값 변경
+    public void init()//무기정보 받아서 출력값 변경
     {
-       // _data = data;
-        _weaponData = weaponData;
-        _name.text = data.NAME;
-        _lv.text = " LV." + data.LV;  
-        _dmg.text = "무기데미지 : " + data.DMG ;
-        _dps.text = " DPS: " + data.DPS  ;
-        _kills.text = " 킬수: " + data.KILLS;
         Debug.Log("init");
+       // _weaponData =  GenericSingleton<GameManager>.getInstance().TotalDmg;
+        _name.text = "" +GenericSingleton<GameManager>.getInstance().name;
+        _lv.text = " LV." + GenericSingleton<GameManager>.getInstance().HeroLv;
+        _dmg.text = "무기데미지 : " + GenericSingleton<GameManager>.getInstance().TotalDmg;
+        _dps.text = " DPS: " + GenericSingleton<GameManager>.getInstance().TotalDmg/GenericSingleton<GameManager>.getInstance().SurviveTime;
+        _kills.text = " 킬수: " + GenericSingleton<GameManager>.getInstance().KillCount;
+        Debug.Log(GenericSingleton<GameManager>.getInstance().TotalDmg);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().TotalDmg/ GenericSingleton<GameManager>.getInstance().SurviveTime);
     }
 
 }

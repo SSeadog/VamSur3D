@@ -22,6 +22,9 @@ public class PlayerStatusUI : UIBase
 
     public void AddItem(Define.Weapon weaponData)
     {
+        if (_itemSlots == null)
+            _itemSlots = GetComponentInChildren<ItemSlots>();
+
         _itemSlots.AddItem(weaponData.thumbnailPath);
     }
 
