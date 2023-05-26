@@ -27,10 +27,8 @@ public class Hero : MonoBehaviour
     public Vector3 _fors { get { return fors; } set { fors = value; } }
     bool hit = false;   public bool _hit { get { return hit; } set { hit = value; } }
     float _hp = 0f;   public float HeroHP { get { return _hp; } set { _hp = value; } }
-    bool isDie = false; 
     void Start()
     {
-        isDie = false;
         heroDataSave();
         Debug.Log(_HeroAni);
         Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
@@ -65,23 +63,22 @@ public class Hero : MonoBehaviour
             if (_hit == false) StartCoroutine("hittedWait");
         }
     }
+
+
     IEnumerator hittedWait()
     {
         _hit = true;
-        Debug.Log(1);
         hitted();
         yield return new WaitForSeconds(0.5f);
         _hit = false;
     }
     public void hitted()
     {
-        Debug.Log(2);
         HeroHP -= _mStat.power;
         Debug.Log(HeroHP);
-        if (HeroHP <= 0&&isDie == false)
+        if (HeroHP <= 0)
         {
-            isDie = true;
-         //   _fors = gameObject.transform.position;
+            _fors = gameObject.transform.position;
             SetStateMove(new DieState());
         }
     }
@@ -161,7 +158,7 @@ public class DieState : HeroState
     public override void NowState()
     {
         _hero._HeroAni.SetInteger("HeroMove", (int)EHeroMove.die);
-      ///  _hero.gameObject.transform.position = _hero._fors;
+        _hero.gameObject.transform.position = _hero._fors;
         _hero.GetComponent<Rigidbody>().velocity = Vector3.zero;
         _hero.SetStateMove(new Scenechange());
     }
@@ -173,10 +170,7 @@ public class DieState : HeroState
         }
         public override void NowState()
         {
-            Debug.Log("Scenechange");
             _dieTimer += Time.deltaTime;
-            Debug.Log(_dieTimer);
-
             if (_dieTimer >= 1f) SceneManager.LoadScene("LastScene");
         }
     }
