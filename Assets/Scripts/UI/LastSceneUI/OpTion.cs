@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class OpTion : MonoBehaviour
 {
     [SerializeField] WeaponData _weapondata;
@@ -11,12 +8,12 @@ public class OpTion : MonoBehaviour
     void Start()
     {
         _weapondata.Startpanul();
+        Debug.Log("OpTion");
     }
     public void onButtonPress()
     {
         Debug.Log("버튼활성화");
-        //로비씬으로 
-        SceneManager.LoadScene("MenuScene");
+        GenericSingleton<GameManager>.getInstance().Clear();
+        SceneManager.LoadScene("MenuScene"); //로비씬으로 
     }
-  
 }
