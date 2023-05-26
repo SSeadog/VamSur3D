@@ -13,7 +13,6 @@ public class CaracterData : MonoBehaviour
     private void Start()
     {
         Text();
-        GenericSingleton<GameManager>.getInstance().Clear();
     }
     public void Text()
     {

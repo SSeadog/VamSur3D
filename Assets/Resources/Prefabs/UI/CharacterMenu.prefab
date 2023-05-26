@@ -706,7 +706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuUIController: {fileID: 0}
-  BeforeBoxInfo: {fileID: 0}
 --- !u!1 &4723546323241373538
 GameObject:
   m_ObjectHideFlags: 0
