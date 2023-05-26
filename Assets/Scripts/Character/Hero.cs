@@ -1,48 +1,45 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
-using Define;
 enum EHeroMove
 {
     Idle,
     die,
-
 }
 public class Hero : MonoBehaviour
 {
     HeroState _heroState;
     HeroTypeCheck _heroTypeCheck = new HeroTypeCheck();
     Define.Monster _mStat;
-    Define.Hero _heroData;
-    public Define.Hero _HeroData { get { return _heroData; } set { _heroData = value; } }
+    Define.Hero heroData;
+    public Define.Hero _heroData { get { return heroData; } set { heroData = value; } }
     SkinnedMeshRenderer render;
     public SkinnedMeshRenderer _render { get { return render; } set { render = value; } }
 
-    Animator _ani;
-    public Animator _HeroAni { get { return _ani; } set { _ani = value; } }
+    Animator ani;
+    public Animator _ani { get { return ani; } set { ani = value; } }
 
     Color heroColor;
     public Color _heroColor { get { return heroColor; } set { heroColor = value; } }
     Vector3 fors;
     public Vector3 _fors { get { return fors; } set { fors = value; } }
     bool hit = false;   public bool _hit { get { return hit; } set { hit = value; } }
-    float _hp = 0f;   public float HeroHP { get { return _hp; } set { _hp = value; } }
-    bool isDie = false; 
+    float hp = 0f;   public float _hP { get { return hp; } set { hp = value; } }
+    bool _isDie = false; 
     void Start()
     {
-        isDie = false;
-        heroDataSave();
-        Debug.Log(_HeroAni);
+        _isDie = false;
+        HeroDataSave();
+        Debug.Log(_ani);
         Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
         _heroState = new HeroMove();
-        SetStateMove(new HeroMove());// 상태 저장,실행
-
+        SetStateHero(new HeroMove());// 상태 저장,실행
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SetStateMove(new DieState());
+            SetStateHero(new DieState());
         }
         GenericSingleton<GameManager>.getInstance().SurviveTime += Time.deltaTime;
         _heroState.NowState();
@@ -51,7 +48,6 @@ public class Hero : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             GenericSingleton<GameManager>.getInstance().GetExp(10);
     }
-
     public void MonsterInfo(Monster monster)
     {
         Debug.Log("MonsterInfo" + (_mStat == null));
@@ -62,42 +58,40 @@ public class Hero : MonoBehaviour
         if (collision.gameObject.GetComponent<Monster>() != null)
         {
             MonsterInfo(collision.gameObject.GetComponent<Monster>());
-            if (_hit == false) StartCoroutine("hittedWait");
+            if (_hit == false) StartCoroutine(HittedWait());
         }
     }
-    IEnumerator hittedWait()
+    IEnumerator HittedWait()
     {
         _hit = true;
         Debug.Log(1);
-        hitted();
+        Hitted();
         yield return new WaitForSeconds(0.5f);
         _hit = false;
     }
-    public void hitted()
+    public void Hitted()
     {
-        Debug.Log(2);
-        HeroHP -= _mStat.power;
-        Debug.Log(HeroHP);
-        if (HeroHP <= 0&&isDie == false)
+        _hP -= _mStat.power;
+        Debug.Log(_hP);
+        if (_hP <= 0&&_isDie == false)
         {
-            isDie = true;
-         //   _fors = gameObject.transform.position;
-            SetStateMove(new DieState());
+            _isDie = true;
+            SetStateHero(new DieState());
         }
     }
-    public void SetStateMove(HeroState state)
+    public void SetStateHero(HeroState state)
     {
         _heroState = state;
         _heroState.OnEnter(this);
     }
-    void heroDataSave()
+    void HeroDataSave()
     {
-        _heroTypeCheck.HeroCheck(GenericSingleton<GameManager>.getInstance().HeroType);
-        _HeroData = _heroTypeCheck._heroData;
-        _HeroAni = GetComponentInChildren<Animator>();
+       _heroTypeCheck.HeroCheck(GenericSingleton<GameManager>.getInstance().HeroType);
+        _heroData = _heroTypeCheck._heroData;
+        _ani = GetComponentInChildren<Animator>();
         _render = GetComponentInChildren<SkinnedMeshRenderer>();
         _heroColor = _render.material.color;
-        HeroHP = _HeroData.hp;
+        _hP = _heroData.hp;
         GenericSingleton<GameManager>.getInstance().Player = gameObject;
     }
 }
@@ -135,8 +129,8 @@ public class HeroMove : HeroState
     {
         float vX = Input.GetAxisRaw("Horizontal");//0=>1D==     -1,1,0값이 계속들어옴
         float vZ = Input.GetAxisRaw("Vertical");//GetAxis 0=0.1=0.2=0.3===1
-        _hero._HeroAni.SetFloat("AxisX", vX * _hero._HeroData.moveSpeed);
-        _hero._HeroAni.SetFloat("AxisZ", vZ * _hero._HeroData.moveSpeed);
+        _hero._ani.SetFloat("AxisX", vX * _hero._heroData.moveSpeed);
+        _hero._ani.SetFloat("AxisZ", vZ * _hero._heroData.moveSpeed);
         float vY = _hero.GetComponent<Rigidbody>().velocity.y; //velocity == Rigidbody 속도
         Vector3 v3 = new Vector3(vX, 0, vZ).normalized;
         Vector3 vYz = v3 * 4.5f;
@@ -160,10 +154,9 @@ public class DieState : HeroState
     }
     public override void NowState()
     {
-        _hero._HeroAni.SetInteger("HeroMove", (int)EHeroMove.die);
-      ///  _hero.gameObject.transform.position = _hero._fors;
+        _hero._ani.SetInteger("HeroMove", (int)EHeroMove.die);
         _hero.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        _hero.SetStateMove(new Scenechange());
+        _hero.SetStateHero(new Scenechange());
     }
     public class Scenechange : HeroState
     {
@@ -175,8 +168,6 @@ public class DieState : HeroState
         {
             Debug.Log("Scenechange");
             _dieTimer += Time.deltaTime;
-            Debug.Log(_dieTimer);
-
             if (_dieTimer >= 1f)
             {
                 GenericSingleton<UIManager>.getInstance().Clear();

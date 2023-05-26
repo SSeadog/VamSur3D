@@ -1,11 +1,9 @@
 using Define;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class HeroTypeCheck: MonoBehaviour
 {
-  public  Define.Hero _heroData;
+    Define.Hero heroData;
+    public Define.Hero _heroData { get { return heroData; } set { heroData = value; } }
     private void Awake()
     {
         HeroCheck(GenericSingleton<GameManager>.getInstance().HeroType);
