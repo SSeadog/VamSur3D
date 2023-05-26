@@ -24,6 +24,8 @@ public class CharacterBoxController : MonoBehaviour
         cBeforeBoxInfo = ib.SelectBackground;
     }
 
+
+
     public void getMenuUIControllerData()
     {
         _menuUIController.OpenSelectCharacterPanel();
