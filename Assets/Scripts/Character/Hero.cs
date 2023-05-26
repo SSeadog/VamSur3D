@@ -177,7 +177,11 @@ public class DieState : HeroState
             _dieTimer += Time.deltaTime;
             Debug.Log(_dieTimer);
 
-            if (_dieTimer >= 1f) SceneManager.LoadScene("LastScene");
+            if (_dieTimer >= 1f)
+            {
+                GenericSingleton<UIManager>.getInstance().Clear();
+                SceneManager.LoadScene("LastScene");
+            }
         }
     }
 }

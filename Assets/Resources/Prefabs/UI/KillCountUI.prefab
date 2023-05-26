@@ -161,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d1472528788494fa330aa33b508aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCount: 1234
 --- !u!1 &5881304818306671665
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class OpTion : MonoBehaviour
     {
         Debug.Log("버튼활성화");
         GenericSingleton<GameManager>.getInstance().Clear();
+        GenericSingleton<MonsterPool>.getInstance().ClearPoolObejct();
         SceneManager.LoadScene("MenuScene"); //로비씬으로 
     }
 }

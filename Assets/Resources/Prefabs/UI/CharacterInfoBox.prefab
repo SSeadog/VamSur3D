@@ -409,7 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee623094098edb4b97a6b59ec781fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedBackground: {fileID: 0}
+  _nameText: {fileID: 0}
+  _thumb: {fileID: 0}
 --- !u!1 &7951275549913893567
 GameObject:
   m_ObjectHideFlags: 0

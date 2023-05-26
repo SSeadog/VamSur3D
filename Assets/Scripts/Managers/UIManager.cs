@@ -36,4 +36,9 @@ public class UIManager : MonoBehaviour
                 eSCMenuUI.CloseUI();
         }
     }
+
+    public void Clear()
+    {
+        _dictUI.Clear();
+    }
 }
