@@ -18,12 +18,6 @@ public class UIManager : MonoBehaviour
         return _dictUI[typeof(T).ToString()] as T;
     }
 
-    public GameObject GetDamageUI()
-    {
-        GameObject original = Resources.Load<GameObject>("Prefabs/UI/DamageUI");
-        return Instantiate(original);
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
