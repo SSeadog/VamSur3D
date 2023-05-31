@@ -19,7 +19,7 @@ public class WeaponSelectItemUI : MonoBehaviour
     public void Init(Define.Weapon weaponInfo)
     {
         this.weaponInfo = weaponInfo;
-        _itemImage = transform.Find("ItemImage").GetComponent<Image>();
+        _itemImage = transform.Find("ItemImageFrame/ItemImage").GetComponent<Image>();
         _itemName = transform.Find("ItemNameText").GetComponent<TMP_Text>();
         _itemRank = transform.Find("ItemRankText").GetComponent<TMP_Text>();
         _itemDesc = transform.Find("ItemDescText").GetComponent<TMP_Text>();
@@ -28,14 +28,14 @@ public class WeaponSelectItemUI : MonoBehaviour
 
         _button = GetComponent<Button>();
 
-        string testUrl = "";
-        string testName = ((Define.WeaponType) weaponInfo.id).ToString();
-        string testRank = weaponInfo.rank;
-        string testDesc = weaponInfo.desc;
-        int testNextLevel = weaponInfo.lv;
-        string testNextLevelOption = weaponInfo.levelDesc;
+        string imageUrl = weaponInfo.thumbnailPath;
+        string name = ((Define.WeaponType) weaponInfo.id).ToString();
+        string rank = weaponInfo.rank;
+        string desc = weaponInfo.desc;
+        int nextLevel = weaponInfo.lv;
+        string nextLevelOption = weaponInfo.levelDesc;
 
-        SetData(testUrl, testName, testRank, testDesc, testNextLevel, testNextLevelOption);
+        SetData(imageUrl, name, rank, desc, nextLevel, nextLevelOption);
 
         UnityAction action = () =>
         {
@@ -50,8 +50,8 @@ public class WeaponSelectItemUI : MonoBehaviour
 
     void SetData(string imageUrl, string itemName, string itemRank, string itemDesc, int nextLevel, string nextlevelOption)
     {
-        // 이미지. 나중에
-
+        // 이미지
+        _itemImage.sprite = Resources.Load<Sprite>(imageUrl);
         // 이름
         _itemName.text = itemName;
         // 등급
