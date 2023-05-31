@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Sword : WeaponBase
 {
-    GameObject _attackJudge;
-    float _rebound;
-    float _detectTime;
+    GameObject _attackJudge; // 스킬오브젝트
+    float _rebound; // 스킬범위를 위한 변수
+    float _detectTime;  //스킬라이프타임
 
     protected override void InitSkill(Define.Weapon data)
     {
         base.InitSkill(data);
 
-        _rebound = 1f;
+        _rebound = 1f; 
         _detectTime = 0.5f;
         _attackJudge = Resources.Load<GameObject>("Prefabs/Weapons/Slash");
     }

@@ -8,17 +8,12 @@ public class WeaponSelectUI : UIBase
 
     List<WeaponSelectItemUI> _subItems;
 
-    public void Init()
+    public override void Init()
     {
         _subitemRoot = transform.Find("Panel").gameObject;
         _subItem = Resources.Load<GameObject>("Prefabs/UI/WeaponSelectUI/WeaponSelectItemUI");
 
         _subItems = new List<WeaponSelectItemUI>();
-    }
-
-    void Start()
-    {
-        Init();
     }
 
     void Update()
@@ -35,7 +30,7 @@ public class WeaponSelectUI : UIBase
         // active true
         gameObject.SetActive(true);
 
-        // subItem 로드 test로 3개만 생성
+        // subItem 로드 3개만 생성
         for (int i = 0; i < 3; i++)
         {
             MakeSubItem();
@@ -62,8 +57,6 @@ public class WeaponSelectUI : UIBase
         // 랜덤으로 얻을 수 있는 weapon 뽑기
         // 중복은 피하고
         // weapon 정보 전달
-        // Boomerang 아직 안만들어서 제외
-        // GetUpgradeableWeapon()함수 만들기?
         Define.WeaponType randomWeaponType = Define.WeaponType.None;
         while (true)
         {
