@@ -1015,6 +1015,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525903791}
   m_CullTransparentMesh: 1
+--- !u!114 &531966873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4723546323346206542, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+  m_PrefabInstance: {fileID: 4723546323917194593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &644250793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1771,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063101764}
   m_CullTransparentMesh: 1
+--- !u!1 &1288537143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4723546322818246304, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+  m_PrefabInstance: {fileID: 4723546323917194593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1288537147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288537143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee623094098edb4b97a6b59ec781fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 531966873}
+  _thumb: {fileID: 2012516742}
 --- !u!1 &1316379972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3279,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983094758}
   m_CullTransparentMesh: 1
+--- !u!114 &2012516742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4723546324171885019, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+  m_PrefabInstance: {fileID: 4723546323917194593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2025705012
 GameObject:
   m_ObjectHideFlags: 0
