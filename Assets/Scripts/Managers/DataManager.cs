@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour
     private Dictionary<Define.MonsterType, Define.Monster> _monsterDict;
 
     public Dictionary<Define.WeaponType, Dictionary<int, Define.Weapon>> WeaponDict { get { return _weaponDict; } }
+    public Dictionary<Define.HeroType, Define.Hero> HeroDict { get { return _heroDict; } }
 
     void Awake()
     {

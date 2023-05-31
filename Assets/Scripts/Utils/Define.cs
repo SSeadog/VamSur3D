@@ -48,7 +48,8 @@ namespace Define
     {
         None,
         SwordHero,
-        Wizard
+        Wizard,
+        Max
     }
 
     public enum WeaponType

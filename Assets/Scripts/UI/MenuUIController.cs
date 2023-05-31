@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] Transform _weaponContent;
     [SerializeField] GameObject WeaponSelectPanel;
     [SerializeField] GameObject _settingsMenu;
+    List<GameObject> infoBoxTmps = new List<GameObject>();
 
     // Start is called before the first frame update
     public void OnSelectCharacterMenu()
@@ -47,11 +50,15 @@ public class MenuUIController : MonoBehaviour
 
     public void initCharaterSelectBox()
     {
-        for (int i = 0; i < 17; i++)
+        if (infoBoxTmps.Count != 0) return;
+        List<Define.HeroType> heroTypes = new List<Define.HeroType>(GenericSingleton<DataManager>.getInstance().HeroDict.Keys);
+        foreach(Define.HeroType heroType in heroTypes)
         {
-            
+            Define.Hero heroInfo = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
+
             GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
+            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(heroInfo.thumbnailPath, heroType.ToString());
             infoBoxTmp.name = "CharacterBox";
 
             EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -59,6 +66,8 @@ public class MenuUIController : MonoBehaviour
             entry.callback.AddListener((eventData) => { infoBoxTmp.GetComponent<SelectedInfoBox>().OnClickedCharacterBox(); });
 
             infoBoxTmp.GetComponent<EventTrigger>().triggers.Add(entry);
+
+            infoBoxTmps.Add(infoBoxTmp);   
         }
     }
 
@@ -82,11 +91,6 @@ public class MenuUIController : MonoBehaviour
 
             infoBoxTmp.GetComponent<EventTrigger>().triggers.Add(entry);
         }
-    }
-
-    public void initSelectedCharacter()
-    {
-        GameObject selectCharacterBoxTmp = Instantiate(CharacterInfoBox);
     }
 
     // MainStart 테스트코드
