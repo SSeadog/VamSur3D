@@ -53,7 +53,7 @@ public class DataManager : MonoBehaviour
 
     public int GetWeaponEnhanceLevel(Define.WeaponType weaponType)
     {
-        return _currentWeaponEnhanceDict[weaponType];//
+        return _currentWeaponEnhanceDict[weaponType];
     }
 
     public void SetWeaponEnhanceLevel(Define.WeaponType weaponType, int level)

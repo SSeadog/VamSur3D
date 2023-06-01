@@ -50,8 +50,7 @@ public class Hero : MonoBehaviour
     }
     public void MonsterInfo(Monster monster)
     {
-        Debug.Log("MonsterInfo" + (monster.sendMonsterStat == null));
-
+        Debug.Log("MonsterInfo" + (_mStat == null));
         _mStat = monster.sendMonsterStat;
     }
     private void OnCollisionStay(Collision collision)
@@ -65,6 +64,7 @@ public class Hero : MonoBehaviour
     IEnumerator HittedWait()
     {
         _hit = true;
+        Debug.Log(1);
         Hitted();
         yield return new WaitForSeconds(0.5f);
         _hit = false;
