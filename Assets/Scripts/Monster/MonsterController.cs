@@ -23,7 +23,7 @@ public class MonsterController : MonoBehaviour
         }
         if (isRespawnCoolTime == false)
         {
-            StartCoroutine(RespawnCollTime());
+            StartCoroutine(RespawnCollTime());//todo
         }
         if(GenericSingleton<GameManager>.getInstance().KillCount > 1 && GenericSingleton<GameManager>.getInstance().KillCount % 5 == 0 && isRespawn == false)
         {
