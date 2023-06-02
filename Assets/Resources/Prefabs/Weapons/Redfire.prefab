@@ -110,8 +110,8 @@ GameObject:
   - component: {fileID: 9077634117444274014}
   - component: {fileID: 6421762019671275720}
   m_Layer: 0
-  m_Name: RedFire
-  m_TagString: Untagged
+  m_Name: Redfire
+  m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

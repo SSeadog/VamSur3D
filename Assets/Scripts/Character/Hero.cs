@@ -37,10 +37,10 @@ public class Hero : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SetStateHero(new DieState());
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    SetStateHero(new DieState());
+        //}
         GenericSingleton<GameManager>.getInstance().SurviveTime += Time.deltaTime;
         _heroState.NowState();
         _heroState.HittedColer();

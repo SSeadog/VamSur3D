@@ -20,7 +20,7 @@ public class MenuUIController : MonoBehaviour
     List<GameObject> infoBoxTmps = new List<GameObject>();
 
     // Start is called before the first frame update
-    public void OnSelectCharacterMenu()
+    public void OnSelectCharacterMenu()//메뉴씬 캐릭터선택신 소환버튼
     {
         CharacterMenuPanel.SetActive(true);
         initCharaterSelectBox();
@@ -52,13 +52,14 @@ public class MenuUIController : MonoBehaviour
     {
         if (infoBoxTmps.Count != 0) return;
         List<Define.HeroType> heroTypes = new List<Define.HeroType>(GenericSingleton<DataManager>.getInstance().HeroDict.Keys);
+        Debug.Log(heroTypes);
         foreach(Define.HeroType heroType in heroTypes)
         {
             Define.Hero heroInfo = GenericSingleton<DataManager>.getInstance().GetHeroInfo(heroType);
 
             GameObject infoBoxTmp = Instantiate(CharacterBox, _characterContent);
             infoBoxTmp.GetComponent<SelectedInfoBox>().Init(CharacterMenuPanel.GetComponent<CharacterBoxController>());
-            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(heroInfo.thumbnailPath, heroType.ToString());
+            infoBoxTmp.GetComponent<SelectedInfoBox>().SetData(heroInfo.thumbnailPath, heroType.ToString(), heroType);
             infoBoxTmp.name = "CharacterBox";
 
             EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -95,9 +96,9 @@ public class MenuUIController : MonoBehaviour
 
     // MainStart 테스트코드
     //캐릭터 선택된 정보 메인씬으로 전달
-    public void TestStartMain()
+    public void TestStartMain()//Define.HeroType heroType 으로 타입받아서 데이터 변경
     {
-        GenericSingleton<GameManager>.getInstance().GameStart(Define.HeroType.Wizard);
+        GenericSingleton<GameManager>.getInstance().GameStart(); //캐릭터 타입 게임메니저에 제네릭싱글톤으로 정보 저장
         SceneManager.LoadScene("MainScene");
     }
 }

@@ -9,7 +9,7 @@ public class PlayerHPBarUI : UIBase
     Hero _hero;
     GameObject _target;
     Vector3 _offset;
-
+    
     RectTransform _foreground;
 
     public override void Init()

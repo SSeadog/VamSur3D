@@ -5,7 +5,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] GameObject _gem;
-    [SerializeField] Hero _hero;
+   // [SerializeField] Hero _hero;
     
     MonsterBase _mb;
     MonsterState _state;

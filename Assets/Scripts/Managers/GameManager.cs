@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     Dictionary<Define.WeaponType, int> _playerWeaponLevels = new Dictionary<Define.WeaponType, int>();
 
-    public GameObject Player { get; set; }
+    public GameObject Player { get; set; } // Hero스크립트를 가지고있는 게임오브젝트를 start할때 set
     public Define.HeroType HeroType { get; set; } = Define.HeroType.SwordHero;//SwordHero//Wizard 를 메뉴씬에서 씬전환시 set해준다
     public int HeroLv { get; set; }
     public int HeroExp { get; set; }
@@ -15,9 +15,8 @@ public class GameManager : MonoBehaviour
     public int StageGold { get; set; }
     public float TotalDmg { get; set; }
 
-    public void GameStart(Define.HeroType heroType)
+    public void GameStart()
     {
-        HeroType = heroType;
         HeroLv = 1;
         HeroExp = 0;
         SurviveTime = 0f;
@@ -74,7 +73,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void Clear()
+    public void Clear()//가진골드등에 필요 변수제외 초기화 / LoadMenuScene 
     {
         Player = null;
         HeroType = Define.HeroType.None;
