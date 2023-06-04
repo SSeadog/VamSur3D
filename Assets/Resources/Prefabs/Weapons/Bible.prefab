@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1566079175490367217}
   - component: {fileID: -2463100687296727024}
   m_Layer: 0
-  m_Name: TestBible
+  m_Name: Bible
   m_TagString: PlayerSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

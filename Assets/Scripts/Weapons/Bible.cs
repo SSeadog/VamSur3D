@@ -14,7 +14,7 @@ public class Bible : WeaponBase
     {
         base.InitSkill(data);
 
-        _original = Resources.Load<GameObject>("Prefabs/Weapons/TestBible");
+        _original = Resources.Load<GameObject>("Prefabs/Weapons/Bible");
 
         for (int i = 0; i < _projectileCount; i++)
         {
