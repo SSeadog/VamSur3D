@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class CaracterData : MonoBehaviour
 {
-    [SerializeField] Image heroImage;
+    [SerializeField] Image _heroImage;
     [SerializeField] Text _characterLVTXT;
     [SerializeField] Text _liveTimeTXT;
     [SerializeField] Text _goldTXT;
     [SerializeField] Text _killsTXT;
     [SerializeField] Text _damagesTXT;
-    [SerializeField] Text vacantTXT;
+    [SerializeField] Text _vacantTXT;
     private void Start()
     {
         Text();
@@ -23,11 +23,11 @@ public class CaracterData : MonoBehaviour
         _damagesTXT.text = "ÃÑµ¥¹ÌÁö" + GenericSingleton<GameManager>.getInstance().TotalDmg;
         if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.Wizard)
         {
-            heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/WizardThumb", typeof(Sprite)) as Sprite;
+            _heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/WizardThumb", typeof(Sprite)) as Sprite;
         }
         if (GenericSingleton<GameManager>.getInstance().HeroType == Define.HeroType.SwordHero)
         {
-            heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/SwordHeroThumb", typeof(Sprite)) as Sprite;
+            _heroImage.sprite = Resources.Load("Art/Textures/CharacterThumbnails/SwordHeroThumb", typeof(Sprite)) as Sprite;
         }
     }
 }

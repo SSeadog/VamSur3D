@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LastSceneIteme : MonoBehaviour
+public class LastSceneItem : MonoBehaviour
 {
     [SerializeField] Image _Image;
     [SerializeField] Text _name;
@@ -25,5 +24,4 @@ public class LastSceneIteme : MonoBehaviour
         Debug.Log(GenericSingleton<GameManager>.getInstance().SurviveTime);
         Debug.Log(GenericSingleton<GameManager>.getInstance().TotalDmg/ GenericSingleton<GameManager>.getInstance().SurviveTime);
     }
-
 }

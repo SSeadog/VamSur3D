@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class OpTion : MonoBehaviour
+public class LoadMenuScene : MonoBehaviour
 {
-    [SerializeField] WeaponData _weapondata;
+    [SerializeField] WeaponData _weaponData;
     [SerializeField] GameObject _butten;
-    // Start is called before the first frame update
     void Start()
     {
-        _weapondata.Startpanul();
+        _weaponData.StartPanul();
         Debug.Log("OpTion");
     }
-    public void onButtonPress()
+    public void OnButtonPress()
     {
         Debug.Log("버튼활성화");
         GenericSingleton<GameManager>.getInstance().Clear();

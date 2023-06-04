@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gem: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
-  _hero: {fileID: 0}
   _hp: 0
 --- !u!54 &5811024251697316099
 Rigidbody:
