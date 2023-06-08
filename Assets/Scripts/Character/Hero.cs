@@ -64,7 +64,6 @@ public class Hero : MonoBehaviour
     IEnumerator HittedWait()
     {
         _hit = true;
-        Debug.Log(1);
         Hitted();
         yield return new WaitForSeconds(0.5f);
         _hit = false;
