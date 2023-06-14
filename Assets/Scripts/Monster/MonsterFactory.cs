@@ -17,14 +17,8 @@ public class MonsterFactory : MonoBehaviour
     public MonsterBase SummonMonster()
     {
         Init();
-        int i = Random.Range(0, monFactories.Count-1);
+        int i = Random.Range(0, monFactories.Count-2);
         return monFactories[i].MakeMonster();
-    }
-
-    public MonsterBase SummonEliteMonster()
-    {
-        Init();
-        return monFactories[2].MakeMonster();
     }
 
 }

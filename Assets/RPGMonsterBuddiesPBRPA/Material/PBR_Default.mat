@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
 --- !u!114 &-7860015698617372321
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -13,10 +14,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
+=======
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -26,20 +30,29 @@ Material:
   - _METALLICSPECGLOSSMAP
   m_InvalidKeywords:
   - _METALLICGLOSSMAP
+=======
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Floor3
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 0dd9e3c20d2c405c9d7ea789d12a4659, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+=======
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,8 +74,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
         m_Texture: {fileID: 2800000, guid: 0dd9e3c20d2c405c9d7ea789d12a4659, type: 3}
         m_Scale: {x: 1, y: 1}
+=======
+        m_Texture: {fileID: 2800000, guid: 1b13dc101cf2ac7418019fd776161658, type: 3}
+        m_Scale: {x: 12, y: 12}
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 247510bfb47e437d8008315474103643, type: 3}
@@ -76,55 +94,53 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
+=======
+    - _BumpScale: 1.5
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
+=======
+    - _GlossMapScale: 0.5
+    - _Glossiness: 0.2
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
     - _GlossyReflections: 1
     - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 1
+=======
+    - _Parallax: 0.073
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Surface: 0
     - _UVSec: 0
-    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD:Assets/RPGMonsterBuddiesPBRPA/Material/PBR_Default.mat
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
+=======
+    - _Color: {r: 0.43137255, g: 0.43137255, b: 0.58431375, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+>>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e:Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat
