@@ -171,7 +171,6 @@ public class DieState : HeroState
         public override void NowState()
         {
             _dieTimer += Time.deltaTime;
-<<<<<<< HEAD
             Debug.Log(_dieTimer);
 
             if (_dieTimer >= 1f)
@@ -179,9 +178,6 @@ public class DieState : HeroState
                 GenericSingleton<UIManager>.getInstance().Clear();
                 SceneManager.LoadScene("LastScene");
             }
-=======
-            if (_dieTimer >= 1f) SceneManager.LoadScene("LastScene");
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
         }
     }
 }
