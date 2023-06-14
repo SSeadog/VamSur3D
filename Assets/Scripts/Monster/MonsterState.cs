@@ -19,7 +19,7 @@ namespace State
 
     public class MoveState : MonsterState
     {
-        Hero _hero;
+        Hero _hero;  // Transform trans;
         int monsterSpeed = 2;
         public override void OnEnter(Monster monster)
         {
@@ -28,10 +28,9 @@ namespace State
         public override void MainLoop()
         {
             _hero = GenericSingleton<GameManager>.getInstance().Player.gameObject.GetComponent<Hero>();
+           // trans = GenericSingleton<GameManager>.getInstance().Player.gameObject.transform;//Hero스크립트를 받을 이유가 안보임
             //플레이어를 따라가도록 하는 기능
             _monster.transform.position = Vector3.MoveTowards(_monster.transform.position, _hero.transform.position, Time.deltaTime * monsterSpeed);
-
-
         }
     }
 

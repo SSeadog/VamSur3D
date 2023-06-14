@@ -6,7 +6,7 @@ public class FireField : WeaponBase
 {
     GameObject _original;
 
-    float _lifeTime = 5f;
+    float _lifeTime = 3f;
 
     // power에 따라 떨어지는 운석 수 조정
     // 크기 조정 가능하도록 수정

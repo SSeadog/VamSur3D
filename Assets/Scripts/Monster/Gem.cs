@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Gem : MonoBehaviour
+public class Gem : MonoBehaviour//°æÇèÄ¡
 {
     [SerializeField] GameObject _gemBase;
     Monster _monster;

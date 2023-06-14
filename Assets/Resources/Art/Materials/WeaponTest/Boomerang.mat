@@ -75,6 +75,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD:Assets/Resources/Art/Materials/WeaponTest/Boomerang.mat
     - _Color: {r: 0.21226418, g: 1, b: 0.25860164, a: 1}
+=======
+    - _BaseColor: {r: 0.18262726, g: 0.6792453, b: 0.21227607, a: 1}
+    - _Color: {r: 0.18262726, g: 0.6792453, b: 0.21227607, a: 1}
+>>>>>>> origin/yymvam:Assets/Resources/Art/Materials/Weapons/Boomerang.mat
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

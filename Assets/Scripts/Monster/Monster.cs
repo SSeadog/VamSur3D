@@ -5,7 +5,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] GameObject _gem;
-    [SerializeField] Hero _hero;
+   // [SerializeField] Hero _hero;
     
     MonsterBase _mb;
     MonsterState _state;
@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour
     float _playerSkillDamage;
     bool isHit;
 
-    public int _hp;
+    public int _hp;//
     
     public float getDamage { get {return _mb.getMonsterStat.power; } } // 영웅에게 데미지를 주는 함수
     public Define.MonsterType sendMonsterType { get { return _mb.getMonsterType; } }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingsUI : PopupUIBase
@@ -11,7 +9,6 @@ public class SettingsUI : PopupUIBase
             CloseUI();
         }
     }
-
     public void OnReturnMainMenuButton()
     {
         gameObject.SetActive(false);

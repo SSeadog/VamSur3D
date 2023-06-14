@@ -39,6 +39,8 @@ public class WeaponController : MonoBehaviour
         var weapon = gameObject.AddComponent(type);
         if (weapon is WeaponBase)
             (weapon as WeaponBase).Init(weaponData);
-        GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().AddItem(weaponData);
+        
+        if (beforeWeapon == null)
+            GenericSingleton<UIManager>.getInstance().GetUI<PlayerStatusUI>().AddItem(weaponData);
     }
 }

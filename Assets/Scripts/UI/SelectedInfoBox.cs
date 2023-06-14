@@ -1,3 +1,4 @@
+using Define;
 using DG.Tweening;
 using System.Collections;
 using TMPro;
@@ -12,6 +13,7 @@ public class SelectedInfoBox : MonoBehaviour
     WeaponBoxController wb;
     Transform hoveringCharacterBox;
     Transform selectedBackground;
+    HeroType myType;
     public Transform SelectBackground { get { return selectedBackground; } }
 
     Vector3 Maxv3 = new Vector3(1.05f, 1.05f, 1.05f);
@@ -29,9 +31,10 @@ public class SelectedInfoBox : MonoBehaviour
         wb = wbc;
     }
 
-    public void SetData(string thumbPath, string name)
+    public void SetData(string thumbPath, string name, HeroType hType = HeroType.None)
     {
         _thumbPath = thumbPath;
+        myType = hType;
         _name = name;
     }
 
@@ -46,7 +49,8 @@ public class SelectedInfoBox : MonoBehaviour
     }
 
     public void OnClickedCharacterBox()
-    { 
+    {
+        GenericSingleton<GameManager>.getInstance().HeroType = myType;
         hoveringCharacterBox = gameObject.transform;
         selectedBackground = hoveringCharacterBox.Find("SelectedImageBackground");
         cb.isBeforeBoxInfo(this);
