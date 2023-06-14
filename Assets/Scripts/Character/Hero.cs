@@ -46,7 +46,7 @@ public class Hero : MonoBehaviour
         _heroState.HittedColer();
         // 경험치 획득 임시 코드 // 몬스터가 죽었을때 실행하게 몬스터 코드에 있는게 맞음 몬스터 마다 경험치가 다르니
         if (Input.GetKeyDown(KeyCode.E))
-            GenericSingleton<GameManager>.getInstance().GetExp(10);
+            GenericSingleton<GameManager>.getInstance().GetExp(50);
     }
     public void MonsterInfo(Monster monster)
     {
