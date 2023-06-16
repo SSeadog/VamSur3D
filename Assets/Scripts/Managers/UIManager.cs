@@ -25,9 +25,15 @@ public class UIManager : MonoBehaviour
             ESCMenuUI eSCMenuUI = GetUI<ESCMenuUI>();
 
             if (eSCMenuUI.gameObject.activeSelf == false)
+            {
                 eSCMenuUI.ShowUI();
+                Time.timeScale = 0f;
+            }
             else
+            {
                 eSCMenuUI.CloseUI();
+                Time.timeScale = 1f;
+            }
         }
     }
 

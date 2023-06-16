@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int HeroExp { get; set; }
     public float SurviveTime { get; set; }
     public int KillCount { get; set; }
-    public int TotlGold { get; set; } = 101;
+    public int TotlGold { get; set; } = 501;
     public int StageGold { get; set; }
     public float TotalDmg { get; set; }
 

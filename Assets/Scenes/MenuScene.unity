@@ -3574,6 +3574,10 @@ PrefabInstance:
       propertyPath: _menuUIController
       value: 
       objectReference: {fileID: 1554271179}
+    - target: {fileID: 4723546323657247123, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4723546324123516231, guid: 1562ea843f6f132418a0126381e1e2cf, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

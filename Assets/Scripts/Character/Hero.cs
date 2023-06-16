@@ -37,10 +37,10 @@ public class Hero : MonoBehaviour
     }
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    SetStateHero(new DieState());
-        //}
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SetStateHero(new DieState());
+        }
         GenericSingleton<GameManager>.getInstance().SurviveTime += Time.deltaTime;
         _heroState.NowState();
         _heroState.HittedColer();
@@ -143,6 +143,7 @@ public class HeroMove : HeroState
         {
             _hero.transform.rotation = Quaternion.LookRotation(new Vector3(vYz.x, 0, vYz.z));
         }
+    
     }
 }
 public class DieState : HeroState
