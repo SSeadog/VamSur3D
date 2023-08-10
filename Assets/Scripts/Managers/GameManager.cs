@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int HeroExp { get; set; }
     public float SurviveTime { get; set; }
     public int KillCount { get; set; }
-    public int TotlGold { get; set; } = 101;
+    public int TotlGold { get; set; } = 501;
     public int StageGold { get; set; }
     public float TotalDmg { get; set; }
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         StageGold = 0;
         TotalDmg = 0f;
+        Debug.Log(TotlGold);
     }
 
     public void GetExp(int exp)
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool UpgradeWeaponEnhanceLevel(Define.WeaponType weaponType)
+    public bool UpgradeWeaponEnhanceLevel(Define.WeaponType weaponType)//메뉴씬 무기업그레이드
     {
         int curEnhanceLevel = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(weaponType);
         int cost = GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(weaponType, curEnhanceLevel).cost;

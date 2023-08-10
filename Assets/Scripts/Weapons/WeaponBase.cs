@@ -44,6 +44,7 @@ public abstract class WeaponBase : MonoBehaviour
     public float GetPower()
     {
         return _power * GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceInfo(_weaponType, _enhanceLevel).power;
+        //무기공격력  * 무기타입에 무기 강화된 정도에 
     }
 
     public abstract void Clear();
