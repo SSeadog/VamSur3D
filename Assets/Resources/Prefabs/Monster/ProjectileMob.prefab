@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8417364355688557983}
   - component: {fileID: 3784192556216797531}
   - component: {fileID: 3617158391468026533}
+  - component: {fileID: -1013090029232326871}
   m_Layer: 0
   m_Name: ProjectileMob
   m_TagString: Monster

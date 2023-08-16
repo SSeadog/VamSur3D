@@ -8,7 +8,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 2717678040097503554}
   m_Layer: 0
   m_Name: mushroom_skirt08
@@ -145,13 +144,6 @@ GameObject:
   - component: {fileID: -6079795788931343951}
   - component: {fileID: 5811024251697316099}
   - component: {fileID: 2959766255263837035}
-=======
-  - component: {fileID: 8034633361125670555}
-  - component: {fileID: 4213288137652219209}
-  - component: {fileID: 1498064343240709297}
-  - component: {fileID: 4311429490164629137}
-  - component: {fileID: 5448518006500415875}
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
   m_Layer: 0
   m_Name: NormalMob
   m_TagString: Monster
@@ -661,7 +653,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 331616796506206725}
@@ -754,14 +745,3 @@ Transform:
   m_Father: {fileID: 2265873630119815167}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 8919348037846503060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536da16292a30ea4294e0877b50f350f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gem: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
-  _hero: {fileID: 0}
-  _hp: 0
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e

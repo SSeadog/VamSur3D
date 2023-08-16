@@ -8,7 +8,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 3916962422142216481}
   m_Layer: 0
   m_Name: cactus_spine02
@@ -111,13 +110,6 @@ GameObject:
   - component: {fileID: 3842369747361934699}
   - component: {fileID: 1006657044209815453}
   - component: {fileID: -4206168593771074060}
-=======
-  - component: {fileID: 6217717662642696023}
-  - component: {fileID: 2839116816578220120}
-  - component: {fileID: 6305047240652082559}
-  - component: {fileID: 6658332522214921378}
-  - component: {fileID: 4173375147524315655}
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
   m_Layer: 0
   m_Name: EliteMob
   m_TagString: Monster
@@ -278,7 +270,6 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -311,16 +302,10 @@ SkinnedMeshRenderer:
   m_DirtyAABB: 0
 --- !u!1 &1800930169189227184
 GameObject:
-=======
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6658332522214921378
-CapsuleCollider:
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5000040911161189537}
@@ -333,23 +318,10 @@ CapsuleCollider:
   m_IsActive: 1
 --- !u!4 &5000040911161189537
 Transform:
-=======
-  m_GameObject: {fileID: 4625935366970595559}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4173375147524315655
-MonoBehaviour:
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1800930169189227184}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.10643307, y: -0.006805054, z: 0.0016464527}
@@ -806,14 +778,3 @@ Transform:
   m_Father: {fileID: 7698599137159312593}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 4625935366970595559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536da16292a30ea4294e0877b50f350f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gem: {fileID: 2536564368114615350, guid: bfb077bf5c7164a44a5c5e9f98594829, type: 3}
-  _hero: {fileID: 0}
-  _hp: 0
->>>>>>> 7d8cb9ba9c5cf93ca6e1facfac3add8ced4f5a5e
