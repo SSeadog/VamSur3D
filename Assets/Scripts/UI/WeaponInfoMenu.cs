@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,7 +26,7 @@ public class WeaponInfoMenu : MonoBehaviour
         _thumbImage.sprite = thumb;
         _nameText.text = _type.ToString();
         _lvText.text = curEnhanceLevel.ToString();
-        _descriptionText.text = "Test";
+        _descriptionText.text = weaponData.desc;
         _costText.text = enhanceData.cost.ToString();
     }
     public void EnhanceWeapon()
@@ -39,7 +39,7 @@ public class WeaponInfoMenu : MonoBehaviour
             _lvText.text = curEnhanceLevel.ToString();
         }
 
-        Debug.Log($"°­È­ ¼º°ø ¿©ºÎ: {result} {_type}°­È­ ·¹º§: {GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type)}");
+        Debug.Log($"ê°•í™” ì„±ê³µ ì—¬ë¶€: {result} {_type}ê°•í™” ë ˆë²¨: {GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type)}");
         Debug.Log(GenericSingleton<GameManager>.getInstance().TotlGold);
     }
 }

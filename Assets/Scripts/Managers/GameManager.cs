@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         StageGold = 0;
         TotalDmg = 0f;
-        Debug.Log(TotlGold);
     }
 
     public void GetExp(int exp)
