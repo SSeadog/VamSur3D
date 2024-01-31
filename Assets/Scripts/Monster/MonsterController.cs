@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    public bool IsRespawnCoolTime { get; set; }
     bool isRespawnCoolTime = false;
     bool isRespawn = false;
     //몬스터 강화 킬카운트

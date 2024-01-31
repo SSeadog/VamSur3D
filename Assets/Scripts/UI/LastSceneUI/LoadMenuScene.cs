@@ -6,7 +6,7 @@ public class LoadMenuScene : MonoBehaviour
     [SerializeField] GameObject _butten;
     void Start()
     {
-        _weaponData.StartPanul();
+        _weaponData.StartPanel();
         Debug.Log("OpTion");
     }
     public void OnButtonPress()

@@ -43,6 +43,11 @@ public class ESCMenuUI : PopupUIBase
 
     void OnExitButtonClicked()
     {
+        GenericSingleton<UIManager>.getInstance().Clear();
+        GenericSingleton<GameManager>.getInstance().Clear();
+        GenericSingleton<MonsterPool>.getInstance().ClearPoolObejct();
         SceneManager.LoadScene("MenuScene");
+        GenericSingleton<UIManager>.getInstance().IsStop = false;
+        Time.timeScale = 1f;
     }
 }

@@ -22,9 +22,10 @@ public class MonsterPool : MonoBehaviour
 
     public GameObject GetPoolObject(Define.MonsterType mType)
     {
+
         foreach (GameObject obj in _lstObj)
         {
-            if(obj.activeSelf == false && obj.GetComponent<Monster>().sendMonsterType == mType)
+            if (obj.activeSelf == false && obj.GetComponent<Monster>().sendMonsterType == mType)
             {
                 return obj;
             }
