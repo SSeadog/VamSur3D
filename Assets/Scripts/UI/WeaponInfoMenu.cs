@@ -9,7 +9,6 @@ public class WeaponInfoMenu : MonoBehaviour
     [SerializeField] Image _thumbImage;
     [SerializeField] TMP_Text _nameText;
     [SerializeField] TMP_Text _lvText;
-    [SerializeField] TMP_Text _descriptionText;
     [SerializeField] TMP_Text _costText;
     [SerializeField] Button _button;
     Define.WeaponType _type;
@@ -26,7 +25,6 @@ public class WeaponInfoMenu : MonoBehaviour
         _thumbImage.sprite = thumb;
         _nameText.text = _type.ToString();
         _lvText.text = curEnhanceLevel.ToString();
-        _descriptionText.text = "Test";
         _costText.text = enhanceData.cost.ToString();
     }
     public void EnhanceWeapon()
