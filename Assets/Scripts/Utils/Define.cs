@@ -8,6 +8,7 @@ namespace Define
         public float power;
         public string thumbnailPath;
         public string prefabPath;
+        public string basicWeapon;
     }
     
     public class Weapon

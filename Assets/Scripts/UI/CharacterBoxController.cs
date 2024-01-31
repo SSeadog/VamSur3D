@@ -11,8 +11,16 @@ public class CharacterBoxController : MonoBehaviour
     [SerializeField] MenuUIController _menuUIController;
     Transform cBeforeBoxInfo = null;
     GameObject childObject;
+    Define.HeroType _curSelectHeroType;
+    Define.WeaponType _curSelectHeroWeaponType;
 
-    int num = 1;
+
+
+    public void SetData(Define.HeroType hType, Define.WeaponType wType)
+    {
+        _curSelectHeroType = hType;
+        _curSelectHeroWeaponType = wType;
+    }
     public void isBeforeBoxInfo(SelectedInfoBox ib)
     {
         if (cBeforeBoxInfo == null)
@@ -28,7 +36,7 @@ public class CharacterBoxController : MonoBehaviour
 
     public void getMenuUIControllerData()
     {
-        _menuUIController.OpenSelectCharacterPanel();
+        _menuUIController.OpenSelectCharacterPanel(_curSelectHeroType, _curSelectHeroWeaponType);
     }
 
     public void OnReturnMainMenuButtonFromCharacterInfoMenu()

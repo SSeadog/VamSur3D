@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -26,9 +27,11 @@ public class MenuUIController : MonoBehaviour
         initCharaterSelectBox();
     }
 
-    public void OpenSelectCharacterPanel()
+    public void OpenSelectCharacterPanel(Define.HeroType hType, Define.WeaponType wType)
     {
+
         CharacterInfoMenuPanel.SetActive(true);
+        CharacterInfoMenuPanel.GetComponent<CharacterInfoMenu>().SetData(hType, wType);
     }
 
     public void OnSelectWeaponUpgradeMenu()

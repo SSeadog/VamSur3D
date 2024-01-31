@@ -51,13 +51,18 @@ public class SelectedInfoBox : MonoBehaviour
     public void OnClickedCharacterBox()
     {
         GenericSingleton<GameManager>.getInstance().HeroType = myType;
+        Define.Hero heroData = GenericSingleton<DataManager>.getInstance().GetHeroInfo(myType);
+        Define.WeaponType weaponType = (Define.WeaponType)System.Enum.Parse(typeof(Define.WeaponType), heroData.basicWeapon);
         hoveringCharacterBox = gameObject.transform;
         selectedBackground = hoveringCharacterBox.Find("SelectedImageBackground");
         cb.isBeforeBoxInfo(this);
+        cb.SetData(myType, weaponType);
         cb.getMenuUIControllerData();
         selectedBackground.gameObject.SetActive(true);
         
         StartCoroutine(ClickBoxEvent());
+
+
     }
 
     public void OnClickedWeaponBox()
