@@ -40,10 +40,10 @@ public static class Util
     #endregion
 
     #region
-    public static void SaveJson<T>(T data, string fileName)
+    public static void SaveJson<T>(T data, string fileName, string folderName)
     {
         string json = JsonConvert.SerializeObject(data);
-        using (StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/" + fileName))
+        using (StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/" + fileName + "/" + folderName))
         {
             sw.Write(json);
         }

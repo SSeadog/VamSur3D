@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -25,10 +26,38 @@ public class DataManager : MonoBehaviour
         // 무기 정보 로드
         _weaponDict = Util.LoadJsonDict<Define.WeaponType, Dictionary<int, Define.Weapon>>("Data/WeaponData");
         _weaponEnhanceDict = Util.LoadJsonDict<Define.WeaponType, List<Define.WeaponEnhanceData>>("Data/WeaponInhanceData");
-        _currentWeaponEnhanceDict = Util.LoadJsonDict<Define.WeaponType, int>(Application.persistentDataPath + "/CurrentWeaponInhanceData.json");
+        if(!Directory.Exists(Application.persistentDataPath + "/VamSurData"))// 폴더가 없을 경우 폴더 생성
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/VamSurData");
+        }
+
+        if (File.Exists(Application.persistentDataPath + "/VamSurData/CurrentWeaponInhanceData.json")) // 파일이 있을 경우 그대로 읽기
+        {
+            _currentWeaponEnhanceDict = Util.LoadJsonDict<Define.WeaponType, int>(Application.persistentDataPath + "/VamSurData/CurrentWeaponInhanceData.json");
+        }
+        else // 없으면 초기 json파일을 copy해와서 persistentDataPath에 넣어줌, 그 후 읽음
+        {
+            MoveJsonFile();
+            _currentWeaponEnhanceDict = Util.LoadJsonDict<Define.WeaponType, int>(Application.persistentDataPath + "/VamSurData/CurrentWeaponInhanceData.json");
+        }
 
         //몬스터 정보 로드
         _monsterDict = Util.LoadJsonDict<Define.MonsterType, Define.Monster>("Data/MonsterData");
+    }
+
+    public void MoveJsonFile()
+    {
+        string sourceDir = "Assets/Resources/Data";
+        string moveDir = Application.persistentDataPath + "/VamSurData";
+
+        string[] JsonList = Directory.GetFiles(sourceDir, "CurrentWeaponInhanceData.json");
+
+        foreach (string f in JsonList)
+        {
+            string fName = f.Substring(sourceDir.Length + 1);
+            File.Copy(Path.Combine(sourceDir, fName), Path.Combine(moveDir, fName));
+        }
+        
     }
 
     public Define.Hero GetHeroInfo(Define.HeroType type)
@@ -60,7 +89,7 @@ public class DataManager : MonoBehaviour
     {
         _currentWeaponEnhanceDict[weaponType] = level;
         // 데이터 저장
-        Util.SaveJson(_currentWeaponEnhanceDict, "CurrentWeaponInhanceData.json");
+        Util.SaveJson(_currentWeaponEnhanceDict,"VamSurData", "CurrentWeaponInhanceData.json");
     }
 
     public Define.Monster GetMonsterInfo(Define.MonsterType monsterType)
