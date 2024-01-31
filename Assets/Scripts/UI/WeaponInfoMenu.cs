@@ -10,7 +10,9 @@ public class WeaponInfoMenu : MonoBehaviour
     [SerializeField] TMP_Text _nameText;
     [SerializeField] TMP_Text _lvText;
     [SerializeField] TMP_Text _costText;
+    [SerializeField] TMP_Text _totalGoldText;
     [SerializeField] Button _button;
+    
     Define.WeaponType _type;
 
     public void SetData(Define.WeaponType type)
@@ -26,6 +28,7 @@ public class WeaponInfoMenu : MonoBehaviour
         _nameText.text = _type.ToString();
         _lvText.text = curEnhanceLevel.ToString();
         _costText.text = enhanceData.cost.ToString();
+        _totalGoldText.text = GenericSingleton<GameManager>.getInstance().TotalGold.ToString();
     }
     public void EnhanceWeapon()
     {
