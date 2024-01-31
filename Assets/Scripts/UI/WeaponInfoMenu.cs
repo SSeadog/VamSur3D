@@ -40,6 +40,6 @@ public class WeaponInfoMenu : MonoBehaviour
         }
 
         Debug.Log($"강화 성공 여부: {result} {_type}강화 레벨: {GenericSingleton<DataManager>.getInstance().GetWeaponEnhanceLevel(_type)}");
-        Debug.Log(GenericSingleton<GameManager>.getInstance().TotlGold);
+        Debug.Log(GenericSingleton<GameManager>.getInstance().TotalGold);
     }
 }

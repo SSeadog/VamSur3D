@@ -13,11 +13,11 @@ public abstract class MonsterBase
 
 }
 
-public class NormolMonster : MonsterBase
+public class NormalMonster : MonsterBase
 {
     public override void Init()
     {
-        _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.NormalMob);//1
+        _obj = GenericSingleton<MonsterPool>.getInstance().GetPoolObject(Define.MonsterType.NormalMob);
         _monStat = GenericSingleton<DataManager>.getInstance().GetMonsterInfo(Define.MonsterType.NormalMob);
         _monType = Define.MonsterType.NormalMob;
         _obj.GetComponent<Monster>().Init(this);

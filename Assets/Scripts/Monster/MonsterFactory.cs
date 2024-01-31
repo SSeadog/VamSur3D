@@ -39,7 +39,7 @@ public class NormolMobFactory : MonsterFactoryBase
 {
     public override MonsterBase MakeMonster()
     {
-        MonsterBase mon = new NormolMonster();
+        MonsterBase mon = new NormalMonster();
         mon.Init();
         return mon;
     }
