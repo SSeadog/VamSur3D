@@ -27,6 +27,8 @@ namespace State
         }
         public override void MainLoop()
         {
+            if (GenericSingleton<UIManager>.getInstance().IsStop) monsterSpeed = 0;
+            else monsterSpeed = 2;
             _hero = GenericSingleton<GameManager>.getInstance().Player.gameObject.GetComponent<Hero>();
             // trans = GenericSingleton<GameManager>.getInstance().Player.gameObject.transform;//Hero스크립트를 받을 이유가 안보임
             //플레이어를 따라가도록 하는 기능

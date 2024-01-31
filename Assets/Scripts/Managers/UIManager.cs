@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 // UIRegister 통해 씬에 배치한 UI들을 UIManager에 등록
@@ -7,6 +8,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     private Dictionary<string, UIBase> _dictUI = new Dictionary<string, UIBase>();
+    public bool IsStop { get { return isStop; } set { isStop = value; } } 
+    bool isStop = false;
 
     public void AddUI(string key, UIBase uIBase)
     {
@@ -28,13 +31,16 @@ public class UIManager : MonoBehaviour
             {
                 eSCMenuUI.ShowUI();
                 Time.timeScale = 0f;
+                isStop = true;
             }
             else
             {
                 eSCMenuUI.CloseUI();
                 Time.timeScale = 1f;
+                isStop = false;
             }
         }
+
     }
 
     public void Clear()

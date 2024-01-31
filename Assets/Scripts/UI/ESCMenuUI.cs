@@ -24,18 +24,21 @@ public class ESCMenuUI : PopupUIBase
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
 
-        _settingsUI = GameObject.Find("UIRoot").transform.Find("SettingsUI").GetComponent<SettingsUI>();
+        _settingsUI = GameObject.Find("UIRegister").transform.Find("SettingsUI").GetComponent<SettingsUI>();
         _settingsUI.Init(this);
     }
 
     void OnResumeButtonClicked()
     {
         CloseUI();
+        GenericSingleton<UIManager>.getInstance().IsStop = false;
+        Time.timeScale = 1f;
     }
 
     void OnSettingsButtonClicked()
     {
         _settingsUI.ShowUI();
+        
     }
 
     void OnExitButtonClicked()
